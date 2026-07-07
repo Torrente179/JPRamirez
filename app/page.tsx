@@ -28,21 +28,21 @@ export default function Home() {
         <div
           data-stagger
           aria-hidden
-          className="pointer-events-none absolute top-1/2 right-[-12%] z-10 w-[78vw] max-w-[420px] -translate-y-[74%] select-none sm:right-[-2%] sm:w-[44vw] sm:max-w-[560px] sm:-translate-y-[58%]"
+          className="pointer-events-none absolute top-1/2 right-[-14%] z-10 w-[86vw] max-w-[460px] -translate-y-[76%] select-none sm:right-[-3%] sm:w-[48vw] sm:max-w-[640px] sm:-translate-y-[54%]"
           style={{
             maskImage:
-              "radial-gradient(72% 68% at 50% 42%, black 38%, transparent 78%)",
+              "radial-gradient(58% 54% at 47% 40%, black 34%, transparent 72%)",
             WebkitMaskImage:
-              "radial-gradient(72% 68% at 50% 42%, black 38%, transparent 78%)",
+              "radial-gradient(58% 54% at 47% 40%, black 34%, transparent 72%)",
           }}
         >
           <Image
-            src="/images/jp.jpg"
+            src="/images/jp-hero.jpg"
             alt=""
-            width={700}
-            height={700}
+            width={1600}
+            height={1600}
             priority
-            className="w-full grayscale contrast-[1.06] brightness-[0.7] sm:brightness-[0.82]"
+            className="w-full grayscale contrast-[1.08] brightness-[0.78] sm:brightness-[0.95]"
           />
         </div>
 

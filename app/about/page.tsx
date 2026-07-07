@@ -81,10 +81,10 @@ export default function AboutPage() {
         <Reveal delay={0.1}>
           <div>
             <Image
-              src="/images/jp.jpg"
+              src="/images/jp-about.jpg"
               alt="Juan Pablo Ramirez"
-              width={700}
-              height={700}
+              width={1200}
+              height={1797}
               priority
               className="rounded-xl border border-border"
             />
