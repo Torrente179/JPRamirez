@@ -1,0 +1,22 @@
+---
+title: Throughline
+---
+
+Throughline turns my learning roadmap into software. I'm working through a seven-phase path toward AI support systems engineering, and I wanted the tracker itself to embody how learning actually works — not a todo list, but a system with study science built in.
+
+## What it does
+
+- **Roadmap overview**: all seven phases on a timeline spine with progress rings, current-phase highlight, and an at-a-glance dashboard (overall %, streak, reviews due)
+- **Spaced review** on a 1·3·7·14·30-day schedule, auto-triggered when a step is completed or a mistake is logged
+- **Mistake log** — errors become review material instead of disappearing
+- **Mastery flags** per module, because "watched it" and "can do it" are different states
+- **Course spaces**: each resource opens a granular workspace whose progress rolls up to the roadmap
+- **Today page** that runs the daily loop: focused block → recall → correction → spaced review → integration
+
+## Build notes
+
+Next.js 16, React 19, Tailwind v4, and Motion for the interface — neutral zinc base, one indigo accent, one orchestrated entrance animation. Progress lives in localStorage with JSON export/import; the roadmap itself is typed data, so the tracker and the plan can't drift apart. A database is the natural v2, but v1 deliberately has no backend to maintain.
+
+## Status
+
+In active development — it's the tool I use to study, so it evolves with the studying.

@@ -1,0 +1,24 @@
+---
+title: JPTracker
+---
+
+JPTracker started as my own itch: I needed to track billable hours across clients and turn them into invoices without a subscription to someone else's tool. It grew into a full time-tracking and invoicing app that I use for real freelance work.
+
+## What it does
+
+- **Weekly calendar** with UTC-based task tracking, drag-drop reordering, and resumable timers
+- **Invoice generation** with a draft → finalized flow — an invoice only gets its number when it's finalized, like real accounting
+- **Exports** to PDF, CSV, and PNG
+- **Monthly reporting** with client-hours search and Recharts dashboards
+- **Serious auth** for a personal tool: email/password, Google and Apple OAuth, and WebAuthn multi-factor
+- One-time import from the localStorage version that preceded it
+
+## Build notes
+
+React 19 + Vite on the client, Supabase for auth and Postgres with row-level security so the data model is safe by default. PDF generation runs client-side with jsPDF and html2canvas — no server needed to produce an invoice.
+
+The subtle hard part was time: everything is stored and computed in UTC and rendered in the viewer's timezone, which is the difference between a tracker you trust and one you double-check.
+
+## Status
+
+Deployed and in use at [jptimetracker.vercel.app](https://jptimetracker.vercel.app).

@@ -1,0 +1,23 @@
+---
+title: Budget & Expense
+---
+
+Budget & Expense is my take on personal finance software that doesn't shout at you. It's a bilingual (EN/ES) app for intentional money management — envelope budgeting, investments, giving, and multi-currency tracking — designed around calm, composed UI where the numbers feel trustworthy.
+
+## What it does
+
+- **Dashboard** with KPI summary cards: balance, monthly spend, and deltas
+- **Envelope budgeting** with visual progress per budget pool
+- **Movements ledger** with full transaction history and a calendar drill-down view
+- **Investments and net worth** tracking alongside day-to-day spending
+- **Imports**: in-app CSV import plus Santander bank statement support
+- **Multi-currency** (20 currencies, EUR base) with base-currency conversion
+- Spending analytics with category drill-downs via Recharts
+
+## Build notes
+
+Built on Next.js 16 with React Server Components, Supabase (auth, Postgres, row-level security), Tailwind CSS v4 with a CSS-first config, and Base UI primitives. The design system is documented in the repo: soft neutrals, deep diffuse shadows, monospaced `tabular-nums` for every number, emerald for positive, rose for negative. Mobile gets a bottom nav; desktop gets a fixed sidebar — two deliberate layouts, not one squeezed layout.
+
+## Status
+
+In production and under active development — recent work shipped calendar redesign, transfers, net worth, and CSV import.
