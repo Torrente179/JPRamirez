@@ -20,6 +20,7 @@ export const projects: Project[] = [
       "Marketing and portfolio site for a user-generated-content creator: HLS adaptive video streaming from Cloudflare R2, bilingual routing (ES/EN), and motion design as a core pillar.",
     stack: ["React", "TypeScript", "Vite", "GSAP", "Lenis", "three.js", "HLS", "Cloudflare R2"],
     status: "Production",
+    link: "https://giselasaldarriaga.com",
     featured: true,
   },
   {
