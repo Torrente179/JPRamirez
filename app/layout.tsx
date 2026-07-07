@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
+import { TabBar } from "@/components/tab-bar";
 import { Footer } from "@/components/footer";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { site } from "@/lib/data/site";
@@ -102,8 +103,9 @@ export default function RootLayout({
         />
         <SmoothScroll />
         <Nav />
-        <main className="pt-14">{children}</main>
+        <main className="overflow-x-clip pt-14 pb-20 md:pb-0">{children}</main>
         <Footer />
+        <TabBar />
       </body>
     </html>
   );

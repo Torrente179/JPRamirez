@@ -28,25 +28,19 @@ export default function Home() {
         <div
           data-stagger
           aria-hidden
-          className="pointer-events-none absolute top-1/2 right-[-14%] z-10 w-[86vw] max-w-[460px] -translate-y-[76%] select-none sm:right-[-3%] sm:w-[48vw] sm:max-w-[640px] sm:-translate-y-[54%]"
-          style={{
-            maskImage:
-              "radial-gradient(58% 54% at 47% 40%, black 34%, transparent 72%)",
-            WebkitMaskImage:
-              "radial-gradient(58% 54% at 47% 40%, black 34%, transparent 72%)",
-          }}
+          className="hero-portrait pointer-events-none absolute top-1/2 right-[-16%] z-10 w-[96vw] max-w-[540px] select-none sm:right-[-4%] sm:w-[56vw] sm:max-w-[780px]"
         >
           <Image
-            src="/images/jp-hero.jpg"
+            src="/images/jp-hero-alpha.webp"
             alt=""
             width={1600}
             height={1600}
             priority
-            className="w-full grayscale contrast-[1.08] brightness-[0.78] sm:brightness-[0.95]"
+            className="w-full contrast-[1.04] brightness-[0.8] saturate-[1.05] sm:brightness-[1]"
           />
         </div>
 
-        <div data-stagger className="relative z-20">
+        <div data-stagger className="relative z-20 hidden sm:block">
           <StatusLine />
         </div>
 

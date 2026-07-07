@@ -9,7 +9,7 @@ export function StatusBoard() {
         <Link
           key={card.label}
           href={card.href}
-          className="group rounded-xl border border-border bg-surface p-6 transition-all duration-300 hover:border-white/16 hover:bg-surface-2"
+          className="group rounded-xl border border-border bg-surface p-6 transition-all duration-300 hover:border-white/16 hover:bg-surface-2 active:scale-[0.985]"
         >
           <div className="flex items-center justify-between">
             <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">

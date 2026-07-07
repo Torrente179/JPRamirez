@@ -18,7 +18,7 @@ export function ProjectRow({
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group hairline block px-1 py-7 transition-colors duration-300 hover:bg-surface sm:px-4 sm:py-8"
+      className="group hairline block px-1 py-7 transition-all duration-300 hover:bg-surface active:scale-[0.99] sm:px-4 sm:py-8"
     >
       <div className="flex items-baseline gap-4 sm:gap-8">
         <span className="nums font-mono text-[11px] tracking-[0.14em] text-subtle">
