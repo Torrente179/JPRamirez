@@ -1,12 +1,21 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Stagger, Reveal } from "@/components/motion";
 import { StatusLine } from "@/components/status-line";
 import { SectionHeading } from "@/components/section-heading";
 import { ProjectRow } from "@/components/project-row";
+import { RotatingText } from "@/components/rotating-text";
+import { StatusBoard } from "@/components/status-board";
 import { site } from "@/lib/data/site";
 import { projects } from "@/lib/data/projects";
-import { currentFocus } from "@/lib/data/now";
 import { stackGroups } from "@/lib/data/stack";
+
+const heroPhrases = [
+  "web platforms calm.",
+  "DNS boring.",
+  "databases fast.",
+  "support human.",
+];
 
 export default function Home() {
   const featured = projects.filter((p) => p.featured);
@@ -14,50 +23,93 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-6xl px-5 sm:px-8">
       {/* Hero */}
-      <Stagger className="flex min-h-[82svh] flex-col justify-center py-24">
-        <div data-stagger>
+      <Stagger className="relative flex min-h-[88svh] flex-col justify-between overflow-visible pt-14 pb-10 sm:pt-20">
+        {/* portrait — blended into the field, behind nothing, above the giant name */}
+        <div
+          data-stagger
+          aria-hidden
+          className="pointer-events-none absolute top-1/2 right-[-12%] z-10 w-[78vw] max-w-[420px] -translate-y-[74%] select-none sm:right-[-2%] sm:w-[44vw] sm:max-w-[560px] sm:-translate-y-[58%]"
+          style={{
+            maskImage:
+              "radial-gradient(72% 68% at 50% 42%, black 38%, transparent 78%)",
+            WebkitMaskImage:
+              "radial-gradient(72% 68% at 50% 42%, black 38%, transparent 78%)",
+          }}
+        >
+          <Image
+            src="/images/jp.jpg"
+            alt=""
+            width={700}
+            height={700}
+            priority
+            className="w-full grayscale contrast-[1.06] brightness-[0.7] sm:brightness-[0.82]"
+          />
+        </div>
+
+        <div data-stagger className="relative z-20">
           <StatusLine />
         </div>
+
+        {/* the power move */}
         <h1
           data-stagger
-          className="mt-8 max-w-4xl text-[2.6rem] leading-[1.04] font-medium tracking-[-0.02em] sm:text-6xl md:text-7xl"
+          className="pointer-events-none relative z-0 my-6 text-center text-[clamp(4.2rem,19.5vw,17rem)] leading-[0.92] font-medium tracking-[-0.035em] whitespace-nowrap text-foreground sm:my-0 sm:-ml-2 sm:text-left"
         >
-          Juan Pablo Ramirez keeps web platforms{" "}
-          <span className="text-brand italic">calm</span>.
+          Ramirez
         </h1>
-        <p
-          data-stagger
-          className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
-        >
-          Technical support engineer across hosting, DNS, WordPress, and SaaS
-          operations — building AI-assisted systems that make support work
-          better.
-        </p>
-        <div data-stagger className="mt-10 flex items-center gap-7">
-          <Link
-            href="/projects"
-            className="group flex items-center gap-2 font-mono text-[12px] tracking-[0.14em] text-foreground uppercase"
+
+        <div className="relative z-20 max-w-xl">
+          <p
+            data-stagger
+            className="text-2xl leading-snug font-medium tracking-tight sm:text-3xl"
           >
-            <span className="link-quiet">View projects</span>
-            <span
-              aria-hidden
-              className="text-brand transition-transform duration-300 group-hover:translate-x-1"
+            I&apos;m Juan Pablo. I keep{" "}
+            <RotatingText
+              phrases={heroPhrases}
+              className="inline-block text-brand italic"
+            />
+          </p>
+          <p
+            data-stagger
+            className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground"
+          >
+            Technical support engineer across hosting, DNS, WordPress, and SaaS
+            operations — building AI-assisted systems that make support work
+            better.
+          </p>
+          <div data-stagger className="mt-8 flex items-center gap-7">
+            <Link
+              href="/projects"
+              className="group flex items-center gap-2 font-mono text-[12px] tracking-[0.14em] text-foreground uppercase"
             >
-              →
-            </span>
-          </Link>
-          <Link
-            href="/about"
-            className="font-mono text-[12px] tracking-[0.14em] text-muted-foreground uppercase transition-colors hover:text-foreground"
-          >
-            About me
-          </Link>
+              <span className="link-quiet">View projects</span>
+              <span
+                aria-hidden
+                className="text-brand transition-transform duration-300 group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </Link>
+            <Link
+              href="/about"
+              className="font-mono text-[12px] tracking-[0.14em] text-muted-foreground uppercase transition-colors hover:text-foreground"
+            >
+              About me
+            </Link>
+          </div>
         </div>
       </Stagger>
 
+      {/* Status board */}
+      <Reveal>
+        <div className="mt-6">
+          <StatusBoard />
+        </div>
+      </Reveal>
+
       {/* Metrics */}
       <Reveal>
-        <div className="hairline grid grid-cols-2 gap-y-10 py-12 sm:grid-cols-4">
+        <div className="hairline mt-16 grid grid-cols-2 gap-y-10 py-12 sm:grid-cols-4">
           {site.metrics.map((m) => (
             <div key={m.label}>
               <p className="nums text-3xl font-medium tracking-tight sm:text-4xl">
@@ -91,38 +143,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Currently */}
-      <section className="mt-28">
-        <Reveal>
-          <div className="mb-8 flex items-baseline justify-between">
-            <SectionHeading index="02" title="Currently" />
-            <Link
-              href="/now"
-              className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground transition-colors hover:text-brand"
-            >
-              the /now page →
-            </Link>
-          </div>
-        </Reveal>
-        <div className="grid gap-x-10 gap-y-10 sm:grid-cols-3">
-          {currentFocus.map((item, i) => (
-            <Reveal key={item.title} delay={i * 0.08}>
-              <div className="hairline pt-6">
-                <h3 className="text-base font-medium">{item.title}</h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
-                  {item.body}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
       {/* Stack snapshot */}
       <section className="mt-28">
         <Reveal>
           <div className="mb-8 flex items-baseline justify-between">
-            <SectionHeading index="03" title="Stack" />
+            <SectionHeading index="02" title="Stack" />
             <Link
               href="/stack"
               className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground transition-colors hover:text-brand"

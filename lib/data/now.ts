@@ -1,3 +1,39 @@
+export type StatusCard = {
+  label: string;
+  tone: "ok" | "brand";
+  title: string;
+  body: string;
+  href: string;
+  meta: string;
+};
+
+export const statusBoard: StatusCard[] = [
+  {
+    label: "Now",
+    tone: "ok",
+    title: "Client WebOps at MemberDev",
+    body: "Keeping WordPress membership platforms healthy — support, QA, hosting, DNS, migrations, and the AI-assisted workflows around them.",
+    href: "/experience",
+    meta: "since 2023",
+  },
+  {
+    label: "On the radar",
+    tone: "brand",
+    title: "AI harness engineering",
+    body: "Structured outputs, evals, context pipelines — working a seven-phase roadmap toward AI support systems, one shipped artifact at a time.",
+    href: "/now",
+    meta: "phase 0–1 active",
+  },
+  {
+    label: "Shipping",
+    tone: "brand",
+    title: "Five products in flight",
+    body: "GiseUGC and Budget & Expense in production, JPTracker deployed, Throughline and Trainer Cloud in the lab.",
+    href: "/projects",
+    meta: "2 in production",
+  },
+];
+
 export const currentFocus = [
   {
     title: "Client WebOps at MemberDev",
