@@ -131,19 +131,6 @@
   }
 }
 
-/*
-  hero portrait vertical placement — margin, not transform: the element is
-  GSAP-staggered, and GSAP owns its inline transform after the entrance.
-*/
-.hero-portrait {
-  margin-top: -34vw;
-}
-@media (min-width: 640px) {
-  .hero-portrait {
-    margin-top: -160px;
-  }
-}
-
 /* fine grain to kill flatness — felt, not noticed */
 body::after {
   content: "";

@@ -24,22 +24,6 @@ export default function Home() {
     <div className="mx-auto max-w-6xl px-5 sm:px-8">
       {/* Hero */}
       <Stagger className="relative flex min-h-[88svh] flex-col overflow-visible pt-14 pb-10 sm:pt-20">
-        {/* portrait — blended into the field, behind nothing, above the giant name */}
-        <div
-          data-stagger
-          aria-hidden
-          className="hero-portrait pointer-events-none absolute top-1/2 right-[-16%] z-10 w-[96vw] max-w-[540px] select-none sm:right-[-4%] sm:w-[56vw] sm:max-w-[780px]"
-        >
-          <Image
-            src="/images/jp-hero-alpha.webp"
-            alt=""
-            width={1600}
-            height={1600}
-            priority
-            className="w-full contrast-[1.04] brightness-[0.8] saturate-[1.05] sm:brightness-[1]"
-          />
-        </div>
-
         <div data-stagger className="relative z-20 hidden sm:block">
           <StatusLine />
         </div>
@@ -47,18 +31,38 @@ export default function Home() {
         {/* capped spacer: extra viewport height goes below the content, not here */}
         <div aria-hidden className="max-h-14 min-h-6 flex-[0.35] sm:max-h-36" />
 
-        {/* the power move */}
-        <h1
-          data-stagger
-          className="pointer-events-none relative z-0 my-6 text-center text-[clamp(4.2rem,19.5vw,17rem)] leading-[0.92] font-medium tracking-[-0.035em] whitespace-nowrap text-foreground sm:my-0 sm:-ml-2 sm:text-left"
-        >
-          Ramirez
-        </h1>
+        {/*
+          name + portrait anchor: the portrait is positioned from the name's
+          box, so the letters sink behind the foliage at every viewport height
+        */}
+        <div className="relative flex flex-1 flex-col">
+          <div
+            data-stagger
+            aria-hidden
+            className="pointer-events-none absolute top-20 right-[-16%] z-10 w-[96vw] max-w-[540px] select-none sm:top-14 sm:right-[-4%] sm:w-[56vw] sm:max-w-[780px]"
+          >
+            <Image
+              src="/images/jp-hero-alpha.webp"
+              alt=""
+              width={1600}
+              height={1600}
+              priority
+              className="w-full contrast-[1.04] brightness-[0.8] saturate-[1.05] sm:brightness-[1]"
+            />
+          </div>
 
-        {/* growing spacer: absorbs the remaining height */}
-        <div aria-hidden className="min-h-8 flex-[0.65]" />
+          {/* the power move */}
+          <h1
+            data-stagger
+            className="pointer-events-none relative z-0 my-6 text-center text-[clamp(4.2rem,19.5vw,17rem)] leading-[0.92] font-medium tracking-[-0.035em] whitespace-nowrap text-foreground sm:my-0 sm:-ml-2 sm:text-left"
+          >
+            Ramirez
+          </h1>
 
-        <div className="relative z-20 max-w-xl">
+          {/* growing spacer: absorbs the remaining height */}
+          <div aria-hidden className="min-h-8 flex-1" />
+
+          <div className="relative z-20 max-w-xl">
           <p
             data-stagger
             className="text-2xl leading-snug font-medium tracking-tight sm:text-3xl"
@@ -97,6 +101,7 @@ export default function Home() {
               About me
             </Link>
           </div>
+        </div>
         </div>
       </Stagger>
 
