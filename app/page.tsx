@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-6xl px-5 sm:px-8">
       {/* Hero */}
-      <Stagger className="relative flex min-h-[88svh] flex-col justify-between overflow-visible pt-14 pb-10 sm:pt-20">
+      <Stagger className="relative flex min-h-[88svh] flex-col overflow-visible pt-14 pb-10 sm:pt-20">
         {/* portrait — blended into the field, behind nothing, above the giant name */}
         <div
           data-stagger
@@ -44,6 +44,9 @@ export default function Home() {
           <StatusLine />
         </div>
 
+        {/* capped spacer: extra viewport height goes below the content, not here */}
+        <div aria-hidden className="max-h-14 min-h-6 flex-[0.35] sm:max-h-36" />
+
         {/* the power move */}
         <h1
           data-stagger
@@ -51,6 +54,9 @@ export default function Home() {
         >
           Ramirez
         </h1>
+
+        {/* growing spacer: absorbs the remaining height */}
+        <div aria-hidden className="min-h-8 flex-[0.65]" />
 
         <div className="relative z-20 max-w-xl">
           <p
