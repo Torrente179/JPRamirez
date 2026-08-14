@@ -8,7 +8,7 @@ import { projects, clientWork } from "@/lib/data/projects";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Five products I've built — GiseUGC, Budget & Expense, JPTracker, Throughline, Trainer Cloud — plus shipped client and platform work.",
+    "Four products I've built — GiseUGC, Budget & Expense, JPTracker, Trainer Cloud — plus shipped client and platform work.",
 };
 
 export default function ProjectsPage() {
@@ -22,7 +22,7 @@ export default function ProjectsPage() {
             and keep shipping.
           </>
         }
-        lede="Five products of my own, from production marketing sites to private tools I use every day. Built AI-assisted, owned end to end: design, code, data, deployment."
+        lede="Four products of my own, from production marketing sites to private tools I use every day. Built AI-assisted, owned end to end: design, code, data, deployment."
       />
 
       <section>

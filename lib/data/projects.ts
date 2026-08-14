@@ -45,16 +45,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: "throughline",
-    name: "Throughline",
-    tagline: "A learning-roadmap tracker with study science built in",
-    summary:
-      "Turns my AI Support Systems roadmap into a living tracker: spaced review (1·3·7·14·30), mistake logging, mastery flags, and per-course workspaces that roll up to the roadmap.",
-    stack: ["Next.js 16", "React 19", "Tailwind v4", "Motion"],
-    status: "In development",
-    featured: false,
-  },
-  {
     slug: "trainer-cloud",
     name: "Trainer Cloud",
     tagline: "Training, nutrition, and grocery planning in one private app",
@@ -73,6 +63,12 @@ export type ClientWork = {
 };
 
 export const clientWork: ClientWork[] = [
+  {
+    name: "Production RAG assistant",
+    description:
+      "Shipped a production RAG assistant for a large online training platform — Python, Supabase pgvector, OpenAI, and a custom WordPress plugin, with a verification suite and documented handover.",
+    context: "MemberDev",
+  },
   {
     name: "warwickschiller.com DNS migration",
     description:

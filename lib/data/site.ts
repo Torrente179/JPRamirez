@@ -10,6 +10,10 @@ export const site = {
   availability: "Remote · EU/Americas overlap",
   languages: ["English", "Spanish"],
   url: "https://jpramirez.vercel.app",
+  cv: {
+    href: "/cv.pdf",
+    filename: "Juan_Pablo_Ramirez_Romero_CV.pdf",
+  },
   metrics: [
     { value: "450+", label: "accounts managed" },
     { value: "$160K+", label: "MRR under care" },

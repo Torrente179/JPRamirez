@@ -15,7 +15,7 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
 
 | Page | The moment |
 |---|---|
-| Home | Giant "Ramirez" sinking behind the color portrait + rotating headline |
+| Home | Giant "Ramirez" sinking behind the color portrait + rotating headline. Mobile home is an app cover, not a scaled desktop. |
 | About | "Useful when a problem needs *investigation*, not a script." |
 | Experience | Shipped-proof chips attached to the roles they came from |
 | Projects | Status dots treating side projects like monitored services |
@@ -29,7 +29,11 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
 | Display + body | **General Sans** (variable, self-hosted `app/fonts/`, weights 200–700) | Headings: `font-medium`, tight leading (`leading-[0.92]`–`[1.06]`), negative tracking (`-0.02em` to `-0.035em`). Body: 15–16px, `leading-relaxed`/`[1.8]`, max measure `max-w-xl`/`max-w-2xl` |
 | Labels, metrics, nav, code | **JetBrains Mono** (via `next/font/google`) | The "ops" voice. Labels: 10–11px, uppercase, tracked `0.14em`–`0.16em` (`.eyebrow`). Never used for body copy |
 
-- The hero name scale: `text-[clamp(4.2rem,19.5vw,17rem)]`.
+- The hero name scale: desktop `clamp(4.2rem, 19.5vw, 17rem)` on `.hero-anchor`;
+  mobile app cover `clamp(3.05rem, 16.5vw, 4.35rem)`.
+- Last ~32% of the giant name (`clip-path: inset(0 0 0 68%)` on
+  `.hero-name-front`) paints in front of the portrait so the last letters read
+  on top of the image; the rest stays behind the foliage.
 - One italic accent word per headline, colored `text-brand` — this is the
   signature type gesture (`calm`, `investigation`, `what breaks`, `Building`).
 - All numbers render with `tabular-nums` (`.nums` utility).
@@ -65,11 +69,16 @@ hairline transitions.
   Cards (rounded `rounded-xl border bg-surface`) are reserved for the status
   board and chips.
 - Section headers: mono eyebrow `01 — Section name` (cyan index, `SectionHeading`),
-  echoing the CV's numbered sections.
-- Hero vertical logic: capped flex spacer above the name (`max-h-14/36`) so
-  tall viewports push extra space *below* content, never above the name.
-- The hero portrait is absolutely positioned **from the name's box** (anchor
-  wrapper), so the letters-behind-foliage overlap is viewport-height-proof.
+  echoing the CV's numbered sections. Home: `01` projects, `02` work, `03` stack.
+- Hero vertical logic (desktop): capped flex spacer above the name (`max-h-36`)
+  so tall viewports push extra space *below* content, never above the name.
+- The desktop portrait is absolutely positioned **from the name's box**
+  (`.hero-anchor`), so the letters-behind-foliage overlap is viewport-height-proof.
+  Portrait `top` is `calc(3.5rem + 0.2em)` — 20% of the name size more of the
+  last letters sit above the photo than the original `top-14`.
+- Mobile home hero is an **app cover**: full-bleed photo (`54svh`), name locked
+  to the bottom of the cover, copy + hairline actions in a profile sheet below.
+  Breakpoint matches the TabBar (`md`). Do not scale the desktop lockup down.
 
 ## 5. Imagery
 
@@ -118,18 +127,24 @@ ever ship in markup), and globals.css kills CSS animations.
 |---|---|
 | `Nav` | Fixed top, blur. Desktop: mono links, active = cyan. Mobile: app bar — logo `jp·` + live `● OPERATIONAL` |
 | `TabBar` | Mobile only (`md:hidden`). 5 tabs (home/projects/work/now/about), lucide icons, cyan active, safe-area padding |
-| `StatusLine` | The hero readout: `● OPERATIONAL / availability / location` |
+| `Hero` | Home only. Desktop: giant name + portrait weave. Mobile (`md:hidden`): app cover + profile sheet. |
 | `StatusBoard` | 3 dashboard cards (NOW / ON THE RADAR / SHIPPING) fed from `lib/data/now.ts` — labels have tone dots, meta on the right |
 | `ProjectRow` | Hairline row: index, name, status dot, tagline, mono stack line, sliding arrow |
+| `ExperienceRow` | Same row contract as `ProjectRow`: index, company, Present/`ok` or period/`subtle` dot, tagline, mono title, sliding arrow. Links to `/experience#slug`. |
+| `CvDownload` | Same-origin `public/cv.pdf` with `download` filename. Used on Home (work section), Experience header, and Footer. |
+| `SiteList` | Native `<details>` under MemberDev: numbered `Sites under care`, hairline rows, hostname + `↗`. |
 | `SectionHeading` | `01 — Title` mono eyebrow |
-| `PageHeader` | Subpage hero: eyebrow, display title (accent word), optional lede |
+| `PageHeader` | Subpage hero: eyebrow, display title (accent word), optional lede, optional `action` (used on Experience for CV download) |
 | `Reveal` / `Stagger` | The only two motion wrappers; don't invent new ones per page |
 | shadcn/ui | Installed (button/badge/separator/tooltip) but restyled via tokens; never ship default-looking components |
 
 ## 8. Mobile = app, not shrunken desktop
 
 - Bottom `TabBar` is primary navigation; top bar becomes an app bar with the
-  status readout.
+  status readout. Both appear below `md`.
+- Home hero below `md` is a cover photo with the name on it and a profile
+  sheet underneath — never the desktop giant-name-plus-offset-portrait scaled
+  down.
 - `main` gets `pb-20` clearance for the tab bar and `overflow-x-clip` so the
   hero photo can bleed to the screen edge without horizontal scroll.
 - Touch feedback (`active:scale`) on every tappable card/row.
@@ -152,6 +167,8 @@ exclamation points, no emoji, no buzzword chains.
 - External links: `target="_blank" rel="noopener noreferrer"` + `↗`.
 - Content data lives in `lib/data/*.ts` + `content/projects/*.mdx` — pages
   never hardcode facts.
+- Public work history starts at Hostinger (Aug 2020). Do not list 5CA /
+  Epic Games on the site.
 
 ## 11. Don't
 

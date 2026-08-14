@@ -69,11 +69,11 @@ export default function AboutPage() {
           </Reveal>
           <Reveal>
             <p>
-              Six-plus years fully remote, from Fortnite player support in 2019
-              to managing 450+ hosting accounts as a TAM, to owning WebOps for
-              WordPress membership platforms today. Based in Málaga, Spain;
-              working in English and Spanish across EU and Americas time
-              zones.
+              Six-plus years fully remote: 4,800+ customers at Hostinger, 450+
+              hosting accounts as a TAM at DigitalOcean, then owning WebOps
+              and AI systems for WordPress membership platforms at MemberDev.
+              Based in Málaga, Spain; working in English and Spanish across EU
+              and Americas time zones.
             </p>
           </Reveal>
         </div>

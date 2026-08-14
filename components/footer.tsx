@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CvDownload } from "@/components/cv-download";
 import { site } from "@/lib/data/site";
 
 export function Footer() {
@@ -27,12 +28,7 @@ export function Footer() {
             >
               linkedin ↗
             </a>
-            <a
-              href="/cv.pdf"
-              className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground transition-colors hover:text-foreground"
-            >
-              cv.pdf ↓
-            </a>
+            <CvDownload className="hover:text-foreground" />
             <Link
               href="/now"
               className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground transition-colors hover:text-foreground"

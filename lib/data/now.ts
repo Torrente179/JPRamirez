@@ -27,10 +27,10 @@ export const statusBoard: StatusCard[] = [
   {
     label: "Shipping",
     tone: "brand",
-    title: "Five products in flight",
-    body: "GiseUGC and Budget & Expense in production, JPTracker deployed, Throughline and Trainer Cloud in the lab.",
+    title: "Four products in flight",
+    body: "GiseUGC, Budget & Expense, and JPTracker in production; Trainer Cloud in private beta.",
     href: "/projects",
-    meta: "2 in production",
+    meta: "3 in production",
   },
 ];
 
@@ -41,7 +41,7 @@ export const currentFocus = [
   },
   {
     title: "Shipping my own apps",
-    body: "Five products in flight: GiseUGC and Budget & Expense in production, JPTracker deployed, Throughline and Trainer Cloud in active development.",
+    body: "Four products in flight: GiseUGC, Budget & Expense, and JPTracker in production; Trainer Cloud in private beta.",
   },
   {
     title: "Studying with a system",

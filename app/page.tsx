@@ -1,109 +1,22 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Stagger, Reveal } from "@/components/motion";
-import { StatusLine } from "@/components/status-line";
+import { Reveal } from "@/components/motion";
+import { Hero } from "@/components/hero";
 import { SectionHeading } from "@/components/section-heading";
 import { ProjectRow } from "@/components/project-row";
-import { RotatingText } from "@/components/rotating-text";
+import { ExperienceRow } from "@/components/experience-row";
+import { CvDownload } from "@/components/cv-download";
 import { StatusBoard } from "@/components/status-board";
 import { site } from "@/lib/data/site";
 import { projects } from "@/lib/data/projects";
+import { roles } from "@/lib/data/experience";
 import { stackGroups } from "@/lib/data/stack";
-
-const heroPhrases = [
-  "web platforms calm.",
-  "DNS boring.",
-  "databases fast.",
-  "support human.",
-];
 
 export default function Home() {
   const featured = projects.filter((p) => p.featured);
 
   return (
     <div className="mx-auto max-w-6xl px-5 sm:px-8">
-      {/* Hero */}
-      <Stagger className="relative flex min-h-[88svh] flex-col overflow-visible pt-14 pb-10 sm:pt-20">
-        <div data-stagger className="relative z-20 hidden sm:block">
-          <StatusLine />
-        </div>
-
-        {/* capped spacer: extra viewport height goes below the content, not here */}
-        <div aria-hidden className="max-h-14 min-h-6 flex-[0.35] sm:max-h-36" />
-
-        {/*
-          name + portrait anchor: the portrait is positioned from the name's
-          box, so the letters sink behind the foliage at every viewport height
-        */}
-        <div className="relative flex flex-1 flex-col">
-          <div
-            data-stagger
-            aria-hidden
-            className="pointer-events-none absolute top-20 right-[-16%] z-10 w-[96vw] max-w-[540px] select-none sm:top-14 sm:right-[-4%] sm:w-[56vw] sm:max-w-[780px]"
-          >
-            <Image
-              src="/images/jp-hero-alpha.webp"
-              alt=""
-              width={1600}
-              height={1600}
-              priority
-              className="w-full contrast-[1.04] brightness-[0.8] saturate-[1.05] sm:brightness-[1]"
-            />
-          </div>
-
-          {/* the power move */}
-          <h1
-            data-stagger
-            className="pointer-events-none relative z-0 my-6 text-center text-[clamp(4.2rem,19.5vw,17rem)] leading-[0.92] font-medium tracking-[-0.035em] whitespace-nowrap text-foreground sm:my-0 sm:-ml-2 sm:text-left"
-          >
-            Ramirez
-          </h1>
-
-          {/* growing spacer: absorbs the remaining height */}
-          <div aria-hidden className="min-h-8 flex-1" />
-
-          <div className="relative z-20 max-w-xl">
-          <p
-            data-stagger
-            className="text-2xl leading-snug font-medium tracking-tight sm:text-3xl"
-          >
-            I&apos;m Juan Pablo. I keep{" "}
-            <RotatingText
-              phrases={heroPhrases}
-              className="inline-block text-brand italic"
-            />
-          </p>
-          <p
-            data-stagger
-            className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground"
-          >
-            Technical support engineer across hosting, DNS, WordPress, and SaaS
-            operations — building AI-assisted systems that make support work
-            better.
-          </p>
-          <div data-stagger className="mt-8 flex items-center gap-7">
-            <Link
-              href="/projects"
-              className="group flex items-center gap-2 font-mono text-[12px] tracking-[0.14em] text-foreground uppercase"
-            >
-              <span className="link-quiet">View projects</span>
-              <span
-                aria-hidden
-                className="text-brand transition-transform duration-300 group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </Link>
-            <Link
-              href="/about"
-              className="font-mono text-[12px] tracking-[0.14em] text-muted-foreground uppercase transition-colors hover:text-foreground"
-            >
-              About me
-            </Link>
-          </div>
-        </div>
-        </div>
-      </Stagger>
+      <Hero />
 
       {/* Status board */}
       <Reveal>
@@ -148,11 +61,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Work experience */}
+      <section className="mt-24">
+        <Reveal>
+          <div className="mb-8 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
+            <SectionHeading index="02" title="Work experience" />
+            <div className="flex items-center gap-5">
+              <CvDownload />
+              <Link
+                href="/experience"
+                className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground transition-colors hover:text-brand"
+              >
+                all experience →
+              </Link>
+            </div>
+          </div>
+        </Reveal>
+        <div>
+          {roles.map((role, i) => (
+            <Reveal key={role.slug} delay={i * 0.06}>
+              <ExperienceRow role={role} index={i} />
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
       {/* Stack snapshot */}
       <section className="mt-28">
         <Reveal>
           <div className="mb-8 flex items-baseline justify-between">
-            <SectionHeading index="02" title="Stack" />
+            <SectionHeading index="03" title="Stack" />
             <Link
               href="/stack"
               className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground transition-colors hover:text-brand"

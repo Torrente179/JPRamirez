@@ -1,13 +1,16 @@
+import type { ReactNode } from "react";
 import { Stagger } from "@/components/motion";
 
 export function PageHeader({
   eyebrow,
   title,
   lede,
+  action,
 }: {
   eyebrow: string;
-  title: React.ReactNode;
+  title: ReactNode;
   lede?: string;
+  action?: ReactNode;
 }) {
   return (
     <Stagger className="pt-24 pb-16 sm:pt-32 sm:pb-20">
@@ -27,6 +30,11 @@ export function PageHeader({
         >
           {lede}
         </p>
+      )}
+      {action && (
+        <div data-stagger className="mt-8">
+          {action}
+        </div>
       )}
     </Stagger>
   );
