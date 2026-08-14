@@ -10,7 +10,7 @@ import { recommendations } from "@/lib/data/recommendations";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "AI engineer in Málaga. I build agentic systems, RAG assistants, and the DevOps and WebOps they run on. English and Spanish.",
+    "Hey there, JP here. Self-taught tech guy in Málaga. Web, AI, and looking for partners who share the vision.",
 };
 
 const facts = [
@@ -27,9 +27,8 @@ export default function AboutPage() {
         eyebrow="About"
         title={
           <>
-            I build AI{" "}
-            <span className="text-brand italic">systems</span>. DevOps and
-            WebOps underneath.
+            Hey there,{" "}
+            <span className="text-brand italic">JP</span> here.
           </>
         }
       />
@@ -38,33 +37,40 @@ export default function AboutPage() {
         <div className="space-y-6 text-[15px] leading-[1.8] text-muted-foreground sm:text-base">
           <Reveal>
             <p>
-              I build AI systems. At MemberDev I put custom chat on WordPress
-              membership sites, and I keep those sites running. I also work a
-              lot with coding agents: Claude Code, Codex, Cursor.
+              I&apos;m a mostly self taught tech guy, that has gone headfirst
+              into this web development world and more recently, the AI space,
+              which is where most of my time and ideas go these days.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              I'm going deep on AI systems engineering: structured outputs,
-              retrieval with citations, evals, traces, cost, model routing. I
-              want systems that hold up in production, the same way a DNS
-              cutover or a MySQL migration has to.
+              I live in Spain, in the beautiful city of Malaga. I started my
+              tech journey 7 years ago and have never looked back. Right now
+              I&apos;m looking to build my own partnerships with companies that
+              share my ideas and vision.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              DevOps and WebOps are the floor. I already run WordPress
-              membership sites, DNS, Cloudflare, databases. That is why I care
-              whether an agent is useful or just talking.
+              I love Jesus (my Lord and Saviour, of course), traveling,
+              motorcycles, eating, combat sports, weights, cars, eating with
+              friends... pretty much anything to do with eating and tech.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              I've been fully remote for six years. Hostinger, DigitalOcean,
-              MemberDev. At MemberDev I ship AI systems onto WordPress
-              membership platforms, and I still run the WebOps. I live in
-              Málaga. English and Spanish, mostly EU and Americas hours.
+              If you vibe with me and want to work together,{" "}
+              <a
+                href={`mailto:${site.email}`}
+                className="text-foreground transition-colors hover:text-brand"
+              >
+                send me an email
+              </a>{" "}
+              and we&apos;ll definitely start something great.
             </p>
+          </Reveal>
+          <Reveal>
+            <p className="text-foreground">— JP</p>
           </Reveal>
         </div>
 

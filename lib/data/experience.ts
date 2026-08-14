@@ -66,7 +66,7 @@ export const roles: Role[] = [
     tagline: "WordPress membership sites, and the AI on them",
     points: [
       "I take care of WordPress membership sites. Features, hosting, plugins, DNS, security, the day-to-day so they stay up.",
-      "I add AI to those sites. Custom chat that knows the material, built to fit the WordPress they already have.",
+      "I build AI chat for those sites so it can read the content and explain it to members.",
       "I also do the heavier jobs: migrations, moving media off the server, looking at logs when something is slow or broken.",
     ],
     sites: memberdevSites,
