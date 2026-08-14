@@ -70,21 +70,6 @@ export default function ExperiencePage() {
                 {role.sites && role.sites.length > 0 && (
                   <SiteList sites={role.sites} />
                 )}
-                {role.shipped && (
-                  <div className="mt-7">
-                    <p className="eyebrow mb-3">Shipped</p>
-                    <div className="flex flex-wrap gap-2">
-                      {role.shipped.map((item) => (
-                        <span
-                          key={item}
-                          className="rounded-full border border-border bg-surface px-3 py-1 font-mono text-[11px] tracking-[0.04em] text-muted-foreground"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             </article>
           </Reveal>

@@ -47,13 +47,20 @@ function HeroCopy({ app = false }: { app?: boolean }) {
       {app ? (
         <div data-stagger className="mt-5">
           <Link
-            href="/projects"
+            href="/experience"
             className="hairline flex items-center justify-between py-4 font-mono text-[12px] tracking-[0.14em] text-foreground uppercase active:scale-[0.99]"
           >
-            <span>View projects</span>
+            <span>Work history</span>
             <span aria-hidden className="text-brand">
               →
             </span>
+          </Link>
+          <Link
+            href="/projects"
+            className="hairline flex items-center justify-between py-4 font-mono text-[12px] tracking-[0.14em] text-muted-foreground uppercase active:scale-[0.99]"
+          >
+            <span>View projects</span>
+            <span aria-hidden>→</span>
           </Link>
           <Link
             href="/about"

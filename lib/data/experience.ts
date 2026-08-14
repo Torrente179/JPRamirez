@@ -12,7 +12,6 @@ export type Role = {
   companyBlurb: string;
   tagline: string;
   points: string[];
-  shipped?: string[];
   sites?: MaintainedSite[];
   current?: boolean;
 };
@@ -71,14 +70,6 @@ export const roles: Role[] = [
       "I built a second chatbot for another educator platform. More on the way.",
       "I've done live DNS cutovers and multi-GB MySQL/InnoDB migrations, with checks afterwards so we knew the data was intact.",
       "I wrote a plugin that uploads 5GB+ files straight to S3, and another that rewrites media URLs onto Cloudflare R2. Also some performance and security work, and AI playbooks for support triage.",
-    ],
-    shipped: [
-      "Production RAG assistant",
-      "warwickschiller.com DNS migration",
-      "mdp-direct-s3-uploader plugin",
-      "Cloudflare R2/CDN rewrite tooling",
-      "Multi-GB MySQL/InnoDB migration",
-      "AI triage playbooks",
     ],
     sites: memberdevSites,
   },

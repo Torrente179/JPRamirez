@@ -17,7 +17,7 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
 |---|---|
 | Home | Giant "Ramirez" sinking behind the color portrait + rotating headline. Mobile home is an app cover, not a scaled desktop. |
 | About | Bordered patio portrait beside the bio |
-| Experience | Shipped-proof chips attached to the roles they came from |
+| Experience | Role list with MemberDev sites I maintain |
 | Projects | Status dots treating side projects like monitored services |
 | Stack | Hairline tool list, grouped by hosting / WordPress / code / AI / support |
 | Now | A 7-node study map (equal steps, no progress state) plus the apps being built |
