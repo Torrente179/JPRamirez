@@ -31,15 +31,7 @@ export default function OpengraphImage() {
             color: "#9b9ba6",
           }}
         >
-          <div
-            style={{
-              width: 12,
-              height: 12,
-              borderRadius: 999,
-              background: "#34d399",
-            }}
-          />
-          OPERATIONAL — REMOTE · EU/AMERICAS
+          REMOTE · EU/AMERICAS
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           <div style={{ fontSize: 84, fontWeight: 600, letterSpacing: -2 }}>

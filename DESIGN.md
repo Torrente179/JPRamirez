@@ -55,7 +55,7 @@ class, `color-scheme: dark`).
 | `--border` | `rgba(255,255,255,0.08)` | Hairlines everywhere |
 | `--brand` | `#7de2f0` (cyan) | Accent words, active nav, hover titles, links. **The only decorative color** |
 | `--brand-dim` | `#22d3ee` | Small status dots (non-"up" states) |
-| `--ok` | `#34d399` (emerald) | Status semantics only: OPERATIONAL dot, Production dots. Never decorative |
+| `--ok` | `#34d399` (emerald) | Status semantics only: Production dots, Present dots. Never decorative |
 | `--ring` | `rgba(125,226,240,0.55)` | Focus outlines |
 
 Rules: green = "system up" semantics, cyan = brand. Don't add colors. Don't
@@ -73,7 +73,7 @@ hairline transitions.
   echoing the CV's numbered sections. Home: `01` projects, `02` work, `03` stack.
 - Hero vertical logic (desktop): capped flex spacer above the name (`max-h-12`)
   so tall viewports push extra space *below* content, never above the name. The
-  cap is deliberately small — the status readout should read as a label attached
+  cap is deliberately small — the location line should read as a label attached
   to the name lockup, and the giant type already carries ~24px of optical
   leading above its cap height.
 - The desktop portrait is absolutely positioned **from the name's box**
@@ -129,7 +129,7 @@ ever ship in markup), and globals.css kills CSS animations.
 
 | Component | Contract |
 |---|---|
-| `Nav` | Fixed top, blur. Desktop: mono links, active = cyan. Mobile: app bar — logo `jp·` + live `● OPERATIONAL` |
+| `Nav` | Fixed top, blur. Desktop: mono links, active = cyan. Mobile: app bar — logo `jp·` only |
 | `TabBar` | Mobile only (`md:hidden`). 5 tabs (home/projects/work/now/about), lucide icons, cyan active, safe-area padding |
 | `Hero` | Home only. Desktop: giant name + portrait weave. Mobile (`md:hidden`): app cover + profile sheet. |
 | `StatusBoard` | 3 dashboard cards (NOW / WORK / SHIPPING) fed from `lib/data/now.ts` — labels have tone dots, meta on the right |
@@ -144,8 +144,8 @@ ever ship in markup), and globals.css kills CSS animations.
 
 ## 8. Mobile = app, not shrunken desktop
 
-- Bottom `TabBar` is primary navigation; top bar becomes an app bar with the
-  status readout. Both appear below `md`.
+- Bottom `TabBar` is primary navigation; top bar is an app bar with the logo.
+  Both appear below `md`.
 - Home hero below `md` is a cover photo with the name on it and a profile
   sheet underneath — never the desktop giant-name-plus-offset-portrait scaled
   down.
@@ -164,7 +164,7 @@ Juan Pablo is bilingual (English / Spanish). Write the way he would in an
 email: clear, specific, a bit warm. Complete sentences. Not US-editorial,
 not try-hard casual, not translated-from-Spanish stiffness.
 
-Mono labels stay ops vocabulary: OPERATIONAL, SHIPPING, PHASE labels only
+Mono labels stay ops vocabulary: SHIPPING, PHASE labels only
 where they mark a map, not a personal progress tracker.
 Page titles name the page. No exclamation points, no emoji, no buzzword chains.
 

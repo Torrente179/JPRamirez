@@ -25,12 +25,6 @@ export function Nav() {
           jp<span className="text-brand">·</span>ramirez
         </Link>
 
-        {/* mobile app bar: live status instead of link row */}
-        <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground md:hidden">
-          <span className="status-dot inline-block size-[6px] rounded-full bg-ok" />
-          <span className="text-ok">Operational</span>
-        </p>
-
         <div className="hidden items-center gap-7 md:flex">
           {links.map((link) => {
             const active =
