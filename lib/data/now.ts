@@ -20,7 +20,7 @@ export const statusBoard: StatusCard[] = [
     label: "Work",
     tone: "ok",
     title: "MemberDev",
-    body: "WordPress membership platforms, plus production RAG assistants and chatbots.",
+    body: "WordPress membership sites, and the AI on them.",
     href: "/experience",
     meta: "since 2023",
   },

@@ -63,13 +63,11 @@ export const roles: Role[] = [
     current: true,
     companyBlurb:
       "A small agency that builds custom WordPress membership sites for coaches, educators, and communities.",
-    tagline: "WordPress membership sites, plus AI assistants",
+    tagline: "WordPress membership sites, and the AI on them",
     points: [
-      "I maintain the production WordPress membership sites (MemberMouse, MemberPress, BuddyBoss): hosting, DNS, Cloudflare, QA, and issues after launch.",
-      "I shipped a RAG assistant for a large online training platform: Python, Supabase pgvector, OpenAI, and a custom WordPress plugin. It has a test suite and a handover doc.",
-      "I built a second chatbot for another educator platform. More on the way.",
-      "I've done live DNS cutovers and multi-GB MySQL/InnoDB migrations, with checks afterwards so we knew the data was intact.",
-      "I wrote a plugin that uploads 5GB+ files straight to S3, and another that rewrites media URLs onto Cloudflare R2. Also some performance and security work, and AI playbooks for support triage.",
+      "I take care of WordPress membership sites. Features, hosting, plugins, DNS, security, the day-to-day so they stay up.",
+      "I add AI to those sites. Custom chat that knows the material, built to fit the WordPress they already have.",
+      "I also do the heavier jobs: migrations, moving media off the server, looking at logs when something is slow or broken.",
     ],
     sites: memberdevSites,
   },

@@ -64,39 +64,21 @@ export type ClientWork = {
 
 export const clientWork: ClientWork[] = [
   {
-    name: "Production RAG assistant",
+    name: "AI chat on membership sites",
     description:
-      "A RAG assistant for a large online training platform. Python, Supabase pgvector, OpenAI, a custom WordPress plugin, a test suite, and a handover doc.",
+      "Custom chat built into WordPress membership sites, using the content they already have.",
     context: "MemberDev",
   },
   {
-    name: "warwickschiller.com DNS migration",
+    name: "Media offload",
     description:
-      "A live DNS migration: TTL planning, Cloudflare and origin cache, watching propagation, and keeping the site up through the cutover.",
+      "Moving heavy files off WordPress onto S3 or Cloudflare R2.",
     context: "MemberDev",
   },
   {
-    name: "mdp-direct-s3-uploader",
+    name: "Migrations",
     description:
-      "A WordPress plugin that sends files straight from the browser to S3, including 5GB+ videos, so the origin server never sees them.",
-    context: "MemberDev",
-  },
-  {
-    name: "Cloudflare R2/CDN rewrite tooling",
-    description:
-      "A URL-rewrite plugin so heavy media comes from Cloudflare R2 instead of the origin.",
-    context: "MemberDev",
-  },
-  {
-    name: "Multi-GB MySQL/InnoDB migration",
-    description:
-      "Moved multi-gigabyte MySQL databases, tuned InnoDB, and checked the data afterwards.",
-    context: "MemberDev",
-  },
-  {
-    name: "AI triage playbooks",
-    description:
-      "AI-assisted triage notes for the issues we see over and over in client support.",
+      "DNS and database moves, keeping the site up while it changes hands.",
     context: "MemberDev",
   },
 ];

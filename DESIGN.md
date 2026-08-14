@@ -81,7 +81,7 @@ hairline transitions.
   Portrait `top` is `calc(3.5rem + 0.2em)` — 20% of the name size more of the
   last letters sit above the photo than the original `top-14`.
 - Mobile home hero is an **app cover**: full-bleed photo (`54svh`), name locked
-  to the bottom of the cover, copy + hairline actions in a profile sheet below.
+  to the top of the cover, copy + hairline actions in a profile sheet below.
   Breakpoint matches the TabBar (`md`). Do not scale the desktop lockup down.
 
 ## 5. Imagery

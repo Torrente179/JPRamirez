@@ -79,7 +79,7 @@ export const aiPractice = [
   },
   {
     title: "AI in production",
-    body: "I have shipped RAG assistants and chatbots for large educator platforms, plus triage playbooks for repeat issues. Python, OpenAI, pgvector, custom WordPress plugins, tests, handover.",
+    body: "I put custom AI chat on WordPress membership sites. It has to fit the site they already have.",
   },
   {
     title: "AI systems engineering",

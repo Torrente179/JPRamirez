@@ -314,8 +314,8 @@
 
 .hero-app-name {
   position: absolute;
+  top: 0.85rem;
   right: 1.25rem;
-  bottom: 38%;
   left: 1.25rem;
   z-index: 20;
   margin: 0;

@@ -38,12 +38,9 @@ export default function AboutPage() {
         <div className="space-y-6 text-[15px] leading-[1.8] text-muted-foreground sm:text-base">
           <Reveal>
             <p>
-              I build AI systems. At MemberDev that means production RAG
-              assistants and chatbots for large educator platforms: Python,
-              OpenAI, pgvector, custom WordPress plugins, a test suite, a
-              handover. I also spend a lot of time in agentic coding. Claude
-              Code, Codex, Cursor. Inspect, plan, implement, test, review,
-              against real repos, not a chat window.
+              I build AI systems. At MemberDev I put custom chat on WordPress
+              membership sites, and I keep those sites running. I also work a
+              lot with coding agents: Claude Code, Codex, Cursor.
             </p>
           </Reveal>
           <Reveal>
