@@ -70,8 +70,11 @@ hairline transitions.
   board and chips.
 - Section headers: mono eyebrow `01 — Section name` (cyan index, `SectionHeading`),
   echoing the CV's numbered sections. Home: `01` projects, `02` work, `03` stack.
-- Hero vertical logic (desktop): capped flex spacer above the name (`max-h-36`)
-  so tall viewports push extra space *below* content, never above the name.
+- Hero vertical logic (desktop): capped flex spacer above the name (`max-h-12`)
+  so tall viewports push extra space *below* content, never above the name. The
+  cap is deliberately small — the status readout should read as a label attached
+  to the name lockup, and the giant type already carries ~24px of optical
+  leading above its cap height.
 - The desktop portrait is absolutely positioned **from the name's box**
   (`.hero-anchor`), so the letters-behind-foliage overlap is viewport-height-proof.
   Portrait `top` is `calc(3.5rem + 0.2em)` — 20% of the name size more of the

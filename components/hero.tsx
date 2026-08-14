@@ -96,7 +96,7 @@ function DesktopHero() {
         <StatusLine />
       </div>
 
-      <div aria-hidden className="max-h-36 min-h-6 flex-[0.35]" />
+      <div aria-hidden className="max-h-12 min-h-6 flex-[0.35]" />
 
       <div className="hero-anchor relative flex flex-1 flex-col">
         <div data-stagger className="hero-lockup">

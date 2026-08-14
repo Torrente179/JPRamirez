@@ -96,7 +96,7 @@ export const clientWork: ClientWork[] = [
   {
     name: "AI triage playbooks",
     description:
-      "AI-assisted triage notes for the issues we see over and over in client support."
+      "AI-assisted triage notes for the issues we see over and over in client support.",
     context: "MemberDev",
   },
 ];

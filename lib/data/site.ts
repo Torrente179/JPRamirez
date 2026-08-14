@@ -9,7 +9,7 @@ export const site = {
   location: "Málaga, Spain",
   availability: "Remote · EU/Americas overlap",
   languages: ["English", "Spanish"],
-  url: "https://jpramirez.vercel.app",
+  url: "https://jpramirez.dev",
   cv: {
     href: "/cv.pdf",
     filename: "Juan_Pablo_Ramirez_Romero_CV.pdf",
