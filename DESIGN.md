@@ -114,7 +114,7 @@ the home headline, and the About photos.
 | Stagger entrance | Page heroes (`Stagger`, `[data-stagger]`) | GSAP fromTo, y:26→0, alpha 0→1, 1.05s, stagger 0.085 |
 | Scroll reveal | Everything below the fold (`Reveal`) | One pattern reused: y:24→0 + fade, 0.9s, trigger `top 88%`, once |
 | Rotating headline | Home only (`RotatingText`) | Blur-morph swap: out (blur 9px, y −12, 0.38s) → in (0.65s), 3s hold |
-| Photo carousel | About sidebar (`PhotoCarousel`) | Crossfade 0.75s `power3.out`, 5s hold. Pauses on hover/focus, `prefers-reduced-motion`, and hidden tabs. Dots + `01 / 06` readout. |
+| Photo carousel | About sidebar (`PhotoCarousel`) | Crossfade 0.75s `power3.out`, 2.5s hold. Pauses on hover/focus, `prefers-reduced-motion`, and hidden tabs. Dots + `01 / 06` readout. |
 | Page transition | `template.tsx` + `.page-enter` | CSS: fade + 10px rise, 0.55s |
 | Smooth scroll | `SmoothScroll` (Lenis) | lerp 0.115, synced to GSAP ScrollTrigger via `gsap.ticker` |
 | Status pulse | `.status-dot` | 2.6s soft ring, `--ok` only |

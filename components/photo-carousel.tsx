@@ -5,7 +5,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import type { AboutPhoto } from "@/lib/data/about";
 
-const HOLD_MS = 5000;
+const HOLD_MS = 2500;
 
 export function PhotoCarousel({ photos }: { photos: AboutPhoto[] }) {
   const [index, setIndex] = useState(0);

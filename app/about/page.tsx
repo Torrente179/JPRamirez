@@ -119,7 +119,16 @@ export default function AboutPage() {
                   “{rec.quote}”
                 </blockquote>
                 <figcaption className="mt-5">
-                  <p className="text-sm font-medium">{rec.name}</p>
+                  <p className="text-sm font-medium">
+                    <a
+                      href={rec.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="transition-colors hover:text-brand"
+                    >
+                      {rec.name} ↗
+                    </a>
+                  </p>
                   <p className="mt-0.5 font-mono text-[11px] tracking-[0.06em] text-subtle">
                     {rec.title} · {rec.relationship}
                   </p>
