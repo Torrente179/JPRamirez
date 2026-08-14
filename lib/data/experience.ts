@@ -16,7 +16,7 @@ export type Role = {
   current?: boolean;
 };
 
-/** Apex domains for the 33 MemberDev sites (2026-07-16 SITES.md + OMR). */
+/** Apex domains for MemberDev sites (2026-07-16 SITES.md + OMR). */
 export const memberdevSites: MaintainedSite[] = [
   { name: "Adam Block Studios", url: "https://adamblockstudios.com" },
   { name: "Adventure of Fatherhood", url: "https://adventureoffatherhood.com" },
@@ -45,8 +45,6 @@ export const memberdevSites: MaintainedSite[] = [
   { name: "Professionally Integrated", url: "https://professionallyintegrated.com" },
   { name: "Recruiting Daily", url: "https://recruitingdaily.com" },
   { name: "SLP Video Games", url: "https://slpvideogames.com" },
-  { name: "Texas Council", url: "https://txcouncil.com" },
-  { name: "Texas Council Community", url: "https://txcouncil.com" },
   { name: "Virtual HYA", url: "https://virtualhya.com" },
   { name: "Warwick Schiller", url: "https://warwickschiller.com" },
   { name: "Xchange", url: "https://xchangeapproach.com" },
