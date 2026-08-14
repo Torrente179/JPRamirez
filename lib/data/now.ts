@@ -11,16 +11,16 @@ export const statusBoard: StatusCard[] = [
   {
     label: "Now",
     tone: "brand",
-    title: "Studying and building",
-    body: "A personal study map, and four apps of my own.",
+    title: "AI systems",
+    body: "Agentic coding, RAG, evals. And four apps of my own.",
     href: "/now",
-    meta: "study map",
+    meta: "building",
   },
   {
     label: "Work",
     tone: "ok",
     title: "MemberDev",
-    body: "WordPress membership sites: support, QA, hosting, DNS, migrations.",
+    body: "WordPress membership platforms, plus production RAG assistants and chatbots.",
     href: "/experience",
     meta: "since 2023",
   },
@@ -44,10 +44,10 @@ export type StudyTopic = {
 export const studyTopics: StudyTopic[] = [
   {
     id: 1,
-    short: "Study habits",
-    title: "How I study",
+    short: "Agents",
+    title: "Agentic coding",
     summary:
-      "Recall practice, spaced review, and simple rules for when I use an AI agent.",
+      "Claude Code, Codex, Cursor. Inspect, plan, implement, test, review, against real repos.",
   },
   {
     id: 2,

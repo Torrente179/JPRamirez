@@ -7,7 +7,7 @@ import { stackGroups, aiPractice } from "@/lib/data/stack";
 export const metadata: Metadata = {
   title: "Stack",
   description:
-    "Hosting, WordPress, code, AI tools, and support work I use day to day.",
+    "Agents, TypeScript, hosting, WordPress. The stack behind the AI systems I build.",
 };
 
 export default function StackPage() {
@@ -17,11 +17,11 @@ export default function StackPage() {
         eyebrow="Stack"
         title={
           <>
-            Tools I{" "}
-            <span className="text-brand italic">use</span> at work.
+            Agents, code, and{" "}
+            <span className="text-brand italic">infrastructure</span>.
           </>
         }
-        lede="Hosting, WordPress, code, and AI tools I work with on production sites."
+        lede="Claude Code, Codex, Cursor. TypeScript. The hosting and WordPress layer I already run in production."
       />
 
       <div>
@@ -55,7 +55,7 @@ export default function StackPage() {
         <Reveal>
           <SectionHeading index="01" title="How I use AI" className="mb-4" />
           <p className="mb-12 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            How these tools show up in my day to day.
+            How I work with agents, and what I have already put in production.
           </p>
         </Reveal>
         <div className="grid gap-x-10 gap-y-12 md:grid-cols-3">

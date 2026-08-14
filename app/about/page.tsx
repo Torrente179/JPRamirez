@@ -10,7 +10,7 @@ import { recommendations } from "@/lib/data/recommendations";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Technical support engineer in Málaga. I started in hosting support and now I do WebOps and AI systems for WordPress sites. English and Spanish.",
+    "AI engineer in Málaga. I build agentic systems, RAG assistants, and the DevOps and WebOps they run on. English and Spanish.",
 };
 
 const facts = [
@@ -27,9 +27,9 @@ export default function AboutPage() {
         eyebrow="About"
         title={
           <>
-            Technical{" "}
-            <span className="text-brand italic">support</span> for websites
-            and hosting.
+            I build AI{" "}
+            <span className="text-brand italic">systems</span>. DevOps and
+            WebOps underneath.
           </>
         }
       />
@@ -38,36 +38,35 @@ export default function AboutPage() {
         <div className="space-y-6 text-[15px] leading-[1.8] text-muted-foreground sm:text-base">
           <Reveal>
             <p>
-              I do technical support for websites and SaaS products: WordPress,
-              hosting, and DNS. I started answering tickets at a hosting
-              company, then took on harder problems: broken sites, SSL, cache,
-              plugins. I explain the fix in plain language.
+              I build AI systems. At MemberDev that means production RAG
+              assistants and chatbots for large educator platforms: Python,
+              OpenAI, pgvector, custom WordPress plugins, a test suite, a
+              handover. I also spend a lot of time in agentic coding. Claude
+              Code, Codex, Cursor. Inspect, plan, implement, test, review,
+              against real repos, not a chat window.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              A lot of the job is switching between the customer and the
-              technical side. I ask questions, try to reproduce the issue,
-              write down what worked, and try to make the next time faster.
-              Some weeks that means a live chat in the morning and an InnoDB
-              session later the same day.
+              I'm going deep on AI systems engineering: structured outputs,
+              retrieval with citations, evals, traces, cost, model routing. I
+              want systems that hold up in production, the same way a DNS
+              cutover or a MySQL migration has to.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              I write code and use AI when it helps: small WordPress plugins,
-              research, QA checklists, docs, and internal workflows. That part
-              of the work is growing. I want to get better at building AI
-              systems for support teams.
+              DevOps and WebOps are the floor. I already run WordPress
+              membership sites, DNS, Cloudflare, databases. That is why I care
+              whether an agent is useful or just talking.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              I've been fully remote for six years. 4,800+ customers at
-              Hostinger, 450+ hosting accounts as a TAM at DigitalOcean, and
-              now I run WebOps and AI systems for WordPress membership sites at
-              MemberDev. I live in Málaga and work in English and Spanish,
-              mostly with EU and Americas hours.
+              I've been fully remote for six years. Hostinger, DigitalOcean,
+              MemberDev. At MemberDev I ship AI systems onto WordPress
+              membership platforms, and I still run the WebOps. I live in
+              Málaga. English and Spanish, mostly EU and Americas hours.
             </p>
           </Reveal>
         </div>
@@ -77,8 +76,8 @@ export default function AboutPage() {
             <Image
               src="/images/jp-about.jpg"
               alt="Juan Pablo Ramirez"
-              width={637}
-              height={773}
+              width={683}
+              height={1024}
               priority
               className="rounded-xl border border-border"
             />

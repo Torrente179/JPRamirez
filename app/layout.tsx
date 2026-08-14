@@ -62,7 +62,7 @@ const personJsonLd = {
   "@type": "Person",
   name: site.fullName,
   alternateName: site.name,
-  jobTitle: "Technical Support Engineer",
+  jobTitle: "AI Engineer",
   description: site.headline,
   email: `mailto:${site.email}`,
   url: site.url,
@@ -75,14 +75,14 @@ const personJsonLd = {
   },
   knowsLanguage: ["en", "es"],
   knowsAbout: [
-    "Technical Support",
+    "AI Engineering",
+    "Agentic Coding",
+    "RAG",
+    "AI Systems",
+    "DevOps",
     "WebOps",
     "WordPress",
-    "Managed Hosting",
-    "DNS",
     "Cloudflare",
-    "AI Workflow Systems",
-    "Customer Success",
   ],
 };
 

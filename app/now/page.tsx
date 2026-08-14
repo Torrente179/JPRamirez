@@ -9,7 +9,7 @@ import { projects } from "@/lib/data/projects";
 export const metadata: Metadata = {
   title: "Now",
   description:
-    "What I'm studying for myself, and the apps I'm building.",
+    "Agentic coding, AI systems, and the apps I'm building.",
 };
 
 export default function NowPage() {
@@ -24,7 +24,7 @@ export default function NowPage() {
             building.
           </>
         }
-        lede="A map of topics I'm learning for myself, and the apps I'm making."
+        lede="Agentic coding, AI systems engineering, and the apps I'm making."
       />
 
       <section>

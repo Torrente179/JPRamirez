@@ -19,7 +19,7 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
 | About | Bordered patio portrait beside the bio |
 | Experience | Role list with MemberDev sites I maintain |
 | Projects | Status dots treating side projects like monitored services |
-| Stack | Hairline tool list, grouped by hosting / WordPress / code / AI / support |
+| Stack | Hairline tool list, grouped by AI / code / hosting / WordPress / support |
 | Now | A 7-node study map (equal steps, no progress state) plus the apps being built |
 
 ## 2. Typography
@@ -35,8 +35,8 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
   `.hero-name-front`) paints in front of the portrait so the last letters read
   on top of the image; the rest stays behind the foliage.
 - One italic accent word per headline, colored `text-brand` — this is the
-  signature type gesture (`calm`, `support`, `WebOps`, `built`, `use`,
-  `working`, `studying`). The word is part of a normal sentence, not a punchline.
+  signature type gesture (`calm`, `systems`, `engineering`, `built`,
+  `infrastructure`, `studying`). The word is part of a normal sentence, not a punchline.
 - All numbers render with `tabular-nums` (`.nums` utility).
 
 ## 3. Color
@@ -160,9 +160,10 @@ ever ship in markup), and globals.css kills CSS animations.
 First person, plain sentences. No slogans, no "not X" punchlines, no poster
 headlines. Honest about status ("Private beta — it runs my training week").
 
-Juan Pablo is bilingual (English / Spanish). Write the way he would in an
-email: clear, specific, a bit warm. Complete sentences. Not US-editorial,
-not try-hard casual, not translated-from-Spanish stiffness.
+Juan Pablo is an AI engineer with DevOps and WebOps behind it. English and
+Spanish. Write the way he would in an email: clear, specific, a bit of heat.
+Complete sentences. Not US-editorial, not try-hard casual, not a support
+ticket bio, not translated-from-Spanish stiffness.
 
 Mono labels stay ops vocabulary: SHIPPING, PHASE labels only
 where they mark a map, not a personal progress tracker.

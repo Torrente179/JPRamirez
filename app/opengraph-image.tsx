@@ -38,7 +38,7 @@ export default function OpengraphImage() {
             Juan Pablo Ramirez
           </div>
           <div style={{ fontSize: 30, color: "#7de2f0", letterSpacing: 1 }}>
-            Technical Support Engineer · WebOps · AI Workflow Systems
+            AI Engineer · DevOps · WebOps
           </div>
         </div>
         <div

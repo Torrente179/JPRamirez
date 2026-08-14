@@ -5,10 +5,10 @@ import { StatusLine } from "@/components/status-line";
 import { RotatingText } from "@/components/rotating-text";
 
 const heroPhrases = [
+  "agents in production.",
   "web platforms calm.",
+  "context grounded.",
   "DNS boring.",
-  "databases fast.",
-  "support human.",
 ];
 
 function NameVisual() {
@@ -40,9 +40,8 @@ function HeroCopy({ app = false }: { app?: boolean }) {
             : "mt-5 max-w-lg text-base leading-relaxed text-muted-foreground"
         }
       >
-        Technical support engineer across hosting, DNS, WordPress, and SaaS
-        operations — building AI-assisted systems that make support work
-        better.
+        AI engineer. DevOps and WebOps. Agentic coding, RAG in production,
+        and the infrastructure it all runs on.
       </p>
       {app ? (
         <div data-stagger className="mt-5">

@@ -14,7 +14,7 @@ export function Footer() {
           {site.email}
         </a>
         <p className="mt-5 max-w-md text-sm leading-relaxed text-muted-foreground">
-          I live in Málaga. English and Spanish. Remote, EU and Americas hours.
+          AI engineer in Málaga. English and Spanish. Remote, EU and Americas hours.
         </p>
 
         <div className="mt-12 flex flex-col justify-between gap-6 border-t border-border pt-6 sm:flex-row sm:items-center">

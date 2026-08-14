@@ -1,9 +1,9 @@
 export const site = {
   name: "Juan Pablo Ramirez",
   fullName: "Juan Pablo Ramirez Romero",
-  role: "Technical Support Engineer · WebOps · AI Workflow Systems",
+  role: "AI Engineer · DevOps · WebOps",
   headline:
-    "Technical support engineer in Málaga. Hosting, DNS, WordPress, SaaS operations, and AI tools that make support work better. English and Spanish.",
+    "AI engineer in Málaga. I build agentic systems, RAG assistants, and the DevOps and WebOps they run on. English and Spanish.",
   email: "pablopablo179@gmail.com",
   linkedin: "https://www.linkedin.com/in/juan-pablo-ramirez-romero",
   location: "Málaga, Spain",
