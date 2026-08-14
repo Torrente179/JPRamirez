@@ -16,7 +16,7 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
 | Page | The moment |
 |---|---|
 | Home | Giant "Ramirez" sinking behind the color portrait + rotating headline. Mobile home is an app cover, not a scaled desktop. |
-| About | Bordered patio portrait beside the bio |
+| About | Bordered photo carousel beside the bio |
 | Experience | Role list with MemberDev sites I maintain |
 | Projects | Status dots treating side projects like monitored services |
 | Stack | Hairline tool list, grouped by AI / code / hosting / WordPress / support |
@@ -86,8 +86,11 @@ hairline transitions.
 
 ## 5. Imagery
 
-- One photographic power move on Home; About gets a bordered portrait; no
-  other photography.
+- One photographic power move on Home; About gets a bordered 3:4 carousel of
+  personal photos (travel, friends, motorcycles) that crossfades on its own.
+  No other photography.
+- About carousel files live in `public/images/about/`. The patio portrait
+  (`public/images/jp-about.jpg`) remains the Open Graph / Person schema image.
 - The hero image is `public/images/jp-hero-alpha.webp`: color, full pose,
   **alpha baked into the file** (smoothstep edge fades all four sides +
   radial focus falloff, generated with PIL from
@@ -103,13 +106,15 @@ hairline transitions.
 ## 6. Motion
 
 Feel: **calm and springless**. Custom cubic-bezier `power3.out`-family easing;
-no bounce, no parallax stacks, nothing loops except the status dot pulse.
+no bounce, no parallax stacks, nothing loops except the status dot pulse,
+the home headline, and the About photos.
 
 | Pattern | Where | Spec |
 |---|---|---|
 | Stagger entrance | Page heroes (`Stagger`, `[data-stagger]`) | GSAP fromTo, y:26→0, alpha 0→1, 1.05s, stagger 0.085 |
 | Scroll reveal | Everything below the fold (`Reveal`) | One pattern reused: y:24→0 + fade, 0.9s, trigger `top 88%`, once |
 | Rotating headline | Home only (`RotatingText`) | Blur-morph swap: out (blur 9px, y −12, 0.38s) → in (0.65s), 3s hold |
+| Photo carousel | About sidebar (`PhotoCarousel`) | Crossfade 0.75s `power3.out`, 5s hold. Pauses on hover/focus, `prefers-reduced-motion`, and hidden tabs. Dots + `01 / 06` readout. |
 | Page transition | `template.tsx` + `.page-enter` | CSS: fade + 10px rise, 0.55s |
 | Smooth scroll | `SmoothScroll` (Lenis) | lerp 0.115, synced to GSAP ScrollTrigger via `gsap.ticker` |
 | Status pulse | `.status-dot` | 2.6s soft ring, `--ok` only |
@@ -139,6 +144,7 @@ ever ship in markup), and globals.css kills CSS animations.
 | `SiteList` | Native `<details>` under MemberDev. Summary is a compact metric: brand count (`text-xl`) + `Sites I maintain` in row type, `+`/`−` marker. Open state: hairline rows, hostname + `↗`. |
 | `SectionHeading` | `01 — Title` mono eyebrow |
 | `PageHeader` | Subpage hero: eyebrow, display title (accent word), optional lede, optional `action` (used on Experience for CV download) |
+| `PhotoCarousel` | About only. Stacked `next/image` fills in a 3:4 bordered frame, auto-advance, no arrows |
 | `Reveal` / `Stagger` | The only two motion wrappers; don't invent new ones per page |
 | shadcn/ui | Installed (button/badge/separator/tooltip) but restyled via tokens; never ship default-looking components |
 
@@ -175,8 +181,8 @@ Page titles name the page. No exclamation points, no emoji, no buzzword chains.
 ## 10. Accessibility & states
 
 - Focus: visible 2px cyan `outline` with 3px offset on everything.
-- Hero portrait is `aria-hidden` + empty alt (decorative); the About portrait
-  carries real alt text.
+- Hero portrait is `aria-hidden` + empty alt (decorative); About carousel
+  slides carry real alt text on the current photo only.
 - Status/tone dots always pair with text — color is never the only signal.
 - External links: `target="_blank" rel="noopener noreferrer"` + `↗`.
 - Content data lives in `lib/data/*.ts` + `content/projects/*.mdx` — pages

@@ -330,6 +330,22 @@
   }
 }
 
+.about-carousel-frame {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.about-carousel-slide {
+  opacity: 0;
+  transition: opacity 0.75s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.about-carousel-slide.is-current {
+  opacity: 1;
+  z-index: 1;
+}
+
 /* fine grain to kill flatness — felt, not noticed */
 body::after {
   content: "";

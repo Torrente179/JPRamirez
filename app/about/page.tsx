@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/motion";
 import { SectionHeading } from "@/components/section-heading";
+import { PhotoCarousel } from "@/components/photo-carousel";
 import { site } from "@/lib/data/site";
 import { education } from "@/lib/data/experience";
 import { recommendations } from "@/lib/data/recommendations";
+import { aboutPhotos } from "@/lib/data/about";
 
 export const metadata: Metadata = {
   title: "About",
@@ -76,14 +77,7 @@ export default function AboutPage() {
 
         <Reveal delay={0.1}>
           <div>
-            <Image
-              src="/images/jp-about.jpg"
-              alt="Juan Pablo Ramirez"
-              width={683}
-              height={1024}
-              priority
-              className="rounded-xl border border-border"
-            />
+            <PhotoCarousel photos={aboutPhotos} />
             <dl className="mt-8 space-y-0">
               {facts.map((fact) => (
                 <div
