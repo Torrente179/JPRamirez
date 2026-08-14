@@ -16,23 +16,23 @@ export type Role = {
   current?: boolean;
 };
 
-/** Confirmed production URLs from MemberDev SITES.md (2026-07-16) + OMR. */
+/** Apex domains for the 33 MemberDev sites (2026-07-16 SITES.md + OMR). */
 export const memberdevSites: MaintainedSite[] = [
   { name: "Adam Block Studios", url: "https://adamblockstudios.com" },
-  { name: "Adventure of Fatherhood", url: "https://members.adventureoffatherhood.com" },
-  { name: "Art Feeds Online", url: "https://online.artfeeds.org" },
+  { name: "Adventure of Fatherhood", url: "https://adventureoffatherhood.com" },
+  { name: "Art Feeds Online", url: "https://artfeeds.org" },
   { name: "BLI Academy", url: "https://bli.academy" },
-  { name: "Boldheart", url: "https://member.boldheart.com" },
+  { name: "Boldheart", url: "https://boldheart.com" },
   { name: "Brave Clan", url: "https://braveclan.com" },
-  { name: "Chirag Shah Coaching", url: "https://community.chiragshahcoaching.com" },
+  { name: "Chirag Shah Coaching", url: "https://chiragshahcoaching.com" },
   { name: "Choice Literacy", url: "https://choiceliteracy.com" },
   { name: "Club Cal Online", url: "https://clubcalonline.com" },
-  { name: "Compass Fitness Denver", url: "https://online.compassfitnessdenver.com" },
-  { name: "Conscious Learning", url: "https://learn.conscious.is" },
+  { name: "Compass Fitness Denver", url: "https://compassfitnessdenver.com" },
+  { name: "Conscious Learning", url: "https://conscious.is" },
   { name: "Conscious Public", url: "https://conscious.is" },
   { name: "ECG Weekly", url: "https://ecgweekly.com" },
   { name: "Evolve the Mastermind", url: "https://evolvethemastermind.com" },
-  { name: "Front Row Dads", url: "https://brotherhood.frontrowdads.com" },
+  { name: "Front Row Dads", url: "https://frontrowdads.com" },
   { name: "Garrett Movement", url: "https://garrettmovement.com" },
   { name: "Genius of You", url: "https://geniusofyou.com" },
   { name: "Ladies Working Dog Group", url: "https://ladiesworkingdoggroup.com" },
@@ -46,10 +46,10 @@ export const memberdevSites: MaintainedSite[] = [
   { name: "Recruiting Daily", url: "https://recruitingdaily.com" },
   { name: "SLP Video Games", url: "https://slpvideogames.com" },
   { name: "Texas Council", url: "https://txcouncil.com" },
-  { name: "Texas Council Community", url: "https://intranet.txcouncil.com" },
+  { name: "Texas Council Community", url: "https://txcouncil.com" },
   { name: "Virtual HYA", url: "https://virtualhya.com" },
-  { name: "Warwick Schiller", url: "https://videos.warwickschiller.com" },
-  { name: "Xchange", url: "https://learninglab.xchangeapproach.com" },
+  { name: "Warwick Schiller", url: "https://warwickschiller.com" },
+  { name: "Xchange", url: "https://xchangeapproach.com" },
   { name: "Yoga Trade", url: "https://yogatrade.com" },
 ];
 

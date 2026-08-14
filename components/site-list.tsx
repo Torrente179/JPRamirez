@@ -25,7 +25,7 @@ export function SiteList({ sites }: { sites: MaintainedSite[] }) {
       </summary>
       <ul>
         {sites.map((site) => (
-          <li key={site.url} className="hairline">
+          <li key={site.name} className="hairline">
             <a
               href={site.url}
               target="_blank"
