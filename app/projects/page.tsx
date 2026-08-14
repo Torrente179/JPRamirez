@@ -18,11 +18,11 @@ export default function ProjectsPage() {
         eyebrow="Projects"
         title={
           <>
-            Things I've <span className="text-brand italic">shipped</span>.
-            I still work on them.
+            Things I've <span className="text-brand italic">built</span> and
+            still maintain.
           </>
         }
-        lede="Four of my own: a couple of sites in production, a couple of tools I use myself. I designed them, wrote the code, and I still deploy them."
+        lede="Four of my own, plus client work from MemberDev."
       />
 
       <section>
@@ -37,8 +37,8 @@ export default function ProjectsPage() {
         <Reveal>
           <SectionHeading index="01" title="Client work" className="mb-4" />
           <p className="mb-10 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            Client work from MemberDev. DNS, databases, uploads, support. The
-            production stuff.
+            Work I did for MemberDev clients: DNS, databases, file uploads,
+            and support tooling.
           </p>
         </Reveal>
         <div className="grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">

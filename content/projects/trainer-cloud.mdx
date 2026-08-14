@@ -2,7 +2,7 @@
 title: Trainer Cloud
 ---
 
-A private app for training, food, and groceries. Built to use, not to demo. It matches how I actually train and eat: a week I can configure, macros that change by day type, and grocery decisions for the stores I shop at.
+A private app for training, food, and groceries. It matches how I train and eat: a week I can configure, macros that change by day type, and grocery lists for the stores I shop at.
 
 ## What it does
 
@@ -15,7 +15,7 @@ A private app for training, food, and groceries. Built to use, not to demo. It m
 
 ## Build notes
 
-Next.js 16, React Server Components, Supabase (magic link, Postgres, row-level security). The part I care about is the domain layer: training rules, macro math, and grocery scoring live as plain functions in `lib/domain/`, covered by Vitest. The UI is a thin shell on top of logic that is actually tested.
+Next.js 16, React Server Components, Supabase (magic link, Postgres, row-level security). The part I care about is the domain layer: training rules, macro math, and grocery scoring live as plain functions in `lib/domain/`, covered by Vitest. The UI sits on top of that logic.
 
 ## Status
 

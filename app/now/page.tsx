@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Now",
   description:
-    "What I'm doing this month, the study plan behind it, and the job I'm aiming at.",
+    "What I'm working on: client work at MemberDev, my own apps, and a study plan toward AI support systems.",
 };
 
 const stateStyles = {
@@ -24,12 +24,11 @@ export default function NowPage() {
         eyebrow={`Now — updated ${new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}`}
         title={
           <>
-            Working in support.{" "}
-            <span className="text-brand italic">Building</span> what comes
-            after it.
+            What I'm{" "}
+            <span className="text-brand italic">working</span> on.
           </>
         }
-        lede="What I'm doing this month, the study plan behind it, and the job I'm aiming at."
+        lede="Client work at MemberDev, my own apps, and a study plan toward AI support systems."
       />
 
       {/* Current focus */}
@@ -54,10 +53,9 @@ export default function NowPage() {
       {/* Roadmap */}
       <section className="mt-28">
         <Reveal>
-          <SectionHeading index="02" title="The roadmap" className="mb-4" />
+          <SectionHeading index="02" title="Study plan" className="mb-4" />
           <p className="mb-12 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            Seven phases. About 8–10 hours a week. I care more about shipping
-            something than collecting certificates.
+            Seven phases. About 8–10 hours a week.
           </p>
         </Reveal>
         <ol className="relative ml-[5px] border-l border-border">
@@ -104,7 +102,7 @@ export default function NowPage() {
       {/* North star */}
       <section className="mt-28">
         <Reveal>
-          <SectionHeading index="03" title="Where this goes" className="mb-8" />
+          <SectionHeading index="03" title="Where this is going" className="mb-8" />
         </Reveal>
         <Reveal>
           <div className="hairline max-w-2xl pt-8">

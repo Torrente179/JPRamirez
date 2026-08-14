@@ -16,7 +16,7 @@ export const site = {
   },
   metrics: [
     { value: "450+", label: "accounts managed" },
-    { value: "$160K+", label: "MRR under care" },
+    { value: "$160K+", label: "MRR managed" },
     { value: "4,800+", label: "customers supported" },
     { value: "6+", label: "years remote" },
   ],

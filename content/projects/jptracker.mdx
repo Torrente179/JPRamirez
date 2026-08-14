@@ -2,22 +2,22 @@
 title: JPTracker
 ---
 
-I needed to track hours across clients and turn them into invoices without paying for another SaaS. That turned into a time-tracking and invoicing app I actually use for freelance work.
+I needed to track hours across clients and turn them into invoices without paying for another tool. It became a time-tracking and invoicing app I use for freelance work.
 
 ## What it does
 
 - **Weekly calendar** with UTC-based tasks, drag-and-drop, and timers you can pause
-- **Invoices** go draft → final. An invoice only gets a number when you finalize it, like real accounting
+- **Invoices** go draft → final. An invoice only gets a number when you finalize it
 - **Exports** to PDF, CSV, and PNG
 - **Monthly reporting** with client-hours search and Recharts dashboards
-- Auth is more serious than the app looks: email/password, Google and Apple, WebAuthn
+- Auth: email/password, Google and Apple, and WebAuthn
 - A one-time import from the localStorage version that came before it
 
 ## Build notes
 
 React 19 + Vite on the client, Supabase for auth and Postgres with row-level security. PDFs are generated in the browser with jsPDF and html2canvas. No server needed to make an invoice.
 
-The annoying part was time. Everything is stored in UTC and shown in the viewer's timezone. If that's wrong, you stop trusting the tracker.
+Time is stored in UTC and shown in the viewer's timezone, so the hours stay correct.
 
 ## Status
 

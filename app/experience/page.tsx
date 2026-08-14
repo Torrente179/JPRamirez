@@ -18,11 +18,11 @@ export default function ExperiencePage() {
         eyebrow="Experience"
         title={
           <>
-            Six years remote. Hosting support, then{" "}
+            Six years remote, from hosting support to{" "}
             <span className="text-brand italic">WebOps</span>.
           </>
         }
-        lede="All of this was remote and with customers. I started where the tickets were, learned what actually breaks, and ended up responsible for more of the system."
+        lede="All of these roles were remote. I started in high-volume support and later took on more of the infrastructure."
         action={
           <CvDownload
             label="Download CV ↓"

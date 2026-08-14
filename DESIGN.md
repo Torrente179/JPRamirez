@@ -16,11 +16,11 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
 | Page | The moment |
 |---|---|
 | Home | Giant "Ramirez" sinking behind the color portrait + rotating headline. Mobile home is an app cover, not a scaled desktop. |
-| About | "Better when it needs *investigation*, not a script." |
+| About | Bordered patio portrait beside the bio |
 | Experience | Shipped-proof chips attached to the roles they came from |
 | Projects | Status dots treating side projects like monitored services |
-| Stack | "Anyone can pick tools. The skill is knowing *what breaks*." |
-| Now | The 7-phase roadmap rendered as a deploy pipeline |
+| Stack | Hairline tool list, grouped by hosting / WordPress / code / AI / support |
+| Now | The 7-phase study plan rendered as a deploy pipeline |
 
 ## 2. Typography
 
@@ -35,7 +35,8 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
   `.hero-name-front`) paints in front of the portrait so the last letters read
   on top of the image; the rest stays behind the foliage.
 - One italic accent word per headline, colored `text-brand` — this is the
-  signature type gesture (`calm`, `investigation`, `what breaks`, `Building`).
+  signature type gesture (`calm`, `support`, `WebOps`, `built`, `use`,
+  `working`). The word is part of a normal sentence, not a punchline.
 - All numbers render with `tabular-nums` (`.nums` utility).
 
 ## 3. Color
@@ -135,7 +136,7 @@ ever ship in markup), and globals.css kills CSS animations.
 | `ProjectRow` | Hairline row: index, name, status dot, tagline, mono stack line, sliding arrow |
 | `ExperienceRow` | Same row contract as `ProjectRow`: index, company, Present/`ok` or period/`subtle` dot, tagline, mono title, sliding arrow. Links to `/experience#slug`. |
 | `CvDownload` | Same-origin `public/cv.pdf` with `download` filename. Used on Home (work section), Experience header, and Footer. |
-| `SiteList` | Native `<details>` under MemberDev. Summary is a metric: large brand count + `Sites I look after` in heading type, `+`/`−` marker. Open state: hairline rows, hostname + `↗`. |
+| `SiteList` | Native `<details>` under MemberDev. Summary is a compact metric: brand count (`text-xl`) + `Sites I maintain` in row type, `+`/`−` marker. Open state: hairline rows, hostname + `↗`. |
 | `SectionHeading` | `01 — Title` mono eyebrow |
 | `PageHeader` | Subpage hero: eyebrow, display title (accent word), optional lede, optional `action` (used on Experience for CV download) |
 | `Reveal` / `Stagger` | The only two motion wrappers; don't invent new ones per page |
@@ -156,18 +157,15 @@ ever ship in markup), and globals.css kills CSS animations.
 
 ## 9. Voice
 
-First person, like a person talking, not a magazine. Mix short sentences with
-normal ones. Honest about status ("Private beta — it runs my training week").
-No TED-talk pivots, no "one X at a time," no em-dash essays.
+First person, plain sentences. No slogans, no "not X" punchlines, no poster
+headlines. Honest about status ("Private beta — it runs my training week").
 
-Juan Pablo is bilingual (English / Spanish). English copy should read like he
-wrote it: clear, a bit warm, specific about the work. Not US-editorial, not
-translated-from-Spanish stiffness. Spanish, if added, should sound spoken,
-not like a literal translation of the English.
+Juan Pablo is bilingual (English / Spanish). Write the way he would in an
+email: clear, specific, a bit warm. Complete sentences. Not US-editorial,
+not try-hard casual, not translated-from-Spanish stiffness.
 
 Mono labels stay ops vocabulary: OPERATIONAL, SHIPPING, ON THE RADAR, PHASE 0.
-Headlines state a point of view, never a job title. No exclamation points, no
-emoji, no buzzword chains.
+Page titles name the page. No exclamation points, no emoji, no buzzword chains.
 
 ## 10. Accessibility & states
 

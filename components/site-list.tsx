@@ -9,18 +9,18 @@ export function SiteList({ sites }: { sites: MaintainedSite[] }) {
 
   return (
     <details className="mt-7">
-      <summary className="site-list-summary hairline group flex cursor-pointer items-baseline justify-between gap-4 py-5">
-        <span className="flex items-baseline gap-3.5">
-          <span className="nums text-3xl font-medium tracking-tight text-brand">
+      <summary className="site-list-summary hairline group flex cursor-pointer items-baseline justify-between gap-4 py-3.5">
+        <span className="flex items-baseline gap-2.5">
+          <span className="nums text-xl font-medium tracking-tight text-brand">
             {count}
           </span>
-          <span className="text-lg font-medium tracking-tight text-foreground transition-colors group-hover:text-brand">
-            Sites I look after
+          <span className="text-sm font-medium tracking-tight text-foreground transition-colors group-hover:text-brand">
+            Sites I maintain
           </span>
         </span>
         <span
           aria-hidden
-          className="site-list-mark font-mono text-lg leading-none text-subtle"
+          className="site-list-mark font-mono text-sm leading-none text-subtle"
         />
       </summary>
       <ul>

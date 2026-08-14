@@ -12,22 +12,22 @@ export const statusBoard: StatusCard[] = [
     label: "Now",
     tone: "ok",
     title: "Client WebOps at MemberDev",
-    body: "WordPress membership sites: support, QA, hosting, DNS, migrations, and a bit of AI around the tickets.",
+    body: "WordPress membership sites: support, QA, hosting, DNS, migrations, and some AI workflows for support.",
     href: "/experience",
     meta: "since 2023",
   },
   {
     label: "On the radar",
     tone: "brand",
-    title: "AI harness engineering",
-    body: "Schemas, evals, retrieval. I'm on a seven-phase plan toward AI support systems. Still in the early phases.",
+    title: "AI support systems",
+    body: "A seven-phase study plan. Still in the early phases: schemas, evals, retrieval.",
     href: "/now",
     meta: "phase 0–1 active",
   },
   {
     label: "Shipping",
     tone: "brand",
-    title: "Four of my own apps",
+    title: "My own apps",
     body: "GiseUGC, Budget & Expense, and JPTracker are live. Trainer Cloud is a private beta I use myself.",
     href: "/projects",
     meta: "3 in production",
@@ -37,15 +37,15 @@ export const statusBoard: StatusCard[] = [
 export const currentFocus = [
   {
     title: "Client WebOps at MemberDev",
-    body: "Most days I'm on client WordPress membership sites: support, QA, hosting, DNS, migrations, and some AI workflows around that.",
+    body: "Most days I'm on client WordPress membership sites: support, QA, hosting, DNS, migrations, and some AI workflows.",
   },
   {
     title: "My own apps",
     body: "GiseUGC, Budget & Expense, and JPTracker are live. Trainer Cloud is a private beta that runs my training week.",
   },
   {
-    title: "The study plan",
-    body: "Seven phases toward AI support systems. About 8–10 hours a week. I write down what I get wrong. I'd rather ship something than collect another certificate.",
+    title: "Study plan",
+    body: "Seven phases toward AI support systems. About 8–10 hours a week, with notes on what I get wrong.",
   },
 ];
 
@@ -75,14 +75,14 @@ export const roadmapPhases: RoadmapPhase[] = [
     phase: 2,
     title: "TypeScript + Full-Stack Base",
     summary:
-      "More TypeScript, React, and Node, and actually reviewing the architecture when I add a feature.",
+      "More TypeScript, React, and Node, and reviewing the architecture when I add a feature.",
     state: "next",
   },
   {
     phase: 3,
     title: "Next.js SaaS Shell + Architecture",
     summary:
-      "A small SaaS with auth and billing, and written-down boundaries so it doesn't turn into a mess. C4 diagrams and ADRs.",
+      "A small SaaS with auth and billing, with the data boundaries written down. C4 diagrams and ADRs.",
     state: "next",
   },
   {
@@ -103,18 +103,18 @@ export const roadmapPhases: RoadmapPhase[] = [
     phase: 6,
     title: "Production AI Support OS",
     summary:
-      "The full thing in production: human approval, traces, cost, model routing, and safety. Run it like any other service.",
+      "Run it in production: human approval, traces, cost, model routing, and safety.",
     state: "next",
   },
 ];
 
 export const northStar = {
   title: "AI Support Systems / Context Engineer",
-  body: "The job I want sits between technical support, WebOps, and the systems that make AI trustworthy: context, evals, logs, cost. At the end of this plan I want an AI copilot for hosting, DNS, SSL, WordPress, and SaaS support.",
+  body: "I want to combine technical support and WebOps with the systems around AI: context, evals, logs, and cost. The long-term project is an AI copilot for hosting, DNS, SSL, WordPress, and SaaS support.",
   identities: [
-    "Technical support, with AI in the loop",
+    "Technical support",
     "WebOps",
     "AI support systems",
-    "Context and evals",
+    "Context engineering",
   ],
 };

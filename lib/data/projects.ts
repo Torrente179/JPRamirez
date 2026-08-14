@@ -17,7 +17,7 @@ export const projects: Project[] = [
     name: "GiseUGC",
     tagline: "Marketing site for a UGC creator, built around video",
     summary:
-      "Gisela Saldarriaga's site. Videos stream with HLS from Cloudflare R2, Spanish by default and English at /en/, plus some motion on top.",
+      "Gisela Saldarriaga's site. Videos stream with HLS from Cloudflare R2. Spanish by default, English at /en/.",
     stack: ["React", "TypeScript", "Vite", "GSAP", "Lenis", "three.js", "HLS", "Cloudflare R2"],
     status: "Production",
     link: "https://giselasaldarriaga.com",
@@ -28,7 +28,7 @@ export const projects: Project[] = [
     name: "Budget & Expense",
     tagline: "Personal finance, in English and Spanish",
     summary:
-      "Envelope budgeting, investments, net worth, a few currencies, CSV and bank import. I wanted the numbers to feel solid, not like a fintech ad.",
+      "Envelope budgeting, investments, net worth, several currencies, and CSV or bank import.",
     stack: ["Next.js 16", "React 19", "Tailwind v4", "Base UI", "Supabase", "Recharts", "Zod"],
     status: "Production",
     featured: true,
@@ -49,7 +49,7 @@ export const projects: Project[] = [
     name: "Trainer Cloud",
     tagline: "Training, food, and groceries in a private app",
     summary:
-      "My training week, macros by day type, meal logging, and a grocery list scored by price vs. protein, for the stores I actually use in Spain.",
+      "My training week, macros by day type, meal logging, and a grocery list scored by price vs. protein, for the stores I shop at in Spain.",
     stack: ["Next.js 16", "React 19", "Supabase", "Zod", "Vitest"],
     status: "Private beta",
     featured: false,

@@ -73,14 +73,14 @@ export const stackGroups: StackGroup[] = [
 export const aiPractice = [
   {
     title: "How I use coding agents",
-    body: "Claude Code, Codex, and Cursor don't just autocomplete for me. They inspect, plan, implement, test, and review. Each repo has instructions so they follow the same architecture and commands I would.",
+    body: "Claude Code, Codex, and Cursor inspect, plan, implement, test, and review. Each repo has instructions so they follow the same architecture and commands I would.",
   },
   {
-    title: "AI in the support queue",
-    body: "I use it on the boring, high-volume parts: triage notes for issues we see a lot, QA checklists, reproduction steps, docs, and draft replies. A person still reads everything before it goes out.",
+    title: "AI in support work",
+    body: "I use it on high-volume parts of the job: triage notes for issues we see a lot, QA checklists, reproduction steps, docs, and draft replies. A person still reads everything before it goes out.",
   },
   {
     title: "What I'm studying next",
-    body: "How to make AI systems you can actually trust in production: structured outputs, validation, retrieval with citations, evals, traces, and cost. Longer term I want an AI copilot for WebOps support.",
+    body: "How to make AI systems reliable in production: structured outputs, validation, retrieval with citations, evals, traces, and cost. Longer term I want an AI copilot for WebOps support.",
   },
 ];

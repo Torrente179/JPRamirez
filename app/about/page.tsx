@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const facts = [
   { label: "Location", value: site.location },
-  { label: "Mode", value: site.availability },
+  { label: "Availability", value: site.availability },
   { label: "Languages", value: site.languages.join(" · ") },
   { label: "LinkedIn", value: "juan-pablo-ramirez-romero", href: site.linkedin },
 ];
@@ -27,9 +27,9 @@ export default function AboutPage() {
         eyebrow="About"
         title={
           <>
-            Better when it needs{" "}
-            <span className="text-brand italic">investigation</span>, not a
-            script.
+            Technical{" "}
+            <span className="text-brand italic">support</span> for websites
+            and hosting.
           </>
         }
       />
@@ -39,36 +39,35 @@ export default function AboutPage() {
           <Reveal>
             <p>
               I do technical support for websites and SaaS products: WordPress,
-              hosting, DNS, the usual mess. I started answering tickets at a
-              hosting company and slowly took on harder problems: broken sites,
-              DNS, SSL, cache, plugins. Then I have to explain the fix without
-              making the customer feel stupid.
+              hosting, and DNS. I started answering tickets at a hosting
+              company, then took on harder problems: broken sites, SSL, cache,
+              plugins. I explain the fix in plain language.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              A lot of the job is switching. Talk to someone who's stressed,
-              then try to reproduce what they saw. I ask questions, try things,
+              A lot of the job is switching between the customer and the
+              technical side. I ask questions, try to reproduce the issue,
               write down what worked, and try to make the next time faster.
-              I've gone from a live chat to tuning InnoDB in the same week.
+              Some weeks that means a live chat in the morning and an InnoDB
+              session later the same day.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              I write code and use AI when it actually helps: small WordPress
-              plugins, research, QA checklists, docs, internal workflows.
-              Lately that part takes more of my time. I want to get good at
-              building AI systems for support, not just pasting tickets into
-              ChatGPT.
+              I write code and use AI when it helps: small WordPress plugins,
+              research, QA checklists, docs, and internal workflows. That part
+              of the work is growing. I want to get better at building AI
+              systems for support teams.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              Fully remote for six years. 4,800+ customers at Hostinger, 450+
-              hosting accounts as a TAM at DigitalOcean, and now I run WebOps
-              and AI systems for WordPress membership sites at MemberDev. I
-              live in Málaga. I work in English and Spanish, whichever the
-              client needs, mostly with EU and Americas hours.
+              I've been fully remote for six years. 4,800+ customers at
+              Hostinger, 450+ hosting accounts as a TAM at DigitalOcean, and
+              now I run WebOps and AI systems for WordPress membership sites at
+              MemberDev. I live in Málaga and work in English and Spanish,
+              mostly with EU and Americas hours.
             </p>
           </Reveal>
         </div>
@@ -114,7 +113,7 @@ export default function AboutPage() {
       {/* Recommendations */}
       <section className="mt-28">
         <Reveal>
-          <SectionHeading index="01" title="From people I've worked with" className="mb-8" />
+          <SectionHeading index="01" title="Recommendations" className="mb-8" />
         </Reveal>
         <div className="grid gap-10 md:grid-cols-2">
           {recommendations.map((rec, i) => (

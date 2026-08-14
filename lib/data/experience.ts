@@ -64,9 +64,9 @@ export const roles: Role[] = [
     current: true,
     companyBlurb:
       "A small agency that builds custom WordPress membership sites for coaches, educators, and communities.",
-    tagline: "WordPress membership sites in production, plus a few AI assistants",
+    tagline: "WordPress membership sites, plus AI assistants",
     points: [
-      "I look after the production WordPress membership sites (MemberMouse, MemberPress, BuddyBoss): hosting, DNS, Cloudflare, QA, and whatever breaks after launch.",
+      "I maintain the production WordPress membership sites (MemberMouse, MemberPress, BuddyBoss): hosting, DNS, Cloudflare, QA, and issues after launch.",
       "I shipped a RAG assistant for a large online training platform: Python, Supabase pgvector, OpenAI, and a custom WordPress plugin. It has a test suite and a handover doc.",
       "I built a second chatbot for another educator platform. More on the way.",
       "I've done live DNS cutovers and multi-GB MySQL/InnoDB migrations, with checks afterwards so we knew the data was intact.",
@@ -95,7 +95,7 @@ export const roles: Role[] = [
       "I looked after 450+ web companies on managed cloud hosting, about $160K a month in recurring revenue.",
       "I did account reviews covering WordPress hosting, DNS, SSL, migrations, backups, server setup, and performance.",
       "I watched for churn, upsells, technical risk, and bad configs, then turned that into next steps or an escalation.",
-      "I sat between customers, Support, Product, and Engineering when a ticket wasn't enough.",
+      "I worked with customers, Support, Product, and Engineering when a ticket wasn't enough.",
     ],
   },
   {
@@ -104,7 +104,7 @@ export const roles: Role[] = [
     title: "Technical Success Specialist · Web Hosting",
     period: "Aug 2020 — Jul 2022",
     location: "Lithuania · Remote",
-    companyBlurb: "A large web host. Millions of customers.",
+    companyBlurb: "A large web hosting company with millions of customers.",
     tagline: "4,800+ customers over live chat and email",
     points: [
       "I helped 4,800+ customers over live chat and email in a busy hosting queue.",
