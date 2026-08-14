@@ -9,13 +9,19 @@ export function SiteList({ sites }: { sites: MaintainedSite[] }) {
 
   return (
     <details className="mt-7">
-      <summary className="site-list-summary flex cursor-pointer items-center justify-between gap-4 py-3 font-mono text-[11px] tracking-[0.14em] text-muted-foreground uppercase transition-colors hover:text-brand">
-        <span>
-          <span className="text-brand">{count}</span>
-          <span className="mx-2 text-border">—</span>
-          Sites under care
+      <summary className="site-list-summary hairline group flex cursor-pointer items-baseline justify-between gap-4 py-5">
+        <span className="flex items-baseline gap-3.5">
+          <span className="nums text-3xl font-medium tracking-tight text-brand">
+            {count}
+          </span>
+          <span className="text-lg font-medium tracking-tight text-foreground transition-colors group-hover:text-brand">
+            Sites under care
+          </span>
         </span>
-        <span aria-hidden className="site-list-mark text-subtle" />
+        <span
+          aria-hidden
+          className="site-list-mark font-mono text-lg leading-none text-subtle"
+        />
       </summary>
       <ul>
         {sites.map((site) => (

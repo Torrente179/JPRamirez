@@ -132,7 +132,7 @@ ever ship in markup), and globals.css kills CSS animations.
 | `ProjectRow` | Hairline row: index, name, status dot, tagline, mono stack line, sliding arrow |
 | `ExperienceRow` | Same row contract as `ProjectRow`: index, company, Present/`ok` or period/`subtle` dot, tagline, mono title, sliding arrow. Links to `/experience#slug`. |
 | `CvDownload` | Same-origin `public/cv.pdf` with `download` filename. Used on Home (work section), Experience header, and Footer. |
-| `SiteList` | Native `<details>` under MemberDev: numbered `Sites under care`, hairline rows, hostname + `↗`. |
+| `SiteList` | Native `<details>` under MemberDev. Summary is a metric: large brand count + `Sites under care` in heading type, `+`/`−` marker. Open state: hairline rows, hostname + `↗`. |
 | `SectionHeading` | `01 — Title` mono eyebrow |
 | `PageHeader` | Subpage hero: eyebrow, display title (accent word), optional lede, optional `action` (used on Experience for CV download) |
 | `Reveal` / `Stagger` | The only two motion wrappers; don't invent new ones per page |
