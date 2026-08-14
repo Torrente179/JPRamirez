@@ -14,10 +14,4 @@ export const site = {
     href: "/cv.pdf",
     filename: "Juan_Pablo_Ramirez_Romero_CV.pdf",
   },
-  metrics: [
-    { value: "450+", label: "accounts managed" },
-    { value: "$160K+", label: "MRR managed" },
-    { value: "4,800+", label: "customers supported" },
-    { value: "6+", label: "years remote" },
-  ],
 } as const;

@@ -50,7 +50,6 @@ export default function OpengraphImage() {
             letterSpacing: 2,
           }}
         >
-          <div>450+ accounts · $160K+ MRR · 4,800+ customers</div>
           <div>Málaga, ES</div>
         </div>
       </div>

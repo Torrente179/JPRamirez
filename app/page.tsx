@@ -6,7 +6,6 @@ import { ProjectRow } from "@/components/project-row";
 import { ExperienceRow } from "@/components/experience-row";
 import { CvDownload } from "@/components/cv-download";
 import { StatusBoard } from "@/components/status-board";
-import { site } from "@/lib/data/site";
 import { projects } from "@/lib/data/projects";
 import { roles } from "@/lib/data/experience";
 import { stackGroups } from "@/lib/data/stack";
@@ -18,24 +17,9 @@ export default function Home() {
     <div className="mx-auto max-w-6xl px-5 sm:px-8">
       <Hero />
 
-      {/* Status board */}
       <Reveal>
         <div className="mt-6">
           <StatusBoard />
-        </div>
-      </Reveal>
-
-      {/* Metrics */}
-      <Reveal>
-        <div className="hairline mt-16 grid grid-cols-2 gap-y-10 py-12 sm:grid-cols-4">
-          {site.metrics.map((m) => (
-            <div key={m.label}>
-              <p className="nums text-3xl font-medium tracking-tight sm:text-4xl">
-                {m.value}
-              </p>
-              <p className="eyebrow mt-2">{m.label}</p>
-            </div>
-          ))}
         </div>
       </Reveal>
 
