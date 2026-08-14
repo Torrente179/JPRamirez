@@ -78,8 +78,8 @@ export default function AboutPage() {
             <Image
               src="/images/jp-about.jpg"
               alt="Juan Pablo Ramirez"
-              width={683}
-              height={1024}
+              width={637}
+              height={773}
               priority
               className="rounded-xl border border-border"
             />
