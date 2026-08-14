@@ -144,6 +144,97 @@
   }
 }
 
+/* Now page — study map. Equal nodes, no progress state. */
+.study-map {
+  display: grid;
+  grid-template-columns: 1fr;
+  position: relative;
+  isolation: isolate;
+}
+
+.study-map::before {
+  content: "";
+  position: absolute;
+  top: 0.85rem;
+  right: auto;
+  bottom: 0.85rem;
+  left: 0.28rem;
+  z-index: 0;
+  width: 1px;
+  height: auto;
+  background: var(--border);
+}
+
+.study-map-node {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  text-align: left;
+}
+
+.study-map-index {
+  width: 1.75rem;
+  flex-shrink: 0;
+}
+
+.study-map-dot {
+  order: -1;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  background: var(--brand);
+  border-radius: 999px;
+  box-shadow: 0 0 0 4px var(--background);
+}
+
+.study-map-label {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 1024px) {
+  .study-map {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+
+  .study-map::before {
+    top: 2.15rem;
+    right: 7%;
+    bottom: auto;
+    left: 7%;
+    width: auto;
+    height: 1px;
+  }
+
+  .study-map-node {
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+    padding: 0 0.35rem;
+    text-align: center;
+  }
+
+  .study-map-index {
+    width: auto;
+  }
+
+  .study-map-dot {
+    order: 0;
+    margin-top: 0.7rem;
+  }
+
+  .study-map-label {
+    margin-top: 0.85rem;
+    font-size: 0.8125rem;
+  }
+}
+
 /* Home hero — unlayered so it isn't trapped in Tailwind's component layer */
 .hero-anchor {
   font-size: clamp(4.2rem, 19.5vw, 17rem);

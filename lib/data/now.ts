@@ -10,19 +10,19 @@ export type StatusCard = {
 export const statusBoard: StatusCard[] = [
   {
     label: "Now",
-    tone: "ok",
-    title: "Client WebOps at MemberDev",
-    body: "WordPress membership sites: support, QA, hosting, DNS, migrations, and some AI workflows for support.",
-    href: "/experience",
-    meta: "since 2023",
+    tone: "brand",
+    title: "Studying and building",
+    body: "A personal study map, and four apps of my own.",
+    href: "/now",
+    meta: "study map",
   },
   {
-    label: "On the radar",
-    tone: "brand",
-    title: "AI support systems",
-    body: "A seven-phase study plan. Still in the early phases: schemas, evals, retrieval.",
-    href: "/now",
-    meta: "phase 0–1 active",
+    label: "Work",
+    tone: "ok",
+    title: "MemberDev",
+    body: "WordPress membership sites: support, QA, hosting, DNS, migrations.",
+    href: "/experience",
+    meta: "since 2023",
   },
   {
     label: "Shipping",
@@ -34,87 +34,55 @@ export const statusBoard: StatusCard[] = [
   },
 ];
 
-export const currentFocus = [
-  {
-    title: "Client WebOps at MemberDev",
-    body: "Most days I'm on client WordPress membership sites: support, QA, hosting, DNS, migrations, and some AI workflows.",
-  },
-  {
-    title: "My own apps",
-    body: "GiseUGC, Budget & Expense, and JPTracker are live. Trainer Cloud is a private beta that runs my training week.",
-  },
-  {
-    title: "Study plan",
-    body: "Seven phases toward AI support systems. About 8–10 hours a week, with notes on what I get wrong.",
-  },
-];
-
-export type RoadmapPhase = {
-  phase: number;
+export type StudyTopic = {
+  id: number;
+  short: string;
   title: string;
   summary: string;
-  state: "done" | "active" | "next";
 };
 
-export const roadmapPhases: RoadmapPhase[] = [
+export const studyTopics: StudyTopic[] = [
   {
-    phase: 0,
-    title: "Study System + AI Fluency",
+    id: 1,
+    short: "Study habits",
+    title: "How I study",
     summary:
-      "Get the study habit in place first: recall practice, spaced review, and clear rules for when I use an AI agent.",
-    state: "active",
+      "Recall practice, spaced review, and simple rules for when I use an AI agent.",
   },
   {
-    phase: 1,
-    title: "CS + Developer Tools + Agent Workflow",
-    summary:
-      "Get better at debugging, SQL, the shell, and Git. Use an AI agent on small tasks, with a tight loop.",
-    state: "active",
+    id: 2,
+    short: "Debugging",
+    title: "Debugging, SQL, Git",
+    summary: "Shell, Git, SQL, and a tight loop on small tasks.",
   },
   {
-    phase: 2,
-    title: "TypeScript + Full-Stack Base",
-    summary:
-      "More TypeScript, React, and Node, and reviewing the architecture when I add a feature.",
-    state: "next",
+    id: 3,
+    short: "TypeScript",
+    title: "TypeScript, React, Node",
+    summary: "The languages and libraries I use when I build my own apps.",
   },
   {
-    phase: 3,
-    title: "Next.js SaaS Shell + Architecture",
-    summary:
-      "A small SaaS with auth and billing, with the data boundaries written down. C4 diagrams and ADRs.",
-    state: "next",
+    id: 4,
+    short: "A small SaaS",
+    title: "A small SaaS",
+    summary: "Auth, billing, and data boundaries, written down so the app stays clear.",
   },
   {
-    phase: 4,
-    title: "AI Harness Engineering",
-    summary:
-      "Make model output reliable: schemas, validation, retries when it fails, and a fallback when it keeps failing.",
-    state: "next",
+    id: 5,
+    short: "Model output",
+    title: "Reliable model output",
+    summary: "Schemas, validation, retries, and a fallback when the model keeps failing.",
   },
   {
-    phase: 5,
-    title: "Context Engineering + Grounded AI",
-    summary:
-      "Retrieval that cites sources and can be tested. Chunking, freshness, and evals so I know the answers are grounded.",
-    state: "next",
+    id: 6,
+    short: "Retrieval",
+    title: "Retrieval with sources",
+    summary: "Chunking, citations, freshness, and tests so answers can be checked.",
   },
   {
-    phase: 6,
-    title: "Production AI Support OS",
-    summary:
-      "Run it in production: human approval, traces, cost, model routing, and safety.",
-    state: "next",
+    id: 7,
+    short: "Production",
+    title: "Running it in production",
+    summary: "Approvals, traces, cost, model routing, and safety.",
   },
 ];
-
-export const northStar = {
-  title: "AI Support Systems / Context Engineer",
-  body: "I want to combine technical support and WebOps with the systems around AI: context, evals, logs, and cost. The long-term project is an AI copilot for hosting, DNS, SSL, WordPress, and SaaS support.",
-  identities: [
-    "Technical support",
-    "WebOps",
-    "AI support systems",
-    "Context engineering",
-  ],
-};

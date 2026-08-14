@@ -20,7 +20,7 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
 | Experience | Shipped-proof chips attached to the roles they came from |
 | Projects | Status dots treating side projects like monitored services |
 | Stack | Hairline tool list, grouped by hosting / WordPress / code / AI / support |
-| Now | The 7-phase study plan rendered as a deploy pipeline |
+| Now | A 7-node study map (equal steps, no progress state) plus the apps being built |
 
 ## 2. Typography
 
@@ -36,7 +36,7 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
   on top of the image; the rest stays behind the foliage.
 - One italic accent word per headline, colored `text-brand` — this is the
   signature type gesture (`calm`, `support`, `WebOps`, `built`, `use`,
-  `working`). The word is part of a normal sentence, not a punchline.
+  `working`, `studying`). The word is part of a normal sentence, not a punchline.
 - All numbers render with `tabular-nums` (`.nums` utility).
 
 ## 3. Color
@@ -132,7 +132,7 @@ ever ship in markup), and globals.css kills CSS animations.
 | `Nav` | Fixed top, blur. Desktop: mono links, active = cyan. Mobile: app bar — logo `jp·` + live `● OPERATIONAL` |
 | `TabBar` | Mobile only (`md:hidden`). 5 tabs (home/projects/work/now/about), lucide icons, cyan active, safe-area padding |
 | `Hero` | Home only. Desktop: giant name + portrait weave. Mobile (`md:hidden`): app cover + profile sheet. |
-| `StatusBoard` | 3 dashboard cards (NOW / ON THE RADAR / SHIPPING) fed from `lib/data/now.ts` — labels have tone dots, meta on the right |
+| `StatusBoard` | 3 dashboard cards (NOW / WORK / SHIPPING) fed from `lib/data/now.ts` — labels have tone dots, meta on the right |
 | `ProjectRow` | Hairline row: index, name, status dot, tagline, mono stack line, sliding arrow |
 | `ExperienceRow` | Same row contract as `ProjectRow`: index, company, Present/`ok` or period/`subtle` dot, tagline, mono title, sliding arrow. Links to `/experience#slug`. |
 | `CvDownload` | Same-origin `public/cv.pdf` with `download` filename. Used on Home (work section), Experience header, and Footer. |
@@ -164,7 +164,8 @@ Juan Pablo is bilingual (English / Spanish). Write the way he would in an
 email: clear, specific, a bit warm. Complete sentences. Not US-editorial,
 not try-hard casual, not translated-from-Spanish stiffness.
 
-Mono labels stay ops vocabulary: OPERATIONAL, SHIPPING, ON THE RADAR, PHASE 0.
+Mono labels stay ops vocabulary: OPERATIONAL, SHIPPING, PHASE labels only
+where they mark a map, not a personal progress tracker.
 Page titles name the page. No exclamation points, no emoji, no buzzword chains.
 
 ## 10. Accessibility & states

@@ -6,7 +6,7 @@ import {
   Home,
   FolderOpen,
   Briefcase,
-  Activity,
+  Map,
   CircleUser,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -15,7 +15,7 @@ const tabs = [
   { href: "/", label: "home", icon: Home },
   { href: "/projects", label: "projects", icon: FolderOpen },
   { href: "/experience", label: "work", icon: Briefcase },
-  { href: "/now", label: "now", icon: Activity },
+  { href: "/now", label: "now", icon: Map },
   { href: "/about", label: "about", icon: CircleUser },
 ];
 
