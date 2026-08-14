@@ -12,7 +12,7 @@ export const statusBoard: StatusCard[] = [
     label: "Now",
     tone: "ok",
     title: "Client WebOps at MemberDev",
-    body: "Keeping WordPress membership platforms healthy — support, QA, hosting, DNS, migrations, and the AI-assisted workflows around them.",
+    body: "WordPress membership sites: support, QA, hosting, DNS, migrations, and a bit of AI around the tickets.",
     href: "/experience",
     meta: "since 2023",
   },
@@ -20,15 +20,15 @@ export const statusBoard: StatusCard[] = [
     label: "On the radar",
     tone: "brand",
     title: "AI harness engineering",
-    body: "Structured outputs, evals, context pipelines — working a seven-phase roadmap toward AI support systems, one shipped artifact at a time.",
+    body: "Schemas, evals, retrieval. I'm on a seven-phase plan toward AI support systems. Still in the early phases.",
     href: "/now",
     meta: "phase 0–1 active",
   },
   {
     label: "Shipping",
     tone: "brand",
-    title: "Four products in flight",
-    body: "GiseUGC, Budget & Expense, and JPTracker in production; Trainer Cloud in private beta.",
+    title: "Four of my own apps",
+    body: "GiseUGC, Budget & Expense, and JPTracker are live. Trainer Cloud is a private beta I use myself.",
     href: "/projects",
     meta: "3 in production",
   },
@@ -37,15 +37,15 @@ export const statusBoard: StatusCard[] = [
 export const currentFocus = [
   {
     title: "Client WebOps at MemberDev",
-    body: "Day to day I keep WordPress membership platforms healthy — support, QA, hosting, DNS, migrations, and the AI-assisted workflows around them.",
+    body: "Most days I'm on client WordPress membership sites: support, QA, hosting, DNS, migrations, and some AI workflows around that.",
   },
   {
-    title: "Shipping my own apps",
-    body: "Four products in flight: GiseUGC, Budget & Expense, and JPTracker in production; Trainer Cloud in private beta.",
+    title: "My own apps",
+    body: "GiseUGC, Budget & Expense, and JPTracker are live. Trainer Cloud is a private beta that runs my training week.",
   },
   {
-    title: "Studying with a system",
-    body: "Working through a seven-phase roadmap toward AI support systems engineering — 8–10 hours a week, tracked with spaced review and a mistake log, proof over certificates.",
+    title: "The study plan",
+    body: "Seven phases toward AI support systems. About 8–10 hours a week. I write down what I get wrong. I'd rather ship something than collect another certificate.",
   },
 ];
 
@@ -61,60 +61,60 @@ export const roadmapPhases: RoadmapPhase[] = [
     phase: 0,
     title: "Study System + AI Fluency",
     summary:
-      "Install the learning method first: retrieval practice, spaced review, AI fluency, and explicit agent-use rules.",
+      "Get the study habit in place first: recall practice, spaced review, and clear rules for when I use an AI agent.",
     state: "active",
   },
   {
     phase: 1,
     title: "CS + Developer Tools + Agent Workflow",
     summary:
-      "Strengthen debugging, systems intuition, SQL, shell, and Git — with a disciplined AI-agent workflow on small tasks.",
+      "Get better at debugging, SQL, the shell, and Git. Use an AI agent on small tasks, with a tight loop.",
     state: "active",
   },
   {
     phase: 2,
     title: "TypeScript + Full-Stack Base",
     summary:
-      "TypeScript depth, React and Node fundamentals, and architecture review habits applied to real features.",
+      "More TypeScript, React, and Node, and actually reviewing the architecture when I add a feature.",
     state: "next",
   },
   {
     phase: 3,
     title: "Next.js SaaS Shell + Architecture",
     summary:
-      "A production SaaS shell with auth, billing, and explicit data boundaries — documented with C4 diagrams and ADRs.",
+      "A small SaaS with auth and billing, and written-down boundaries so it doesn't turn into a mess. C4 diagrams and ADRs.",
     state: "next",
   },
   {
     phase: 4,
     title: "AI Harness Engineering",
     summary:
-      "Structured outputs, schemas, validation, repair loops, and fallback chains — the machinery that makes AI dependable.",
+      "Make model output reliable: schemas, validation, retries when it fails, and a fallback when it keeps failing.",
     state: "next",
   },
   {
     phase: 5,
     title: "Context Engineering + Grounded AI",
     summary:
-      "Retrieval and context pipelines: chunking, citations, freshness, and retrieval evals that prove the answers.",
+      "Retrieval that cites sources and can be tested. Chunking, freshness, and evals so I know the answers are grounded.",
     state: "next",
   },
   {
     phase: 6,
     title: "Production AI Support OS",
     summary:
-      "Guardrails, human approval, traces, cost control, model routing, and safety — an AI support system run like production.",
+      "The full thing in production: human approval, traces, cost, model routing, and safety. Run it like any other service.",
     state: "next",
   },
 ];
 
 export const northStar = {
   title: "AI Support Systems / Context Engineer",
-  body: "The destination is a role I'm partly inventing and partly growing into: someone who combines technical support and WebOps depth with harness engineering — context pipelines, evals, observability, and cost control. The end-state product of the roadmap is an AI WebOps Support Copilot for hosting, DNS, SSL, WordPress, and SaaS operations.",
+  body: "The job I want sits between technical support, WebOps, and the systems that make AI trustworthy: context, evals, logs, cost. At the end of this plan I want an AI copilot for hosting, DNS, SSL, WordPress, and SaaS support.",
   identities: [
-    "AI-enabled technical support engineer",
-    "WebOps automation specialist",
-    "AI support systems builder",
-    "Context / harness engineer",
+    "Technical support, with AI in the loop",
+    "WebOps",
+    "AI support systems",
+    "Context and evals",
   ],
 };

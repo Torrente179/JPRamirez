@@ -2,22 +2,22 @@
 title: Budget & Expense
 ---
 
-Budget & Expense is my take on personal finance software that doesn't shout at you. It's a bilingual (EN/ES) app for intentional money management — envelope budgeting, investments, giving, and multi-currency tracking — designed around calm, composed UI where the numbers feel trustworthy.
+This is the finance app I wanted for myself. English and Spanish. Envelopes, investments, giving, a few currencies. I got tired of finance apps that feel like ads.
 
 ## What it does
 
-- **Dashboard** with KPI summary cards: balance, monthly spend, and deltas
-- **Envelope budgeting** with visual progress per budget pool
-- **Movements ledger** with full transaction history and a calendar drill-down view
-- **Investments and net worth** tracking alongside day-to-day spending
-- **Imports**: in-app CSV import plus Santander bank statement support
-- **Multi-currency** (20 currencies, EUR base) with base-currency conversion
-- Spending analytics with category drill-downs via Recharts
+- **Dashboard** with balance, monthly spend, and how those changed
+- **Envelope budgeting** with a progress bar per pool
+- **Movements** with full history and a calendar you can click into
+- **Investments and net worth** next to day-to-day spending
+- **Imports**: CSV in the app, plus Santander statements
+- **Multi-currency** (20 currencies, EUR as the base) with conversion
+- Spending charts by category, via Recharts
 
 ## Build notes
 
-Built on Next.js 16 with React Server Components, Supabase (auth, Postgres, row-level security), Tailwind CSS v4 with a CSS-first config, and Base UI primitives. The design system is documented in the repo: soft neutrals, deep diffuse shadows, monospaced `tabular-nums` for every number, emerald for positive, rose for negative. Mobile gets a bottom nav; desktop gets a fixed sidebar — two deliberate layouts, not one squeezed layout.
+Next.js 16, React Server Components, Supabase (auth, Postgres, row-level security), Tailwind CSS v4, Base UI. Soft neutrals, `tabular-nums` on every number, green for up, rose for down. Phone gets a bottom nav. Desktop gets a sidebar.
 
 ## Status
 
-In production and under active development — recent work shipped calendar redesign, transfers, net worth, and CSV import.
+Live, and I'm still adding to it. Lately: calendar, transfers, net worth, CSV import.

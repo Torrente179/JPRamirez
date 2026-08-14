@@ -8,7 +8,7 @@ import { projects, clientWork } from "@/lib/data/projects";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Four products I've built — GiseUGC, Budget & Expense, JPTracker, Trainer Cloud — plus shipped client and platform work.",
+    "Four things I've built — GiseUGC, Budget & Expense, JPTracker, Trainer Cloud — plus client work from MemberDev.",
 };
 
 export default function ProjectsPage() {
@@ -18,11 +18,11 @@ export default function ProjectsPage() {
         eyebrow="Projects"
         title={
           <>
-            Things I've <span className="text-brand italic">shipped</span> —
-            and keep shipping.
+            Things I've <span className="text-brand italic">shipped</span>.
+            I still work on them.
           </>
         }
-        lede="Four products of my own, from production marketing sites to private tools I use every day. Built AI-assisted, owned end to end: design, code, data, deployment."
+        lede="Four of my own: a couple of sites in production, a couple of tools I use myself. I designed them, wrote the code, and I still deploy them."
       />
 
       <section>
@@ -35,10 +35,10 @@ export default function ProjectsPage() {
 
       <section className="mt-28">
         <Reveal>
-          <SectionHeading index="01" title="Client & platform work" className="mb-4" />
+          <SectionHeading index="01" title="Client work" className="mb-4" />
           <p className="mb-10 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            Selected work shipped for clients at MemberDev — the operational
-            kind of engineering that rarely gets a landing page.
+            Client work from MemberDev. DNS, databases, uploads, support. The
+            production stuff.
           </p>
         </Reveal>
         <div className="grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">

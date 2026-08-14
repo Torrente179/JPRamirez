@@ -2,21 +2,21 @@
 title: Trainer Cloud
 ---
 
-Trainer Cloud is a private training, nutrition, and grocery app — built for real use, not for a demo. It models how I actually train and eat: a configurable training week, macro targets that change by day type, and grocery decisions made where I actually shop.
+A private app for training, food, and groceries. Built to use, not to demo. It matches how I actually train and eat: a week I can configure, macros that change by day type, and grocery decisions for the stores I shop at.
 
 ## What it does
 
-- **Four sections**: Today, Plan (training week), Food (meal logging), and Week (review)
-- **Configurable training models** — 2-day or 3-day splits with macro targets per day type
-- **Quick-add meal logging** with custom meal support
-- **Curated grocery catalog** for Mercadona and HiperDino, scored by cost-benefit — what to buy, where, and why
-- **Weekly review** with shopping-list generation and rule-based suggestions
-- Magic-link auth via Supabase; one-time import from the static dashboard it replaced
+- **Four sections**: Today, Plan (the training week), Food (meals), and Week (review)
+- **Training models** you can switch: 2-day or 3-day splits, with macro targets per day type
+- **Quick-add meals**, including ones you define yourself
+- **Grocery catalog** for Mercadona and HiperDino, scored by price vs. protein. What to buy, where, and why
+- **Weekly review** with a shopping list and a few rule-based suggestions
+- Magic-link auth via Supabase. One-time import from the static dashboard it replaced
 
 ## Build notes
 
-Next.js 16 with React Server Components and Supabase (magic-link auth, Postgres, row-level security). The part I care most about is the domain layer: training rules, macro math, and grocery scoring live as pure functions in `lib/domain/`, covered by Vitest — the UI is a thin shell over logic that's actually tested.
+Next.js 16, React Server Components, Supabase (magic link, Postgres, row-level security). The part I care about is the domain layer: training rules, macro math, and grocery scoring live as plain functions in `lib/domain/`, covered by Vitest. The UI is a thin shell on top of logic that is actually tested.
 
 ## Status
 
-Private beta — it runs my training week. Productizing it is a decision for later; correctness came first.
+Private beta — it runs my training week. Turning it into a product is a decision for later. I wanted the numbers right first.

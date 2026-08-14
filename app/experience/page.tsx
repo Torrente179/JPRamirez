@@ -8,7 +8,7 @@ import { SiteList } from "@/components/site-list";
 export const metadata: Metadata = {
   title: "Experience",
   description:
-    "Six-plus years of remote technical support: MemberDev WebOps and AI systems, DigitalOcean TAM, and Hostinger hosting support.",
+    "Six years remote: MemberDev WebOps and AI systems, DigitalOcean TAM, Hostinger hosting support.",
 };
 
 export default function ExperiencePage() {
@@ -18,11 +18,11 @@ export default function ExperiencePage() {
         eyebrow="Experience"
         title={
           <>
-            Six years remote, from hosting support to{" "}
+            Six years remote. Hosting support, then{" "}
             <span className="text-brand italic">WebOps</span>.
           </>
         }
-        lede="Every role in this list is fully remote and customer-facing. The pattern: start where the volume is, learn what breaks, then own more of the system."
+        lede="All of this was remote and with customers. I started where the tickets were, learned what actually breaks, and ended up responsible for more of the system."
         action={
           <CvDownload
             label="Download CV ↓"

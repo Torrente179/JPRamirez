@@ -10,7 +10,7 @@ import { recommendations } from "@/lib/data/recommendations";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Who I am: a technical support engineer who grew from front-line hosting support into WebOps and AI-assisted systems.",
+    "Technical support engineer in Málaga. I started in hosting support and now I do WebOps and AI systems for WordPress sites. English and Spanish.",
 };
 
 const facts = [
@@ -27,7 +27,7 @@ export default function AboutPage() {
         eyebrow="About"
         title={
           <>
-            Useful when a problem needs{" "}
+            Better when it needs{" "}
             <span className="text-brand italic">investigation</span>, not a
             script.
           </>
@@ -38,42 +38,37 @@ export default function AboutPage() {
         <div className="space-y-6 text-[15px] leading-[1.8] text-muted-foreground sm:text-base">
           <Reveal>
             <p>
-              I work in technical support across web platforms, SaaS-style
-              environments, WordPress, managed hosting, and customer
-              operations. My background started in front-line support and web
-              hosting, then grew into a more technical role: troubleshooting
-              websites, reproducing bugs, checking DNS, SSL, cache, plugins,
-              forms, permissions, and hosting behavior — and explaining the fix
-              in plain language.
+              I do technical support for websites and SaaS products: WordPress,
+              hosting, DNS, the usual mess. I started answering tickets at a
+              hosting company and slowly took on harder problems: broken sites,
+              DNS, SSL, cache, plugins. Then I have to explain the fix without
+              making the customer feel stupid.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              I can move between the customer conversation and the technical
-              details: ask better questions, isolate what changed, test
-              assumptions, document the answer, and help the team make repeat
-              issues easier to handle next time. That range — from a live chat
-              with a stressed customer to an InnoDB tuning session — is the
-              job as I understand it.
+              A lot of the job is switching. Talk to someone who's stressed,
+              then try to reproduce what they saw. I ask questions, try things,
+              write down what worked, and try to make the next time faster.
+              I've gone from a live chat to tuning InnoDB in the same week.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              I also use code and AI tools when they help the work: targeted
-              fixes, custom WordPress plugins, technical research, QA
-              checklists, documentation, and internal workflow improvements.
-              Increasingly, that second part is becoming the first part — I'm
-              building toward AI support systems engineering, one shipped
-              artifact at a time.
+              I write code and use AI when it actually helps: small WordPress
+              plugins, research, QA checklists, docs, internal workflows.
+              Lately that part takes more of my time. I want to get good at
+              building AI systems for support, not just pasting tickets into
+              ChatGPT.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              Six-plus years fully remote: 4,800+ customers at Hostinger, 450+
-              hosting accounts as a TAM at DigitalOcean, then owning WebOps
-              and AI systems for WordPress membership platforms at MemberDev.
-              Based in Málaga, Spain; working in English and Spanish across EU
-              and Americas time zones.
+              Fully remote for six years. 4,800+ customers at Hostinger, 450+
+              hosting accounts as a TAM at DigitalOcean, and now I run WebOps
+              and AI systems for WordPress membership sites at MemberDev. I
+              live in Málaga. I work in English and Spanish, whichever the
+              client needs, mostly with EU and Americas hours.
             </p>
           </Reveal>
         </div>
@@ -83,8 +78,8 @@ export default function AboutPage() {
             <Image
               src="/images/jp-about.jpg"
               alt="Juan Pablo Ramirez"
-              width={1200}
-              height={1797}
+              width={683}
+              height={1024}
               priority
               className="rounded-xl border border-border"
             />
@@ -119,7 +114,7 @@ export default function AboutPage() {
       {/* Recommendations */}
       <section className="mt-28">
         <Reveal>
-          <SectionHeading index="01" title="What colleagues say" className="mb-8" />
+          <SectionHeading index="01" title="From people I've worked with" className="mb-8" />
         </Reveal>
         <div className="grid gap-10 md:grid-cols-2">
           {recommendations.map((rec, i) => (

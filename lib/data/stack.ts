@@ -28,7 +28,7 @@ export const stackGroups: StackGroup[] = [
       { name: "ACF", note: "custom fields" },
       { name: "Gravity Forms" },
       { name: "Elementor" },
-      { name: "Custom plugins", note: "targeted fixes & tooling" },
+      { name: "Custom plugins", note: "small plugins" },
     ],
   },
   {
@@ -72,15 +72,15 @@ export const stackGroups: StackGroup[] = [
 
 export const aiPractice = [
   {
-    title: "Agents as development environments",
-    body: "Claude Code, Codex, and Cursor are not typing assistants in my workflow — they run inspect → plan → implement → test → review loops, governed by repo-level instructions (CLAUDE.md, AGENTS.md, Cursor rules) that keep architecture, commands, and review standards inside the project.",
+    title: "How I use coding agents",
+    body: "Claude Code, Codex, and Cursor don't just autocomplete for me. They inspect, plan, implement, test, and review. Each repo has instructions so they follow the same architecture and commands I would.",
   },
   {
-    title: "AI inside support operations",
-    body: "I design AI-assisted workflows for the unglamorous parts of support that decide its quality: triage playbooks for repeat issue classes, QA checklists, bug-reproduction notes, documentation, and response drafts that a human always reviews.",
+    title: "AI in the support queue",
+    body: "I use it on the boring, high-volume parts: triage notes for issues we see a lot, QA checklists, reproduction steps, docs, and draft replies. A person still reads everything before it goes out.",
   },
   {
-    title: "Building toward harness engineering",
-    body: "The current study focus is what makes AI systems dependable in production: structured outputs and schemas, validation and repair loops, retrieval pipelines with citations, evals, traces, and cost control. The end goal is an AI WebOps support copilot.",
+    title: "What I'm studying next",
+    body: "How to make AI systems you can actually trust in production: structured outputs, validation, retrieval with citations, evals, traces, and cost. Longer term I want an AI copilot for WebOps support.",
   },
 ];

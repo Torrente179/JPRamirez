@@ -63,15 +63,14 @@ export const roles: Role[] = [
     location: "Denver, CO, US · Remote · Freelance",
     current: true,
     companyBlurb:
-      "Agency building custom membership platforms on WordPress for coaches, educators, and community owners.",
-    tagline:
-      "Production WordPress, memberships, and AI assistants for educator platforms",
+      "A small agency that builds custom WordPress membership sites for coaches, educators, and communities.",
+    tagline: "WordPress membership sites in production, plus a few AI assistants",
     points: [
-      "Own production WordPress membership platforms — MemberMouse, MemberPress, BuddyBoss — across hosting, DNS, Cloudflare, QA, and post-launch stability.",
-      "Shipped a production RAG assistant for a large online training platform using Python, Supabase pgvector, OpenAI, and a custom WordPress plugin, with a verification suite and documented handover.",
-      "Built a second AI chatbot for another large educator platform; more in the pipeline.",
-      "Led live DNS cutovers and multi-GB MySQL/InnoDB migrations with data validation.",
-      "Shipped a direct-to-S3 uploader for 5GB+ files and a Cloudflare R2 URL-rewrite plugin; performance and security remediation plus AI support-triage playbooks.",
+      "I look after the production WordPress membership sites (MemberMouse, MemberPress, BuddyBoss): hosting, DNS, Cloudflare, QA, and whatever breaks after launch.",
+      "I shipped a RAG assistant for a large online training platform: Python, Supabase pgvector, OpenAI, and a custom WordPress plugin. It has a test suite and a handover doc.",
+      "I built a second chatbot for another educator platform. More on the way.",
+      "I've done live DNS cutovers and multi-GB MySQL/InnoDB migrations, with checks afterwards so we knew the data was intact.",
+      "I wrote a plugin that uploads 5GB+ files straight to S3, and another that rewrites media URLs onto Cloudflare R2. Also some performance and security work, and AI playbooks for support triage.",
     ],
     shipped: [
       "Production RAG assistant",
@@ -90,13 +89,13 @@ export const roles: Role[] = [
     period: "Jul 2022 — May 2023",
     location: "New York, US · Remote",
     companyBlurb:
-      "Cloud hosting for agencies and SMBs — Cloudways, acquired by DigitalOcean in 2022.",
-    tagline: "450+ hosting accounts representing about $160K MRR",
+      "Cloud hosting for agencies and small businesses. Cloudways, acquired by DigitalOcean in 2022.",
+    tagline: "450+ hosting accounts, about $160K MRR",
     points: [
-      "Managed 450+ high-profile web organizations across managed cloud hosting, representing about $160K in monthly recurring revenue.",
-      "Conducted account reviews across WordPress hosting, DNS, SSL, migrations, backups, server configuration, and performance.",
-      "Identified churn signals, expansion fit, technical risks, and configuration gaps; translated findings into success actions and escalation paths.",
-      "Coordinated escalations across customers, Support, Product, and Engineering to protect account health.",
+      "I looked after 450+ web companies on managed cloud hosting, about $160K a month in recurring revenue.",
+      "I did account reviews covering WordPress hosting, DNS, SSL, migrations, backups, server setup, and performance.",
+      "I watched for churn, upsells, technical risk, and bad configs, then turned that into next steps or an escalation.",
+      "I sat between customers, Support, Product, and Engineering when a ticket wasn't enough.",
     ],
   },
   {
@@ -105,14 +104,13 @@ export const roles: Role[] = [
     title: "Technical Success Specialist · Web Hosting",
     period: "Aug 2020 — Jul 2022",
     location: "Lithuania · Remote",
-    companyBlurb:
-      "One of the world's largest web hosting providers, serving millions of customers.",
-    tagline: "4,800+ customers in a high-volume hosting environment",
+    companyBlurb: "A large web host. Millions of customers.",
+    tagline: "4,800+ customers over live chat and email",
     points: [
-      "Supported 4,800+ customers in a high-volume hosting environment through live chat and written technical support.",
-      "Troubleshot hosting, domains, DNS, SSL, business email, WordPress, site performance, backups, and migrations.",
-      "Used hosting control panels, Chrome DevTools, HTML, CSS, PHP fundamentals, and DNS tools to resolve site-level problems.",
-      "Guided website setup, domain connection, SSL activation, email configuration, and recurring issue documentation.",
+      "I helped 4,800+ customers over live chat and email in a busy hosting queue.",
+      "I fixed hosting, domains, DNS, SSL, business email, WordPress, slow sites, backups, and migrations.",
+      "I used control panels, Chrome DevTools, some HTML/CSS/PHP, and DNS tools to find the problem.",
+      "I walked people through connecting a domain, turning on SSL, setting up email, and wrote down the issues that kept coming back.",
     ],
   },
 ];

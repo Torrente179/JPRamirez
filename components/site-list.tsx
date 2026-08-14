@@ -15,7 +15,7 @@ export function SiteList({ sites }: { sites: MaintainedSite[] }) {
             {count}
           </span>
           <span className="text-lg font-medium tracking-tight text-foreground transition-colors group-hover:text-brand">
-            Sites under care
+            Sites I look after
           </span>
         </span>
         <span

@@ -16,10 +16,10 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
 | Page | The moment |
 |---|---|
 | Home | Giant "Ramirez" sinking behind the color portrait + rotating headline. Mobile home is an app cover, not a scaled desktop. |
-| About | "Useful when a problem needs *investigation*, not a script." |
+| About | "Better when it needs *investigation*, not a script." |
 | Experience | Shipped-proof chips attached to the roles they came from |
 | Projects | Status dots treating side projects like monitored services |
-| Stack | "Tools are easy. Knowing *what breaks* is the skill." |
+| Stack | "Anyone can pick tools. The skill is knowing *what breaks*." |
 | Now | The 7-phase roadmap rendered as a deploy pipeline |
 
 ## 2. Typography
@@ -132,7 +132,7 @@ ever ship in markup), and globals.css kills CSS animations.
 | `ProjectRow` | Hairline row: index, name, status dot, tagline, mono stack line, sliding arrow |
 | `ExperienceRow` | Same row contract as `ProjectRow`: index, company, Present/`ok` or period/`subtle` dot, tagline, mono title, sliding arrow. Links to `/experience#slug`. |
 | `CvDownload` | Same-origin `public/cv.pdf` with `download` filename. Used on Home (work section), Experience header, and Footer. |
-| `SiteList` | Native `<details>` under MemberDev. Summary is a metric: large brand count + `Sites under care` in heading type, `+`/`−` marker. Open state: hairline rows, hostname + `↗`. |
+| `SiteList` | Native `<details>` under MemberDev. Summary is a metric: large brand count + `Sites I look after` in heading type, `+`/`−` marker. Open state: hairline rows, hostname + `↗`. |
 | `SectionHeading` | `01 — Title` mono eyebrow |
 | `PageHeader` | Subpage hero: eyebrow, display title (accent word), optional lede, optional `action` (used on Experience for CV download) |
 | `Reveal` / `Stagger` | The only two motion wrappers; don't invent new ones per page |
@@ -153,10 +153,18 @@ ever ship in markup), and globals.css kills CSS animations.
 
 ## 9. Voice
 
-First person, plain language, honest about status ("Private beta — it runs my
-training week"). Mono labels are ops vocabulary: OPERATIONAL, SHIPPING, ON THE
-RADAR, PHASE 0. Headlines state a point of view, never a job title. No
-exclamation points, no emoji, no buzzword chains.
+First person, like a person talking, not a magazine. Mix short sentences with
+normal ones. Honest about status ("Private beta — it runs my training week").
+No TED-talk pivots, no "one X at a time," no em-dash essays.
+
+Juan Pablo is bilingual (English / Spanish). English copy should read like he
+wrote it: clear, a bit warm, specific about the work. Not US-editorial, not
+translated-from-Spanish stiffness. Spanish, if added, should sound spoken,
+not like a literal translation of the English.
+
+Mono labels stay ops vocabulary: OPERATIONAL, SHIPPING, ON THE RADAR, PHASE 0.
+Headlines state a point of view, never a job title. No exclamation points, no
+emoji, no buzzword chains.
 
 ## 10. Accessibility & states
 

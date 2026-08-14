@@ -2,21 +2,21 @@
 title: GiseUGC
 ---
 
-GiseUGC is the marketing and portfolio site I built for Gisela Saldarriaga, a UGC creator who needed her video work to sell itself. The whole site is designed around one constraint: video is the product, so video delivery has to be flawless on any connection.
+I built this for Gisela Saldarriaga, a UGC creator. She needed the videos to look good on a slow connection. The videos are the product.
 
 ## What it does
 
-- Serves a video catalog through **HLS adaptive streaming** with an MP4 fallback, delivered from **Cloudflare R2** so origin bandwidth never becomes a cost problem
-- Runs fully **bilingual** — Spanish at `/`, English at `/en/` — with content-managed strings and layouts tolerant to ±35% text-length variance
-- Generates data-driven landing pages for services, verticals, and resources
-- Uses motion as a design pillar: GSAP entrance choreography, Lenis smooth scrolling, and a three.js hero atmosphere
+- Serves a video catalog with **HLS adaptive streaming** and an MP4 fallback, files on **Cloudflare R2** so we're not paying origin bandwidth
+- Spanish at `/`, English at `/en/`. Copy lives in a CMS, and the layout has to survive Spanish being about 35% longer
+- Landing pages for services, industries, and resources, generated from data
+- Some motion: GSAP, Lenis, a three.js background in the hero
 
 ## Build notes
 
-The site is a static React + Vite build with per-route HTML entries, so it ships fast without a server. A prebuild pipeline regenerates the video catalog from a media manifest — adding a new reel is a manifest edit, not a code change.
+It's a static React + Vite build with one HTML file per route, so there's no server. A script rebuilds the video catalog from a manifest. New reel, edit the manifest, done.
 
-The interesting problems were operational, not visual: getting adaptive playback to behave across devices, keeping R2 delivery cheap and cache-friendly, and structuring bilingual content so neither language feels like the translation.
+Adaptive video on random phones was painful. So was keeping R2 cheap, and writing Spanish and English so both feel like they belong there.
 
 ## Status
 
-In production and actively maintained — recent work includes a testimonials redesign, SEO passes, and adaptive playback refinements.
+Live, and I still touch it. Lately: testimonials, some SEO, and playback fixes.

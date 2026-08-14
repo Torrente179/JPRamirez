@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Now",
   description:
-    "What I'm working on right now, the seven-phase roadmap I'm following, and where it's headed.",
+    "What I'm doing this month, the study plan behind it, and the job I'm aiming at.",
 };
 
 const stateStyles = {
@@ -29,13 +29,13 @@ export default function NowPage() {
             after it.
           </>
         }
-        lede="A living page: what has my attention right now, the roadmap behind it, and the role it's all pointing at."
+        lede="What I'm doing this month, the study plan behind it, and the job I'm aiming at."
       />
 
       {/* Current focus */}
       <section>
         <Reveal>
-          <SectionHeading index="01" title="Current focus" className="mb-8" />
+          <SectionHeading index="01" title="Right now" className="mb-8" />
         </Reveal>
         <div className="grid gap-x-10 gap-y-10 sm:grid-cols-3">
           {currentFocus.map((item, i) => (
@@ -56,9 +56,8 @@ export default function NowPage() {
         <Reveal>
           <SectionHeading index="02" title="The roadmap" className="mb-4" />
           <p className="mb-12 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            Seven phases toward AI support systems engineering — 8–10 hours a
-            week, spaced review, mistake log. Shipped artifacts are the
-            success signal; certificates are secondary.
+            Seven phases. About 8–10 hours a week. I care more about shipping
+            something than collecting certificates.
           </p>
         </Reveal>
         <ol className="relative ml-[5px] border-l border-border">

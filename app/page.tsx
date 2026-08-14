@@ -43,7 +43,7 @@ export default function Home() {
       <section className="mt-24">
         <Reveal>
           <div className="mb-8 flex items-baseline justify-between">
-            <SectionHeading index="01" title="Selected projects" />
+            <SectionHeading index="01" title="Projects" />
             <Link
               href="/projects"
               className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground transition-colors hover:text-brand"
@@ -95,7 +95,7 @@ export default function Home() {
               href="/stack"
               className="font-mono text-[11px] tracking-[0.14em] text-muted-foreground transition-colors hover:text-brand"
             >
-              full stack &amp; AI practice →
+              full stack →
             </Link>
           </div>
         </Reveal>

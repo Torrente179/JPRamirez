@@ -3,7 +3,7 @@ export const site = {
   fullName: "Juan Pablo Ramirez Romero",
   role: "Technical Support Engineer · WebOps · AI Workflow Systems",
   headline:
-    "I keep web platforms calm — hosting, DNS, WordPress, SaaS operations — and I build AI-assisted systems that make support work better.",
+    "Technical support engineer in Málaga. Hosting, DNS, WordPress, SaaS operations, and AI tools that make support work better. English and Spanish.",
   email: "pablopablo179@gmail.com",
   linkedin: "https://www.linkedin.com/in/juan-pablo-ramirez-romero",
   location: "Málaga, Spain",
