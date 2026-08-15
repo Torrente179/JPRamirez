@@ -251,6 +251,7 @@
   line-height: 0.92;
   letter-spacing: -0.035em;
   white-space: nowrap;
+  color: var(--foreground);
 }
 
 .hero-name {
@@ -259,8 +260,6 @@
   margin-top: 0;
   margin-bottom: 0;
   font-size: 1em;
-  color: rgb(237 237 240 / 0.42);
-  mix-blend-mode: plus-lighter;
 }
 
 .hero-portrait {
@@ -303,9 +302,8 @@
   right: 1.1rem;
   bottom: auto;
   left: 1.1rem;
-  z-index: 1;
+  z-index: 20;
   margin: 0;
-  color: var(--foreground);
   font-size: clamp(3.2rem, 18vw, 4.7rem);
 }
 

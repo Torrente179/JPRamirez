@@ -15,7 +15,7 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
 
 | Page | The moment |
 |---|---|
-| Home | Giant glass "Ramirez" over the color portrait + rotating headline. Mobile home is an app cover, not a scaled desktop. |
+| Home | Giant "Ramirez" over the color portrait + rotating headline. Mobile home is an app cover, not a scaled desktop. |
 | About | Bordered photo carousel beside the bio |
 | Experience | Role list with MemberDev sites I maintain |
 | Projects | Status dots treating side projects like monitored services |
@@ -31,11 +31,8 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
 
 - The hero name scale: desktop `clamp(4.2rem, 19.5vw, 17rem)` on `.hero-anchor`;
   mobile app cover `clamp(3.2rem, 18vw, 4.7rem)`. Same face: General Sans.
-- Desktop: giant name sits **on top** of the portrait. Glyphs are
-  `rgb(237 237 240 / 0.42)` with `mix-blend-mode: plus-lighter`.
-- Mobile: name locked to the **top** of the cover, **behind** the portrait so
-  the head overlaps the lower strokes. Glass comes from the photo's baked
-  alpha, not from mix-blend. Color is `--foreground`.
+- Giant name sits **on top** of the portrait, solid `--foreground`. No mix-blend,
+  no glass fade, desktop and mobile.
 - One italic accent word per headline, colored `text-brand` — this is the
   signature type gesture (`calm`, `JP`, `engineering`, `built`,
   `infrastructure`, `studying`). The word is part of a normal sentence, not a punchline.
@@ -80,12 +77,10 @@ hairline transitions.
   leading above its cap height.
 - The desktop portrait is absolutely positioned **from the name's box**
   (`.hero-anchor`). Portrait `top` is `calc(3.5rem + 0.2em)` so the cap height
-  of the name sits above the photo and the lower strokes glass over it.
-  The name's `z-index` is above the portrait.
+  of the name sits above the photo. The name's `z-index` is above the portrait.
 - Mobile home hero is an **app cover**: full-bleed photo (`52svh`), name locked
-  to the top and stacked *under* the portrait, copy + hairline actions in a
-  profile sheet below. Breakpoint matches the TabBar (`md`). Do not scale the
-  desktop lockup down.
+  to the top of the cover, copy + hairline actions in a profile sheet below.
+  Breakpoint matches the TabBar (`md`). Do not scale the desktop lockup down.
 
 ## 5. Imagery
 
@@ -136,7 +131,7 @@ ever ship in markup), and globals.css kills CSS animations.
 |---|---|
 | `Nav` | Fixed top, blur. Desktop: mono links, active = cyan. Mobile: app bar — logo `jp·` only |
 | `TabBar` | Mobile only (`md:hidden`). 5 tabs (home/projects/work/now/about), lucide icons, cyan active, safe-area padding |
-| `Hero` | Home only. Desktop: giant glass name over the portrait. Mobile (`md:hidden`): app cover + profile sheet. |
+| `Hero` | Home only. Desktop: giant name over the portrait. Mobile (`md:hidden`): app cover + profile sheet. |
 | `StatusBoard` | 3 dashboard cards (NOW / WORK / SHIPPING) fed from `lib/data/now.ts` — labels have tone dots, meta on the right |
 | `ProjectRow` | Hairline row: index, name, status dot, tagline, mono stack line, sliding arrow |
 | `ExperienceRow` | Same row contract as `ProjectRow`: index, company, Present/`ok` or period/`subtle` dot, tagline, mono title, sliding arrow. Links to `/experience#slug`. |
