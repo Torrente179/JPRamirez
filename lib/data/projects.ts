@@ -31,6 +31,7 @@ export const projects: Project[] = [
       "Envelope budgeting, investments, net worth, several currencies, and CSV or bank import.",
     stack: ["Next.js 16", "React 19", "Tailwind v4", "Base UI", "Supabase", "Recharts", "Zod"],
     status: "Production",
+    link: "https://budget-expense-seven.vercel.app",
     featured: true,
   },
   {
