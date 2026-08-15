@@ -246,36 +246,21 @@
 }
 
 .hero-name,
-.hero-app-name,
-.hero-name-front {
+.hero-app-name {
   font-weight: 500;
   line-height: 0.92;
   letter-spacing: -0.035em;
   white-space: nowrap;
-  color: var(--foreground);
 }
 
 .hero-name {
   position: relative;
-  z-index: 0;
+  z-index: 20;
   margin-top: 0;
   margin-bottom: 0;
   font-size: 1em;
-}
-
-.hero-name-back {
-  display: block;
-}
-
-.hero-name-front {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 20;
-  font-size: 1em;
-  clip-path: inset(0 0 0 68%);
-  pointer-events: none;
-  user-select: none;
+  color: rgb(237 237 240 / 0.42);
+  mix-blend-mode: plus-lighter;
 }
 
 .hero-portrait {
@@ -301,12 +286,12 @@
 .hero-app-photo-wrap {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 10;
 }
 
 .hero-app-photo {
   object-fit: cover;
-  object-position: center 8%;
+  object-position: center 4%;
   pointer-events: none;
   user-select: none;
   filter: contrast(1.04) saturate(1.05);
@@ -314,13 +299,14 @@
 
 .hero-app-name {
   position: absolute;
-  top: 0.85rem;
-  right: 1.25rem;
+  top: 0.7rem;
+  right: 1.1rem;
   bottom: auto;
-  left: 1.25rem;
-  z-index: 20;
+  left: 1.1rem;
+  z-index: 1;
   margin: 0;
-  font-size: clamp(3.05rem, 16.5vw, 4.35rem);
+  color: var(--foreground);
+  font-size: clamp(3.2rem, 18vw, 4.7rem);
 }
 
 @media (min-width: 640px) {

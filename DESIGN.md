@@ -15,7 +15,7 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
 
 | Page | The moment |
 |---|---|
-| Home | Giant "Ramirez" sinking behind the color portrait + rotating headline. Mobile home is an app cover, not a scaled desktop. |
+| Home | Giant glass "Ramirez" over the color portrait + rotating headline. Mobile home is an app cover, not a scaled desktop. |
 | About | Bordered photo carousel beside the bio |
 | Experience | Role list with MemberDev sites I maintain |
 | Projects | Status dots treating side projects like monitored services |
@@ -30,10 +30,12 @@ Each page gets exactly **one memorable moment**; everything else stays quiet:
 | Labels, metrics, nav, code | **JetBrains Mono** (via `next/font/google`) | The "ops" voice. Labels: 10–11px, uppercase, tracked `0.14em`–`0.16em` (`.eyebrow`). Never used for body copy |
 
 - The hero name scale: desktop `clamp(4.2rem, 19.5vw, 17rem)` on `.hero-anchor`;
-  mobile app cover `clamp(3.05rem, 16.5vw, 4.35rem)`.
-- Last ~32% of the giant name (`clip-path: inset(0 0 0 68%)` on
-  `.hero-name-front`) paints in front of the portrait so the last letters read
-  on top of the image; the rest stays behind the foliage.
+  mobile app cover `clamp(3.2rem, 18vw, 4.7rem)`. Same face: General Sans.
+- Desktop: giant name sits **on top** of the portrait. Glyphs are
+  `rgb(237 237 240 / 0.42)` with `mix-blend-mode: plus-lighter`.
+- Mobile: name locked to the **top** of the cover, **behind** the portrait so
+  the head overlaps the lower strokes. Glass comes from the photo's baked
+  alpha, not from mix-blend. Color is `--foreground`.
 - One italic accent word per headline, colored `text-brand` — this is the
   signature type gesture (`calm`, `JP`, `engineering`, `built`,
   `infrastructure`, `studying`). The word is part of a normal sentence, not a punchline.
@@ -77,12 +79,13 @@ hairline transitions.
   to the name lockup, and the giant type already carries ~24px of optical
   leading above its cap height.
 - The desktop portrait is absolutely positioned **from the name's box**
-  (`.hero-anchor`), so the letters-behind-foliage overlap is viewport-height-proof.
-  Portrait `top` is `calc(3.5rem + 0.2em)` — 20% of the name size more of the
-  last letters sit above the photo than the original `top-14`.
-- Mobile home hero is an **app cover**: full-bleed photo (`54svh`), name locked
-  to the top of the cover, copy + hairline actions in a profile sheet below.
-  Breakpoint matches the TabBar (`md`). Do not scale the desktop lockup down.
+  (`.hero-anchor`). Portrait `top` is `calc(3.5rem + 0.2em)` so the cap height
+  of the name sits above the photo and the lower strokes glass over it.
+  The name's `z-index` is above the portrait.
+- Mobile home hero is an **app cover**: full-bleed photo (`52svh`), name locked
+  to the top and stacked *under* the portrait, copy + hairline actions in a
+  profile sheet below. Breakpoint matches the TabBar (`md`). Do not scale the
+  desktop lockup down.
 
 ## 5. Imagery
 
@@ -94,12 +97,9 @@ hairline transitions.
 - The hero image is `public/images/jp-hero-alpha.webp`: color, full pose,
   **alpha baked into the file** (smoothstep edge fades all four sides +
   radial focus falloff, generated with PIL from
-  `~/Desktop/Fotos JP/DSC07481.ARW.jpg`). Because the fade is alpha, the
-  giant name ghosts *through* the semi-transparent foliage — do not replace
-  with CSS masks (they can't make letters show through) and never use a
-  hard-edged rectangle.
-- Treatment: `contrast-[1.04] saturate-[1.05]`, dimmed to `brightness-[0.8]`
-  on mobile where copy overlaps it.
+  `~/Desktop/Fotos JP/DSC07481.ARW.jpg`). The alpha still lets the photo
+  dissolve into the page. Do not replace with a hard-edged rectangle.
+- Treatment: `contrast-[1.04] saturate-[1.05]`.
 - If the photo changes: keep a dark-clothing/dark-ambience shot or re-check
   copy contrast over it.
 
@@ -136,7 +136,7 @@ ever ship in markup), and globals.css kills CSS animations.
 |---|---|
 | `Nav` | Fixed top, blur. Desktop: mono links, active = cyan. Mobile: app bar — logo `jp·` only |
 | `TabBar` | Mobile only (`md:hidden`). 5 tabs (home/projects/work/now/about), lucide icons, cyan active, safe-area padding |
-| `Hero` | Home only. Desktop: giant name + portrait weave. Mobile (`md:hidden`): app cover + profile sheet. |
+| `Hero` | Home only. Desktop: giant glass name over the portrait. Mobile (`md:hidden`): app cover + profile sheet. |
 | `StatusBoard` | 3 dashboard cards (NOW / WORK / SHIPPING) fed from `lib/data/now.ts` — labels have tone dots, meta on the right |
 | `ProjectRow` | Hairline row: index, name, status dot, tagline, mono stack line, sliding arrow |
 | `ExperienceRow` | Same row contract as `ProjectRow`: index, company, Present/`ok` or period/`subtle` dot, tagline, mono title, sliding arrow. Links to `/experience#slug`. |

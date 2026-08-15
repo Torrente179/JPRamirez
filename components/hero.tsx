@@ -11,10 +11,6 @@ const heroPhrases = [
   "DNS boring.",
 ];
 
-function NameVisual() {
-  return <span className="hero-name-visual">Ramirez</span>;
-}
-
 function HeroCopy({ app = false }: { app?: boolean }) {
   return (
     <>
@@ -106,12 +102,6 @@ function DesktopHero() {
 
       <div className="hero-anchor relative flex flex-1 flex-col">
         <div data-stagger className="hero-lockup">
-          <h1 className="hero-name pointer-events-none -ml-2">
-            <span className="sr-only">Juan Pablo Ramirez</span>
-            <span className="hero-name-back" aria-hidden>
-              <NameVisual />
-            </span>
-          </h1>
           <div aria-hidden className="hero-portrait">
             <Image
               src="/images/jp-hero-alpha.webp"
@@ -122,9 +112,12 @@ function DesktopHero() {
               className="w-full contrast-[1.04] saturate-[1.05]"
             />
           </div>
-          <div className="hero-name-front -ml-2" aria-hidden>
-            <NameVisual />
-          </div>
+          <h1 className="hero-name pointer-events-none -ml-2">
+            <span className="sr-only">Juan Pablo Ramirez</span>
+            <span className="hero-name-visual" aria-hidden>
+              Ramirez
+            </span>
+          </h1>
         </div>
 
         <div aria-hidden className="min-h-8 flex-1" />
@@ -153,8 +146,8 @@ function AppHero() {
         </div>
         <h1 className="hero-app-name pointer-events-none">
           <span className="sr-only">Juan Pablo Ramirez</span>
-          <span aria-hidden>
-            <NameVisual />
+          <span className="hero-name-visual" aria-hidden>
+            Ramirez
           </span>
         </h1>
       </div>
