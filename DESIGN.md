@@ -57,6 +57,10 @@ CSS gradients. The only gradients are the mask fades on ambient light.
 - `.glass`: translucent fill + border + inner top highlight. Use for most cards.
 - `.glass-2`: stronger fill + deep shadow. Use for the one card that should feel closest (hero intro, current role, case study frame).
 - `.glass-blur`: real `backdrop-filter`. **Only** on chrome (nav, app bar, tab bar) and the home hero cards. Never on lists or repeated cards: it is the most expensive thing on the page.
+- Chrome glass must stay readable without the blur: nav, app bar and tab bar fills
+  are 84–88% opaque, so text behind them is only a texture. A `view-transition-name`
+  goes on the glass element itself, never on a wrapper: a named element is a
+  backdrop root, and a blur inside it has nothing behind it to blur.
 - Radii: 16–20px inner media, 22–28px cards, 30–32px large panels, pills `999px`.
 - 3D turns are static `rotateY`/`rotateX` of 6–14°, always on a direct child of a `perspective` parent (or with `perspective()` inside the transform). Straighten on hover.
 - Section rhythm: `pt-24`–`pt-40` between sections; generous is correct.

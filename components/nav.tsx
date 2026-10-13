@@ -25,11 +25,13 @@ export function Nav() {
     <>
       <header
         className="pointer-events-none fixed inset-x-0 top-5 z-50 hidden justify-center px-5 md:flex"
-        style={{ viewTransitionName: "site-nav" }}
       >
+        {/* The transition name sits on the glass itself: a named element is a
+            backdrop root, so a name on a wrapper would leave the blur nothing to blur. */}
         <nav
           aria-label="Primary"
-          className="glass-blur pointer-events-auto flex items-center gap-1 rounded-full border border-white/14 bg-[rgba(12,15,23,0.74)] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_20px_50px_-20px_rgba(0,0,0,0.6)]"
+          style={{ viewTransitionName: "site-nav" }}
+          className="glass-blur pointer-events-auto flex items-center gap-1 rounded-full border border-white/14 bg-[rgba(12,15,23,0.84)] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_20px_50px_-20px_rgba(0,0,0,0.6)]"
         >
           <Link
             href="/"
@@ -68,16 +70,18 @@ export function Nav() {
 
       <header
         className="pointer-events-none fixed inset-x-0 top-0 z-50 flex items-center justify-between px-4 pt-[max(12px,env(safe-area-inset-top))] md:hidden"
-        style={{ viewTransitionName: "site-appbar" }}
       >
         <Link
           href="/"
           aria-label="Juan Pablo Ramirez, home"
-          className="glass-blur pointer-events-auto flex min-h-11 items-center rounded-full border border-white/16 bg-[rgba(12,15,23,0.7)] px-4 font-semibold tracking-[-0.02em]"
+          style={{ viewTransitionName: "site-appbar" }}
+          className="glass-blur pointer-events-auto flex min-h-11 items-center rounded-full border border-white/16 bg-[rgba(12,15,23,0.86)] px-4 font-semibold tracking-[-0.02em]"
         >
           jp<span className="text-brand">·</span>
         </Link>
-        <span className="glass-blur pointer-events-auto flex min-h-11 items-center gap-2 rounded-full border border-white/16 bg-[rgba(12,15,23,0.7)] px-3.5 font-mono text-xs text-muted-foreground">
+        <span
+          style={{ viewTransitionName: "site-clock" }}
+          className="glass-blur pointer-events-auto flex min-h-11 items-center gap-2 rounded-full border border-white/16 bg-[rgba(12,15,23,0.86)] px-3.5 font-mono text-xs text-muted-foreground">
           Málaga <MalagaClock />
         </span>
       </header>

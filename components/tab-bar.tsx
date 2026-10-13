@@ -21,12 +21,14 @@ export function TabBar() {
     <nav
       aria-label="Primary"
       className="fixed inset-x-3 z-50 md:hidden"
-      style={{
-        bottom: "max(12px, env(safe-area-inset-bottom))",
-        viewTransitionName: "site-tabs",
-      }}
+      style={{ bottom: "max(12px, env(safe-area-inset-bottom))" }}
     >
-      <div className="glass-blur grid grid-cols-5 gap-0.5 rounded-[26px] border border-white/16 bg-[rgba(16,20,30,0.72)] p-1.5 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7)]">
+      {/* Named on the glass, not the nav: a named element is a backdrop root,
+          so the blur would only see the empty nav behind it. */}
+      <div
+        style={{ viewTransitionName: "site-tabs" }}
+        className="glass-blur grid grid-cols-5 gap-0.5 rounded-[26px] border border-white/16 bg-[rgba(14,17,26,0.88)] p-1.5 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7)]"
+      >
         {tabs.map((tab) => {
           const active =
             tab.href === "/"
