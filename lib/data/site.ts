@@ -15,7 +15,7 @@ export const site = {
     filename: "Juan_Pablo_Ramirez_Romero_CV.pdf",
   },
   /** cut out of the seafront portrait with on-device segmentation */
-  heroCutout: { src: "/images/hero/jp-depth.webp", width: 1582, height: 2605 },
+  heroCutout: { src: "/images/hero/jp-depth.webp", width: 1594, height: 2609 },
   /** the same photo with its background, for Open Graph and schema */
   portrait: "/images/hero/jp-depth-portrait.jpg",
 } as const;

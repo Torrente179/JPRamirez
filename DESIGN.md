@@ -64,10 +64,14 @@ CSS gradients. The only gradients are the mask fades on ambient light.
 ## 5. Imagery
 
 - **Hero portrait**: `public/images/hero/jp-depth.webp`, cut out of the seafront
-  photo (`~/Downloads/Photos/f44884a7-…jpg`) with Apple's on-device Vision
-  segmentation (`scripts/hero-cutout.swift`), then `scripts/process-images.py`:
-  removes the haze halo from the edges, fades the frame-cut left arm and the
-  bottom, crops, saves WebP with alpha. Re-run both if the photo changes.
+  photo (`~/Downloads/Photos/f44884a7-…jpg`) on-device with Apple Vision:
+  `scripts/person-matte.swift` (person matte, follows the hair) and
+  `scripts/hero-cutout.swift` (foreground mask, keeps the body solid). Then
+  `scripts/refine-cutout.py` re-estimates the hair edge from the photo's own
+  colours so strands are partly transparent, removes the sky colour from them
+  (no pale fringe), fades the frame-cut left arm and the bottom, and saves WebP
+  with alpha. Re-run all three if the photo changes, then update
+  `site.heroCutout` with the new size.
 - **Ambient light**: `public/images/ambient/*.webp`, ~40px images pre-blurred by
   the same script. `<Ambient>` scales them up with `background-size: cover`;
   bilinear upscaling does the blur for free. Never use CSS `filter: blur()` on
