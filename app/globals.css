@@ -73,6 +73,15 @@
 html:has(.shot-viewer[open]) {
   overflow: hidden;
 }
+/* height the viewer keeps for its header and footer; short screens hide the footer */
+.shot-viewer {
+  --viewer-chrome: 200px;
+}
+@media (max-height: 500px) {
+  .shot-viewer {
+    --viewer-chrome: 96px;
+  }
+}
 
 @layer components {
   /* surfaces */

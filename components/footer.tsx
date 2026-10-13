@@ -19,11 +19,11 @@ export function Footer() {
           <p className="label">Contact</p>
           <a
             href={`mailto:${site.email}`}
-            className="mt-3 block text-[clamp(1.5rem,3.6vw,3.25rem)] leading-[1.05] font-medium tracking-[-0.035em] break-words transition-colors duration-300 hover:text-brand"
+            className="mt-0.5 block py-2.5 text-[clamp(1.5rem,3.6vw,3.25rem)] leading-[1.05] font-medium tracking-[-0.035em] break-words transition-colors duration-300 hover:text-brand"
           >
             {site.email}
           </a>
-          <p className="mt-3 text-[15px] text-muted-foreground">
+          <p className="mt-0.5 text-[15px] text-muted-foreground">
             {site.availability} · {site.languages.join(" and ")}
           </p>
         </div>
@@ -50,7 +50,7 @@ export function Footer() {
             <Link
               key={link.href}
               href={link.href}
-              className="transition-colors duration-300 hover:text-foreground"
+              className="-my-[13px] py-[13px] transition-colors duration-300 hover:text-foreground"
             >
               {link.label}
             </Link>

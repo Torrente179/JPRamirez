@@ -86,7 +86,7 @@ export default function AboutPage() {
                     href={site.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors duration-300 hover:text-brand"
+                    className="py-[13px] transition-colors duration-300 hover:text-brand"
                   >
                     juan-pablo-ramirez-romero ↗
                   </a>
@@ -99,7 +99,7 @@ export default function AboutPage() {
                     href={site.instagram.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors duration-300 hover:text-brand"
+                    className="py-[13px] transition-colors duration-300 hover:text-brand"
                   >
                     {site.instagram.handle} ↗
                   </a>
@@ -130,7 +130,7 @@ export default function AboutPage() {
                   href={rec.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium transition-colors duration-300 hover:text-brand"
+                  className="py-3 font-medium transition-colors duration-300 hover:text-brand"
                 >
                   {rec.name} ↗
                 </a>

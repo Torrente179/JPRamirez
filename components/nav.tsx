@@ -38,7 +38,7 @@ export function Nav() {
             aria-label="Juan Pablo Ramirez, home"
             aria-current={pathname === "/" ? "page" : undefined}
             className={cn(
-              "flex min-h-10 items-center rounded-full px-4 font-semibold tracking-[-0.02em] transition-colors duration-300",
+              "flex min-h-10 items-center rounded-full px-4 font-semibold tracking-[-0.02em] transition-colors duration-300 pointer-coarse:min-h-11",
               pathname === "/" ? "bg-white/12" : "hover:bg-white/6",
             )}
           >
@@ -52,7 +52,7 @@ export function Nav() {
                 href={link.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "flex min-h-10 items-center rounded-full px-3.5 text-sm transition-colors duration-300",
+                  "flex min-h-10 items-center rounded-full px-3.5 text-sm transition-colors duration-300 pointer-coarse:min-h-11",
                   active
                     ? "bg-white/12 text-white"
                     : "text-muted-foreground hover:bg-white/6 hover:text-foreground",
@@ -66,7 +66,7 @@ export function Nav() {
             href={site.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-light ml-1 min-h-10 px-4.5 text-sm"
+            className="btn btn-light ml-1 min-h-10 px-4.5 text-sm pointer-coarse:min-h-11"
           >
             Contact me
           </a>

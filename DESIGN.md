@@ -141,6 +141,17 @@ transitions are zeroed. Content is never hidden without motion enabled.
 - Home: cover with the name over the portrait's head, then the intro as a glass sheet with quick links and the CV button.
 - Horizontal snap carousels for status and projects; plain lists where 3D stacks would crowd (Home experience, Experience timeline rail hidden).
 - Bottom padding on the footer clears the tab bar.
+- The tab bar is at most 440px wide and centred, so the tall foldable and wide
+  phones don't stretch it. On short screens (`max-height: 500px`, a phone held
+  sideways) it drops the labels to a slim icon bar; the labels stay for screen readers.
+- Tablets and the open foldable (768px and up) use the desktop pill. On touch
+  screens (`pointer-coarse`) its items grow to 44px.
+- The screenshot viewer keeps less height for its controls on short screens: the
+  footer hides and the arrows move up next to Close.
+
+Checked in WebKit at iPhone SE to Pro Max (portrait and landscape), a foldable
+(390 folded, 890x626 and 626x890 open), and iPad mini, iPad and iPad Pro 11 and 13
+in both orientations: no sideways scroll, nothing cut off, touch targets 44px.
 
 ## 9. Voice
 

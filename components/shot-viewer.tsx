@@ -101,14 +101,20 @@ export function ShotViewer({ shots, title }: { shots: GalleryShot[]; title: stri
               {index + 1} / {shots.length}
               {shot.group && <span className="text-subtle"> · {shot.group}</span>}
             </p>
-            <button
-              type="button"
-              onClick={() => dialog.current?.close()}
-              aria-label="Close"
-              className="btn btn-ghost size-11 shrink-0 p-0"
-            >
-              <X size={18} strokeWidth={1.75} aria-hidden />
-            </button>
+            <div className="flex shrink-0 gap-2">
+              <div className="hidden gap-2 [@media(max-height:500px)]:flex">
+                <StepButtons index={index} last={shots.length - 1} onStep={(d) => go(aim.current + d)} />
+              </div>
+              <button
+                type="button"
+                autoFocus
+                onClick={() => dialog.current?.close()}
+                aria-label="Close"
+                className="btn btn-ghost size-11 shrink-0 p-0"
+              >
+                <X size={18} strokeWidth={1.75} aria-hidden />
+              </button>
+            </div>
           </header>
 
           <div
@@ -130,7 +136,7 @@ export function ShotViewer({ shots, title }: { shots: GalleryShot[]; title: stri
                     className="relative mx-auto w-full"
                     style={{
                       aspectRatio: `${s.width} / ${s.height}`,
-                      maxWidth: `calc((100dvh - 200px) * ${(s.width / s.height).toFixed(4)})`,
+                      maxWidth: `calc((100dvh - var(--viewer-chrome)) * ${(s.width / s.height).toFixed(4)})`,
                     }}
                   >
                     <div className="absolute inset-0 overflow-hidden rounded-[16px] bg-[#0a0b10] ring-1 ring-white/10">
@@ -198,7 +204,7 @@ export function ShotViewer({ shots, title }: { shots: GalleryShot[]; title: stri
             ))}
           </div>
 
-          <footer className="flex items-center justify-between gap-3 px-4 pt-2 pb-[max(14px,env(safe-area-inset-bottom))] sm:px-8">
+          <footer className="flex items-center justify-between gap-3 px-4 pt-2 pb-[max(14px,env(safe-area-inset-bottom))] sm:px-8 [@media(max-height:500px)]:hidden">
             {groups.length > 1 ? (
               <nav aria-label="Sections" className="flex min-w-0 gap-1.5 overflow-x-auto [scrollbar-width:none]">
                 {groups.map((g) => {
@@ -223,28 +229,44 @@ export function ShotViewer({ shots, title }: { shots: GalleryShot[]; title: stri
               <span />
             )}
             <div className="flex shrink-0 gap-2">
-              <button
-                type="button"
-                onClick={() => go(aim.current - 1)}
-                disabled={index === 0}
-                aria-label="Previous screen"
-                className="btn btn-ghost size-11 p-0 disabled:pointer-events-none disabled:opacity-30"
-              >
-                <ChevronLeft size={18} strokeWidth={1.75} aria-hidden />
-              </button>
-              <button
-                type="button"
-                onClick={() => go(aim.current + 1)}
-                disabled={index === shots.length - 1}
-                aria-label="Next screen"
-                className="btn btn-ghost size-11 p-0 disabled:pointer-events-none disabled:opacity-30"
-              >
-                <ChevronRight size={18} strokeWidth={1.75} aria-hidden />
-              </button>
+              <StepButtons index={index} last={shots.length - 1} onStep={(d) => go(aim.current + d)} />
             </div>
           </footer>
         </div>
       )}
     </dialog>
+  );
+}
+
+function StepButtons({
+  index,
+  last,
+  onStep,
+}: {
+  index: number;
+  last: number;
+  onStep: (direction: number) => void;
+}) {
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => onStep(-1)}
+        disabled={index === 0}
+        aria-label="Previous screen"
+        className="btn btn-ghost size-11 p-0 disabled:pointer-events-none disabled:opacity-30"
+      >
+        <ChevronLeft size={18} strokeWidth={1.75} aria-hidden />
+      </button>
+      <button
+        type="button"
+        onClick={() => onStep(1)}
+        disabled={index === last}
+        aria-label="Next screen"
+        className="btn btn-ghost size-11 p-0 disabled:pointer-events-none disabled:opacity-30"
+      >
+        <ChevronRight size={18} strokeWidth={1.75} aria-hidden />
+      </button>
+    </>
   );
 }

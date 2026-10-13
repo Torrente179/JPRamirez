@@ -19,7 +19,7 @@ export function SectionHeading({
       <Tag
         className={
           size === "lg"
-            ? "text-[clamp(2.4rem,5vw,4.5rem)] leading-none font-medium tracking-[-0.045em]"
+            ? "text-[clamp(2.4rem,5vw,4.5rem)] leading-none font-medium tracking-[-0.045em] max-[359px]:text-[2.1rem]"
             : "text-[clamp(2rem,3.4vw,2.75rem)] leading-none font-medium tracking-[-0.04em]"
         }
       >
