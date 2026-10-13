@@ -1,4 +1,4 @@
-# Design System — jp·ramirez
+# Design System — Depth
 
 The design decisions actually shipped on this site. When adding or changing UI,
 conform to this file; when a decision here changes, update this file in the
@@ -6,194 +6,151 @@ same commit.
 
 ## 1. Concept
 
-**A quiet operations console.** The site of someone who keeps production
-systems calm. Dark, precise, data-flavored — expressed through typography and
-status readouts, never cosplay (no fake terminals, no typing cursors, no
-scanlines).
+**Depth.** One dark field. Light comes from JP's own photographs, blurred, and
+content sits on glass layers at different distances. A few elements are turned
+slightly in 3D so the page reads as layered space rather than flat cards.
 
-Each page gets exactly **one memorable moment**; everything else stays quiet:
+Each page gets one memorable moment; everything else stays quiet:
 
 | Page | The moment |
 |---|---|
-| Home | Giant "Ramirez" sinking behind the color portrait + rotating headline. Mobile home is an app cover, not a scaled desktop. |
-| About | Bordered photo carousel beside the bio |
-| Experience | Role list with MemberDev sites I maintain |
-| Projects | Status dots treating side projects like monitored services |
-| Stack | Hairline tool list, grouped by AI / code / hosting / WordPress / support |
-| Now | A 7-node study map (equal steps, no progress state) plus the apps being built |
+| Home | Giant "Ramirez" behind the cut-out portrait; glass intro card floating over it; mouse depth on desktop |
+| Projects | Alternating rows; each screenshot sits in a glass frame turned toward the text |
+| Case study | The project picture morphs from the card into a tilted hero (view transition) |
+| Experience | Timeline of glass role cards; MemberDev's 31 sites in a native disclosure |
+| Now | Seven-stop study map; equal stops, no progress state |
+| Stack | Group panels; the three "How I use AI" cards fan out in 3D |
+| About | JP's letter beside a stack of photos that shuffles forward |
 
 ## 2. Typography
 
 | Role | Face | Rules |
 |---|---|---|
-| Display + body | **General Sans** (variable, self-hosted `app/fonts/`, weights 200–700) | Headings: `font-medium`, tight leading (`leading-[0.92]`–`[1.06]`), negative tracking (`-0.02em` to `-0.035em`). Body: 15–16px, `leading-relaxed`/`[1.8]`, max measure `max-w-xl`/`max-w-2xl` |
-| Labels, metrics, nav, code | **JetBrains Mono** (via `next/font/google`) | The "ops" voice. Labels: 10–11px, uppercase, tracked `0.14em`–`0.16em` (`.eyebrow`). Never used for body copy |
+| Display + body | **Geist** (`next/font/google`, variable) | Page titles use `.display`: weight 500, `-0.055em` tracking, `0.88` leading, `clamp()` sizes. Section titles `-0.045em`. Body 15–18px, leading 1.6–1.8, measure ≤ 720px |
+| Labels, metrics, meta | **Geist Mono** | `.label` (11px, uppercase, `0.14em`) and `.meta` (12px). Never for body copy |
 
-- The hero name scale: desktop `clamp(4.2rem, 19.5vw, 17rem)` on `.hero-anchor`;
-  mobile app cover `clamp(3.05rem, 16.5vw, 4.35rem)`.
-- Last ~32% of the giant name (`clip-path: inset(0 0 0 68%)` on
-  `.hero-name-front`) paints in front of the portrait so the last letters read
-  on top of the image; the rest stays behind the foliage.
-- One italic accent word per headline, colored `text-brand` — this is the
-  signature type gesture (`calm`, `JP`, `engineering`, `built`,
-  `infrastructure`, `studying`). The word is part of a normal sentence, not a punchline.
-- All numbers render with `tabular-nums` (`.nums` utility).
+- Numbers use `.nums` (tabular).
+- No italic accent words, no rotating headline. The home line is a plain sentence.
 
 ## 3. Color
 
-Single dark theme; values live in `:root` in `app/globals.css` (no `.dark`
-class, `color-scheme: dark`).
+Single dark theme. Tokens live in `:root` in `app/globals.css`.
 
 | Token | Value | Use |
 |---|---|---|
-| `--background` | `#0a0a0c` | Page field |
-| `--foreground` | `#ededf0` | Primary text |
-| `--surface` / `--card` | `#101014` | Cards (status board) |
-| `--surface-2` | `#16161c` | Card hover |
-| `--muted-foreground` | `#9b9ba6` | Secondary text |
-| `--subtle` | `#6e6e7a` | Tertiary/labels |
-| `--border` | `rgba(255,255,255,0.08)` | Hairlines everywhere |
-| `--brand` | `#7de2f0` (cyan) | Accent words, active nav, hover titles, links. **The only decorative color** |
-| `--brand-dim` | `#22d3ee` | Small status dots (non-"up" states) |
-| `--ok` | `#34d399` (emerald) | Status semantics only: Production dots, Present dots. Never decorative |
-| `--ring` | `rgba(125,226,240,0.55)` | Focus outlines |
+| `--bg` | `#05070c` | Page field |
+| `--fg` | `#e8ecf4` | Primary text |
+| `--fg-2` | `#c3c9d6` | Secondary text (`text-muted-foreground`) |
+| `--fg-3` | `#aab3c5` | Labels, meta (`text-subtle`) |
+| `--brand` | `#a5b8ff` | Primary buttons, active dots, one accent per view. **The only decorative color** |
+| `--ok` | `#34d399` | Status semantics only: Production, Present |
+| `--glass` / `--glass-2` | white at 5.5% / 8.5% | Glass fills |
+| `--glass-line` / `--glass-line-2` | white at 13% / 20% | Glass borders |
+| `--line` | white at 10% | Hairlines inside glass |
 
-Rules: green = "system up" semantics, cyan = brand. Don't add colors. Don't
-use gradients for decoration — the only gradients are the baked photo fade and
-hairline transitions.
+Rules: don't add colors. Light comes from photographs (see Imagery), never from
+CSS gradients. The only gradients are the mask fades on ambient light.
 
-## 4. Space & layout
+## 4. Surfaces & layout
 
-- Container: `max-w-6xl` (1152px), `px-5 sm:px-8`.
-- Section rhythm: `mt-24`–`mt-28` between sections; generous is correct.
-- **Hairlines over boxes**: lists are `border-t` rows (`.hairline`), not cards.
-  Cards (rounded `rounded-xl border bg-surface`) are reserved for the status
-  board and chips.
-- Section headers: mono eyebrow `01 — Section name` (cyan index, `SectionHeading`),
-  echoing the CV's numbered sections. Home: `01` projects, `02` work, `03` stack.
-- Hero vertical logic (desktop): capped flex spacer above the name (`max-h-12`)
-  so tall viewports push extra space *below* content, never above the name. The
-  cap is deliberately small — the location line should read as a label attached
-  to the name lockup, and the giant type already carries ~24px of optical
-  leading above its cap height.
-- The desktop portrait is absolutely positioned **from the name's box**
-  (`.hero-anchor`), so the letters-behind-foliage overlap is viewport-height-proof.
-  Portrait `top` is `calc(3.5rem + 0.2em)` — 20% of the name size more of the
-  last letters sit above the photo than the original `top-14`.
-- Mobile home hero is an **app cover**: full-bleed photo (`54svh`), name locked
-  to the top of the cover, copy + hairline actions in a profile sheet below.
-  Breakpoint matches the TabBar (`md`). Do not scale the desktop lockup down.
+- Container: `max-w-7xl` (1280px), `px-4 sm:px-8`.
+- `.glass`: translucent fill + border + inner top highlight. Use for most cards.
+- `.glass-2`: stronger fill + deep shadow. Use for the one card that should feel closest (hero intro, current role, case study frame).
+- `.glass-blur`: real `backdrop-filter`. **Only** on chrome (nav, app bar, tab bar) and the home hero cards. Never on lists or repeated cards: it is the most expensive thing on the page.
+- Radii: 16–20px inner media, 22–28px cards, 30–32px large panels, pills `999px`.
+- 3D turns are static `rotateY`/`rotateX` of 6–14°, always on a direct child of a `perspective` parent (or with `perspective()` inside the transform). Straighten on hover.
+- Section rhythm: `pt-24`–`pt-40` between sections; generous is correct.
 
 ## 5. Imagery
 
-- One photographic power move on Home; About gets a bordered 3:4 carousel of
-  personal photos (travel, friends, motorcycles) that crossfades on its own.
-  No other photography.
-- About carousel files live in `public/images/about/`. The patio portrait
-  (`public/images/jp-about.jpg`) remains the Open Graph / Person schema image.
-- The hero image is `public/images/jp-hero-alpha.webp`: color, full pose,
-  **alpha baked into the file** (smoothstep edge fades all four sides +
-  radial focus falloff, generated with PIL from
-  `~/Desktop/Fotos JP/DSC07481.ARW.jpg`). Because the fade is alpha, the
-  giant name ghosts *through* the semi-transparent foliage — do not replace
-  with CSS masks (they can't make letters show through) and never use a
-  hard-edged rectangle.
-- Treatment: `contrast-[1.04] saturate-[1.05]`, dimmed to `brightness-[0.8]`
-  on mobile where copy overlaps it.
-- If the photo changes: keep a dark-clothing/dark-ambience shot or re-check
-  copy contrast over it.
+- **Hero portrait**: `public/images/hero/jp-depth.webp`, cut out of the seafront
+  photo (`~/Downloads/Photos/f44884a7-…jpg`) with Apple's on-device Vision
+  segmentation (`scripts/hero-cutout.swift`), then `scripts/process-images.py`:
+  removes the haze halo from the edges, fades the frame-cut left arm and the
+  bottom, crops, saves WebP with alpha. Re-run both if the photo changes.
+- **Ambient light**: `public/images/ambient/*.webp`, ~40px images pre-blurred by
+  the same script. `<Ambient>` scales them up with `background-size: cover`;
+  bilinear upscaling does the blur for free. Never use CSS `filter: blur()` on
+  large images.
+- Project media: real screenshots from the project repos in
+  `public/images/projects/`. Budget & Expense has no screenshot yet (icon plus
+  callouts); Trainer Cloud is private (its four sections instead). To add one,
+  change `media` in `lib/data/projects.ts`.
+- About: six personal photos in `public/images/about/`.
+- `site.portrait` (the full seafront photo) is the Open Graph / Person schema image.
 
 ## 6. Motion
 
-Feel: **calm and springless**. Custom cubic-bezier `power3.out`-family easing;
-no bounce, no parallax stacks, nothing loops except the status dot pulse,
-the home headline, and the About photos.
+Feel: calm, springless, `cubic-bezier(0.22, 1, 0.36, 1)` (`--ease`). Transform
+and opacity only. No scroll-jacking library: scrolling is native.
 
-| Pattern | Where | Spec |
+| Pattern | Where | How |
 |---|---|---|
-| Stagger entrance | Page heroes (`Stagger`, `[data-stagger]`) | GSAP fromTo, y:26→0, alpha 0→1, 1.05s, stagger 0.085 |
-| Scroll reveal | Everything below the fold (`Reveal`) | One pattern reused: y:24→0 + fade, 0.9s, trigger `top 88%`, once |
-| Rotating headline | Home only (`RotatingText`) | Blur-morph swap: out (blur 9px, y −12, 0.38s) → in (0.65s), 3s hold |
-| Photo carousel | About sidebar (`PhotoCarousel`) | Crossfade 0.75s `power3.out`, 2.5s hold. Pauses on hover/focus, `prefers-reduced-motion`, and hidden tabs. Dots + `01 / 06` readout. |
-| Page transition | `template.tsx` + `.page-enter` | CSS: fade + 10px rise, 0.55s |
-| Smooth scroll | `SmoothScroll` (Lenis) | lerp 0.115, synced to GSAP ScrollTrigger via `gsap.ticker` |
-| Status pulse | `.status-dot` | 2.6s soft ring, `--ok` only |
-| Micro-interactions | Links/cards | Hover: title → cyan, arrow `translate-x-1`, card bg → surface-2. Touch: `active:scale-[0.985–0.99]` |
+| Entrance | Page tops (`.enter`, `.enter-settle`, `.enter-fade`, `--d` delay) | CSS keyframes on load. No JS |
+| Reveal | Below the fold (`data-reveal`) | CSS scroll-driven (`animation-timeline: view()`), `translate` + opacity. Browsers without support just show content |
+| Hero scroll | Home | Name drifts up, portrait sinks, light dims (`animation-timeline: scroll()`) |
+| Mouse depth | Home hero, desktop only | `HeroDepth`: one rAF loop, sleeps when settled, writes `transform` on `[data-depth]` layers |
+| Route change | Every navigation | View Transitions (`experimental.viewTransition`): page fades and rises; nav/tab bar stay anchored; project media morphs card to hero (`media-{slug}`) |
+| Photo stack | About | Cards move between slots with transform/opacity; auto-advance pauses on hover, focus, hidden tab |
+| Hover | Cards, buttons | Border/background lift, arrow nudges 3px, panels straighten |
 
-**Reduced motion**: every JS component early-returns on
-`prefers-reduced-motion` (content stays fully visible — no opacity-0 states
-ever ship in markup), and globals.css kills CSS animations.
-
-**GSAP gotchas (learned the hard way):**
-- GSAP owns the inline `transform` of `[data-stagger]`/`Reveal` elements —
-  position them with `top`/`margin`, never transforms.
-- Tailwind v4 does not compile arbitrary translate utilities
-  (`-translate-y-[70%]` → nothing). Use plain CSS or top/margin utilities.
+**Reduced motion**: every keyframe and scroll animation sits inside
+`prefers-reduced-motion: no-preference`; JS components return early; view
+transitions are zeroed. Content is never hidden without motion enabled.
 
 ## 7. Components (`components/`)
 
 | Component | Contract |
 |---|---|
-| `Nav` | Fixed top, blur. Desktop: mono links, active = cyan. Mobile: app bar — logo `jp·` only |
-| `TabBar` | Mobile only (`md:hidden`). 5 tabs (home/projects/work/now/about), lucide icons, cyan active, safe-area padding |
-| `Hero` | Home only. Desktop: giant name + portrait weave. Mobile (`md:hidden`): app cover + profile sheet. |
-| `StatusBoard` | 3 dashboard cards (NOW / WORK / SHIPPING) fed from `lib/data/now.ts` — labels have tone dots, meta on the right |
-| `ProjectRow` | Hairline row: index, name, status dot, tagline, mono stack line, sliding arrow |
-| `ExperienceRow` | Same row contract as `ProjectRow`: index, company, Present/`ok` or period/`subtle` dot, tagline, mono title, sliding arrow. Links to `/experience#slug`. |
-| `CvDownload` | Same-origin `public/cv.pdf` with `download` filename. Used on Home (work section), Experience header, and Footer. |
-| `SiteList` | Native `<details>` under MemberDev. Summary is a compact metric: brand count (`text-xl`) + `Sites I maintain` in row type, `+`/`−` marker. Open state: hairline rows, hostname + `↗`. |
-| `SectionHeading` | `01 — Title` mono eyebrow |
-| `PageHeader` | Subpage hero: eyebrow, display title (accent word), optional lede, optional `action` (used on Experience for CV download) |
-| `PhotoCarousel` | About only. Stacked `next/image` fills in a 3:4 bordered frame, auto-advance, no arrows |
-| `Reveal` / `Stagger` | The only two motion wrappers; don't invent new ones per page |
-| shadcn/ui | Installed (button/badge/separator/tooltip) but restyled via tokens; never ship default-looking components |
+| `Nav` | Desktop: centred glass pill, fixed. Phone: app bar with logo and Málaga clock |
+| `TabBar` | Phone only. Floating glass bar, 5 tabs (Home, Projects, Work, Now, About). Stack is reached from Home and the footer |
+| `Footer` | Glass contact panel + link row |
+| `Hero` | Home only. Name behind cut-out, intro card (sheet on phone), info card (desktop) |
+| `HeroDepth` | Pointer depth wrapper for the hero |
+| `PageHero` | Subpage header: big page name, lede, actions, optional metrics row, ambient light |
+| `Ambient` | Photo light, `fade="bottom"` for page tops, `"both"` for sections |
+| `ProjectMedia` | Card / frame / hero variants; carries the view-transition name |
+| `StatusLabel` | Dot + text; colour never carries meaning alone |
+| `SiteList` | Native `<details>` of maintained sites |
+| `StudyMap` | Now page, client component |
+| `PhotoStack` | About page, client component |
+| `MalagaClock` | `useSyncExternalStore`, server renders `--:--` |
 
-## 8. Mobile = app, not shrunken desktop
+## 8. Phone = app, not a shrunken desktop
 
-- Bottom `TabBar` is primary navigation; top bar is an app bar with the logo.
-  Both appear below `md`.
-- Home hero below `md` is a cover photo with the name on it and a profile
-  sheet underneath — never the desktop giant-name-plus-offset-portrait scaled
-  down.
-- `main` gets `pb-20` clearance for the tab bar and `overflow-x-clip` so the
-  hero photo can bleed to the screen edge without horizontal scroll.
-- Touch feedback (`active:scale`) on every tappable card/row.
-- Stack page is intentionally not a tab: reachable from Home's stack section
-  and the footer.
+- App bar on top, floating tab bar at the bottom (`md:hidden`).
+- Home: cover with the name over the portrait's head, then the intro as a glass sheet with quick links and the CV button.
+- Horizontal snap carousels for status and projects; plain lists where 3D stacks would crowd (Home experience, Experience timeline rail hidden).
+- Bottom padding on the footer clears the tab bar.
 
 ## 9. Voice
 
-First person, plain sentences. No slogans, no "not X" punchlines, no poster
-headlines. Honest about status ("Private beta — it runs my training week").
+First person, plain sentences, the way JP would write an email. Specific facts,
+no hype.
 
-Juan Pablo is an AI engineer with DevOps and WebOps behind it. English and
-Spanish. Write the way he would in an email: clear, specific, a bit of heat.
-Complete sentences. Not US-editorial, not a support ticket bio, not
-translated-from-Spanish stiffness.
+- No slogans, rotating phrases or cute pairs ("keep DNS boring").
+- No one-line fragments as sentences, no colon-punchlines, no reflexive lists of
+  three, no "X, Y, and the Z they run on".
+- No em dashes in body copy. No exclamation points, no emoji.
+- Page titles name the page.
+- Facts come from `lib/data/*` and `content/projects/*.mdx`; pages never hardcode them.
+- The About letter is JP's own text. Do not rewrite it unless he edits it.
+  Recommendations are quotes; never edit them.
 
-The About page is his letter. Do not rewrite it into a resume, a product
-blurb, or a chatbot pitch. Leave his wording alone unless he edits it.
+## 10. Performance budget
 
-Mono labels stay ops vocabulary: SHIPPING, PHASE labels only
-where they mark a map, not a personal progress tracker.
-Page titles name the page. No exclamation points, no emoji, no buzzword chains.
+- Every route is static (SSG). Keep it that way.
+- App JavaScript is small: client components are the nav, tab bar, clock, hero
+  depth, study map and photo stack. Don't add animation libraries; CSS does the
+  motion.
+- One preloaded image per page at most (the hero portrait on Home, the project
+  media on a case study).
+- `backdrop-filter` only where §4 allows it.
 
-## 10. Accessibility & states
+## 11. Accessibility
 
-- Focus: visible 2px cyan `outline` with 3px offset on everything.
-- Hero portrait is `aria-hidden` + empty alt (decorative); About carousel
-  slides carry real alt text on the current photo only.
-- Status/tone dots always pair with text — color is never the only signal.
-- External links: `target="_blank" rel="noopener noreferrer"` + `↗`.
-- Content data lives in `lib/data/*.ts` + `content/projects/*.mdx` — pages
-  never hardcode facts.
-- Public work history starts at Hostinger (Aug 2020). Do not list 5CA /
-  Epic Games on the site.
-
-## 11. Don't
-
-- No light mode (tokens are ready, but it's a deliberate v2+).
-- No new accent colors, no gradient text, no glows beyond the status pulse.
-- No emoji or clip-art icons; lucide line icons only, and only in the TabBar.
-- No boxed card grids where a hairline list would do.
-- No motion that doesn't clarify or reward — if in doubt, leave it out.
+- Focus: 2px periwinkle outline, 3px offset.
+- Decorative layers (`Ramirez`, ambient light, hero portrait) are `aria-hidden`.
+- Touch targets ≥ 44px; tab bar items 52px.
+- External links open in a new tab with `↗`.
+- Public work history starts at Hostinger (Aug 2020). Do not list 5CA / Epic Games.

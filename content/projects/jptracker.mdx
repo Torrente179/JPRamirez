@@ -2,23 +2,23 @@
 title: JPTracker
 ---
 
-I needed to track hours across clients and turn them into invoices without paying for another tool. It became a time-tracking and invoicing app I use for freelance work.
+I needed to track my hours across clients and turn them into invoices without paying for another tool, so I built one. It's what I use for my freelance work.
 
 ## What it does
 
-- **Weekly calendar** with UTC-based tasks, drag-and-drop, and timers you can pause
-- **Invoices** go draft → final. An invoice only gets a number when you finalize it
-- **Exports** to PDF, CSV, and PNG
-- **Monthly reporting** with client-hours search and Recharts dashboards
-- Auth: email/password, Google and Apple, and WebAuthn
-- A one-time import from the localStorage version that came before it
+- A **weekly calendar** with tasks stored in UTC, drag and drop, and timers you can pause
+- **Invoices** that go from draft to final. An invoice only gets its number once it's finalized
+- **Exports** to PDF, CSV and PNG
+- **Monthly reports**, with a search for hours by client and Recharts dashboards
+- Sign-in with email and password, Google, Apple or a passkey (WebAuthn)
+- A one-time import from the older localStorage version of the app
 
 ## Build notes
 
-React 19 + Vite on the client, Supabase for auth and Postgres with row-level security. PDFs are generated in the browser with jsPDF and html2canvas. No server needed to make an invoice.
+The client is React 19 and Vite. Supabase handles auth and Postgres, with row-level security on the data. PDFs are generated in the browser with jsPDF and html2canvas, so making an invoice doesn't need a server.
 
-Time is stored in UTC and shown in the viewer's timezone, so the hours stay correct.
+Time is stored in UTC and shown in whatever timezone you're in, so the hours always add up.
 
 ## Status
 
-Deployed and in use at [jptimetracker.vercel.app](https://jptimetracker.vercel.app).
+It's live at [jptimetracker.vercel.app](https://jptimetracker.vercel.app) and I use it for my own work.

@@ -2,33 +2,31 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Home,
-  FolderOpen,
-  Briefcase,
-  Map,
-  CircleUser,
-} from "lucide-react";
+import { Activity, Briefcase, House, LayoutGrid, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const tabs = [
-  { href: "/", label: "home", icon: Home },
-  { href: "/projects", label: "projects", icon: FolderOpen },
-  { href: "/experience", label: "work", icon: Briefcase },
-  { href: "/now", label: "now", icon: Map },
-  { href: "/about", label: "about", icon: CircleUser },
+  { href: "/", label: "Home", icon: House },
+  { href: "/projects", label: "Projects", icon: LayoutGrid },
+  { href: "/experience", label: "Work", icon: Briefcase },
+  { href: "/now", label: "Now", icon: Activity },
+  { href: "/about", label: "About", icon: User },
 ];
 
+/** Phone only. A floating glass bar; Stack is reached from Home and the footer. */
 export function TabBar() {
   const pathname = usePathname();
 
   return (
     <nav
       aria-label="Primary"
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/85 backdrop-blur-xl md:hidden"
-      style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+      className="fixed inset-x-3 z-50 md:hidden"
+      style={{
+        bottom: "max(12px, env(safe-area-inset-bottom))",
+        viewTransitionName: "site-tabs",
+      }}
     >
-      <div className="grid h-16 grid-cols-5">
+      <div className="glass-blur grid grid-cols-5 gap-0.5 rounded-[26px] border border-white/16 bg-[rgba(16,20,30,0.72)] p-1.5 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.7)]">
         {tabs.map((tab) => {
           const active =
             tab.href === "/"
@@ -39,19 +37,14 @@ export function TabBar() {
             <Link
               key={tab.href}
               href={tab.href}
+              aria-current={active ? "page" : undefined}
               className={cn(
-                "flex flex-col items-center justify-center gap-1 transition-colors duration-200 active:scale-95",
-                active ? "text-brand" : "text-subtle",
+                "flex min-h-[52px] flex-col items-center justify-center gap-[3px] rounded-[20px] text-[10px] font-medium transition-[background-color,color,transform] duration-300 active:scale-95",
+                active ? "bg-white/10 text-brand" : "text-subtle",
               )}
             >
-              <Icon
-                size={20}
-                strokeWidth={active ? 2.2 : 1.8}
-                aria-hidden
-              />
-              <span className="font-mono text-[9px] uppercase tracking-[0.12em]">
-                {tab.label}
-              </span>
+              <Icon size={20} strokeWidth={1.8} aria-hidden />
+              {tab.label}
             </Link>
           );
         })}

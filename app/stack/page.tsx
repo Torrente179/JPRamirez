@@ -1,76 +1,87 @@
 import type { Metadata } from "next";
-import { PageHeader } from "@/components/page-header";
-import { Reveal } from "@/components/motion";
+import { Ambient } from "@/components/ambient";
+import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
-import { stackGroups, aiPractice } from "@/lib/data/stack";
+import { aiPractice, stackGroups } from "@/lib/data/stack";
 
 export const metadata: Metadata = {
   title: "Stack",
-  description:
-    "Agents, TypeScript, hosting, WordPress. The stack behind the AI systems I build.",
+  description: "The tools I use to build AI features and to keep sites running.",
 };
 
 export default function StackPage() {
   return (
-    <div className="mx-auto max-w-6xl px-5 sm:px-8">
-      <PageHeader
-        eyebrow="Stack"
-        title={
-          <>
-            Agents, code, and{" "}
-            <span className="text-brand italic">infrastructure</span>.
-          </>
-        }
-        lede="Claude Code, Codex, Cursor. TypeScript. The hosting and WordPress layer I already run in production."
+    <>
+      <PageHero
+        title="Stack"
+        lede="The tools I use to build AI features and to keep sites running."
+        ambient="/images/ambient/clouds.webp"
       />
 
-      <div>
-        {stackGroups.map((group, gi) => (
-          <Reveal key={group.id} delay={gi * 0.04}>
-            <section className="hairline grid gap-6 py-10 lg:grid-cols-[240px_1fr] lg:gap-12">
-              <h2 className="font-mono text-[11px] uppercase tracking-[0.16em] text-brand">
+      <section aria-label="Tools" className="mx-auto grid max-w-7xl gap-4 px-4 sm:px-8 lg:grid-cols-2">
+        {stackGroups.map((group) => (
+          <section
+            key={group.id}
+            data-reveal
+            className="glass rounded-[26px] p-6 md:p-7"
+            aria-labelledby={`stack-${group.id}`}
+          >
+            <div className="flex items-baseline justify-between gap-3">
+              <h2 id={`stack-${group.id}`} className="text-[22px] font-medium tracking-[-0.02em]">
                 {group.title}
               </h2>
-              <ul className="grid gap-x-10 gap-y-3 sm:grid-cols-2">
-                {group.items.map((item) => (
-                  <li
-                    key={item.name}
-                    className="flex items-baseline justify-between gap-4 border-b border-border/50 pb-2.5"
-                  >
-                    <span className="text-[15px] font-medium">{item.name}</span>
-                    {item.note && (
-                      <span className="text-right font-mono text-[11px] tracking-[0.04em] text-subtle">
-                        {item.note}
-                      </span>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </Reveal>
+              <span className="meta nums">{String(group.items.length).padStart(2, "0")}</span>
+            </div>
+            <ul className="mt-4">
+              {group.items.map((item) => (
+                <li
+                  key={item.name}
+                  className="flex items-baseline justify-between gap-4 border-t border-white/8 py-3"
+                >
+                  <span className="text-base">{item.name}</span>
+                  {item.note && <span className="meta text-right">{item.note}</span>}
+                </li>
+              ))}
+            </ul>
+          </section>
         ))}
-      </div>
+      </section>
 
-      <section className="mt-28">
-        <Reveal>
-          <SectionHeading index="01" title="How I use AI" className="mb-4" />
-          <p className="mb-12 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            How I work with agents, and what I have already put in production.
-          </p>
-        </Reveal>
-        <div className="grid gap-x-10 gap-y-12 md:grid-cols-3">
-          {aiPractice.map((block, i) => (
-            <Reveal key={block.title} delay={i * 0.08}>
-              <div className="hairline pt-6">
-                <h3 className="text-base font-medium">{block.title}</h3>
-                <p className="mt-3 text-sm leading-[1.75] text-muted-foreground">
-                  {block.body}
-                </p>
+      <section className="relative isolate overflow-clip pt-32 pb-28 md:pt-44 md:pb-40">
+        <div className="absolute inset-x-[10%] top-36 -z-10 h-[460px]">
+          <Ambient src="/images/ambient/hero.webp" opacity={0.35} />
+        </div>
+        <div className="mx-auto max-w-7xl px-4 sm:px-8">
+          <SectionHeading
+            title="How I use AI"
+            aside={
+              <p className="max-w-[400px] text-base leading-[1.7] text-muted-foreground">
+                How I work with coding agents, and the AI I&apos;ve already shipped.
+              </p>
+            }
+          />
+          <div className="grid gap-4 md:grid-cols-3 md:[perspective:1800px]">
+            {aiPractice.map((block, i) => (
+              <div
+                key={block.title}
+                data-reveal
+                className={
+                  "glass-2 flex min-h-64 flex-col gap-4 rounded-[26px] p-7 md:p-8 " +
+                  (i === 0
+                    ? "md:[transform:rotateY(6deg)] md:origin-right"
+                    : i === 2
+                      ? "md:[transform:rotateY(-6deg)] md:origin-left"
+                      : "")
+                }
+              >
+                <span className="meta text-brand">0{i + 1}</span>
+                <h3 className="text-2xl font-medium tracking-[-0.025em]">{block.title}</h3>
+                <p className="text-[15px] leading-[1.75] text-muted-foreground">{block.body}</p>
               </div>
-            </Reveal>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

@@ -11,16 +11,16 @@ export const statusBoard: StatusCard[] = [
   {
     label: "Now",
     tone: "brand",
-    title: "AI systems",
-    body: "Agentic coding, RAG, evals. And four apps of my own.",
+    title: "Learning AI systems",
+    body: "I'm going deep on coding agents and on getting reliable answers out of models.",
     href: "/now",
-    meta: "building",
+    meta: "studying",
   },
   {
     label: "Work",
     tone: "ok",
     title: "MemberDev",
-    body: "WordPress membership sites, and the AI on them.",
+    body: "I run the hosting and day-to-day of WordPress membership sites, and I build the AI chat on them.",
     href: "/experience",
     meta: "since 2023",
   },
@@ -28,9 +28,9 @@ export const statusBoard: StatusCard[] = [
     label: "Shipping",
     tone: "brand",
     title: "My own apps",
-    body: "GiseUGC, Budget & Expense, and JPTracker are live. Trainer Cloud is a private beta I use myself.",
+    body: "GiseUGC, Budget & Expense and JPTracker are live. Trainer Cloud is private and I use it to plan my training.",
     href: "/projects",
-    meta: "3 in production",
+    meta: "3 live",
   },
 ];
 
@@ -47,42 +47,45 @@ export const studyTopics: StudyTopic[] = [
     short: "Agents",
     title: "Agentic coding",
     summary:
-      "Claude Code, Codex, Cursor. Inspect, plan, implement, test, review, against real repos.",
+      "Working with Claude Code, Codex and Cursor on real repos, from planning a change to reviewing it.",
   },
   {
     id: 2,
     short: "Debugging",
     title: "Debugging, SQL, Git",
-    summary: "Shell, Git, SQL, and a tight loop on small tasks.",
+    summary: "The basics I lean on every day, practised on small tasks until they're quick.",
   },
   {
     id: 3,
     short: "TypeScript",
     title: "TypeScript, React, Node",
-    summary: "The languages and libraries I use when I build my own apps.",
+    summary: "What I use to build my own apps.",
   },
   {
     id: 4,
     short: "A small SaaS",
     title: "A small SaaS",
-    summary: "Auth, billing, and data boundaries, written down so the app stays clear.",
+    summary:
+      "Auth, billing and data boundaries, written down before I build so the app stays easy to reason about.",
   },
   {
     id: 5,
     short: "Model output",
     title: "Reliable model output",
-    summary: "Schemas, validation, retries, and a fallback when the model keeps failing.",
+    summary:
+      "Schemas, validation and retries, plus a fallback for when the model keeps getting it wrong.",
   },
   {
     id: 6,
     short: "Retrieval",
     title: "Retrieval with sources",
-    summary: "Chunking, citations, freshness, and tests so answers can be checked.",
+    summary:
+      "Chunking, citations and keeping content fresh, with tests so every answer can be checked.",
   },
   {
     id: 7,
     short: "Production",
     title: "Running it in production",
-    summary: "Approvals, traces, cost, model routing, and safety.",
+    summary: "Approvals, tracing, cost, deciding which model handles what, and safety.",
   },
 ];

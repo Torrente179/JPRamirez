@@ -16,8 +16,8 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          background: "#0a0a0c",
-          color: "#ededf0",
+          background: "#05070c",
+          color: "#e8ecf4",
           fontFamily: "monospace",
         }}
       >
@@ -28,7 +28,7 @@ export default function OpengraphImage() {
             gap: 14,
             fontSize: 22,
             letterSpacing: 3,
-            color: "#9b9ba6",
+            color: "#aab3c5",
           }}
         >
           REMOTE · EU/AMERICAS
@@ -37,7 +37,7 @@ export default function OpengraphImage() {
           <div style={{ fontSize: 84, fontWeight: 600, letterSpacing: -2 }}>
             Juan Pablo Ramirez
           </div>
-          <div style={{ fontSize: 30, color: "#7de2f0", letterSpacing: 1 }}>
+          <div style={{ fontSize: 30, color: "#a5b8ff", letterSpacing: 1 }}>
             AI Engineer · DevOps · WebOps
           </div>
         </div>
@@ -46,7 +46,7 @@ export default function OpengraphImage() {
             display: "flex",
             justifyContent: "space-between",
             fontSize: 22,
-            color: "#6e6e7a",
+            color: "#aab3c5",
             letterSpacing: 2,
           }}
         >

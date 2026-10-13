@@ -1,175 +1,125 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Stagger } from "@/components/motion";
-import { StatusLine } from "@/components/status-line";
-import { RotatingText } from "@/components/rotating-text";
+import type { CSSProperties } from "react";
+import { Ambient } from "@/components/ambient";
+import { HeroDepth } from "@/components/hero-depth";
+import { MalagaClock } from "@/components/malaga-clock";
+import { site } from "@/lib/data/site";
 
-const heroPhrases = [
-  "agents in production.",
-  "web platforms calm.",
-  "context grounded.",
-  "DNS boring.",
+const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
+
+const quickLinks = [
+  { href: "/experience", label: "Experience" },
+  { href: "/projects", label: "Projects" },
+  { href: "/about", label: "About me" },
 ];
 
-function NameVisual() {
-  return <span className="hero-name-visual">Ramirez</span>;
-}
-
-function HeroCopy({ app = false }: { app?: boolean }) {
-  return (
-    <>
-      <p
-        data-stagger
-        className={
-          app
-            ? "text-[1.35rem] leading-snug font-medium tracking-tight"
-            : "text-2xl leading-snug font-medium tracking-tight md:text-3xl"
-        }
-      >
-        I&apos;m Juan Pablo. I keep{" "}
-        <RotatingText
-          phrases={heroPhrases}
-          className="inline-block text-brand italic"
-        />
-      </p>
-      <p
-        data-stagger
-        className={
-          app
-            ? "mt-3 text-[15px] leading-relaxed text-muted-foreground"
-            : "mt-5 max-w-lg text-base leading-relaxed text-muted-foreground"
-        }
-      >
-        AI engineer. DevOps and WebOps. Agentic coding, RAG in production,
-        and the infrastructure it all runs on.
-      </p>
-      {app ? (
-        <div data-stagger className="mt-5">
-          <Link
-            href="/experience"
-            className="hairline flex items-center justify-between py-4 font-mono text-[12px] tracking-[0.14em] text-foreground uppercase active:scale-[0.99]"
-          >
-            <span>Work history</span>
-            <span aria-hidden className="text-brand">
-              →
-            </span>
-          </Link>
-          <Link
-            href="/projects"
-            className="hairline flex items-center justify-between py-4 font-mono text-[12px] tracking-[0.14em] text-muted-foreground uppercase active:scale-[0.99]"
-          >
-            <span>View projects</span>
-            <span aria-hidden>→</span>
-          </Link>
-          <Link
-            href="/about"
-            className="hairline flex items-center justify-between py-4 font-mono text-[12px] tracking-[0.14em] text-muted-foreground uppercase active:scale-[0.99]"
-          >
-            <span>About me</span>
-            <span aria-hidden>→</span>
-          </Link>
-        </div>
-      ) : (
-        <div data-stagger className="mt-8 flex items-center gap-7">
-          <Link
-            href="/projects"
-            className="group flex items-center gap-2 font-mono text-[12px] tracking-[0.14em] text-foreground uppercase"
-          >
-            <span className="link-quiet">View projects</span>
-            <span
-              aria-hidden
-              className="text-brand transition-transform duration-300 group-hover:translate-x-1"
-            >
-              →
-            </span>
-          </Link>
-          <Link
-            href="/about"
-            className="font-mono text-[12px] tracking-[0.14em] text-muted-foreground uppercase transition-colors hover:text-foreground"
-          >
-            About me
-          </Link>
-        </div>
-      )}
-    </>
-  );
-}
-
-function DesktopHero() {
-  return (
-    <Stagger className="relative hidden min-h-[88svh] flex-col overflow-visible pt-20 md:flex">
-      <div data-stagger className="relative z-20">
-        <StatusLine />
-      </div>
-
-      <div aria-hidden className="max-h-12 min-h-6 flex-[0.35]" />
-
-      <div className="hero-anchor relative flex flex-1 flex-col">
-        <div data-stagger className="hero-lockup">
-          <h1 className="hero-name pointer-events-none -ml-2">
-            <span className="sr-only">Juan Pablo Ramirez</span>
-            <span className="hero-name-back" aria-hidden>
-              <NameVisual />
-            </span>
-          </h1>
-          <div aria-hidden className="hero-portrait">
-            <Image
-              src="/images/jp-hero-alpha.webp"
-              alt=""
-              width={1600}
-              height={1600}
-              priority
-              className="w-full contrast-[1.04] saturate-[1.05]"
-            />
-          </div>
-          <div className="hero-name-front -ml-2" aria-hidden>
-            <NameVisual />
-          </div>
-        </div>
-
-        <div aria-hidden className="min-h-8 flex-1" />
-
-        <div className="relative z-20 max-w-xl">
-          <HeroCopy />
-        </div>
-      </div>
-    </Stagger>
-  );
-}
-
-function AppHero() {
-  return (
-    <Stagger className="md:hidden">
-        <div data-stagger className="hero-app-cover -mx-5 sm:-mx-8">
-        <div className="hero-app-photo-wrap">
-          <Image
-            src="/images/jp-hero-alpha.webp"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="hero-app-photo"
-          />
-        </div>
-        <h1 className="hero-app-name pointer-events-none">
-          <span className="sr-only">Juan Pablo Ramirez</span>
-          <span aria-hidden>
-            <NameVisual />
-          </span>
-        </h1>
-      </div>
-      <div className="pt-5">
-        <HeroCopy app />
-      </div>
-    </Stagger>
-  );
-}
-
+/**
+ * Home hero. The surname sits behind the cut-out portrait; the intro card
+ * floats over it on desktop and becomes a sheet under the cover on phones.
+ */
 export function Hero() {
   return (
-    <>
-      <AppHero />
-      <DesktopHero />
-    </>
+    <HeroDepth className="relative">
+      <section
+        aria-label="Introduction"
+        className="hero h-[78svh] min-h-[560px] max-h-[760px] md:h-[100svh] md:max-h-[1100px] md:min-h-[760px]"
+      >
+        <div className="hero-scroll-light absolute inset-0 -z-10">
+          <Ambient src="/images/ambient/hero.webp" opacity={0.34} fade="bottom" className="enter-fade" />
+        </div>
+
+        <div className="hero-scroll-name absolute inset-x-0 top-[84px] flex justify-center md:top-[12svh]">
+          <div data-depth="-14">
+            <p aria-hidden className="hero-name enter" style={d(60)}>
+              Ramirez
+            </p>
+          </div>
+        </div>
+
+        <div className="hero-scroll-portrait absolute inset-0 flex items-end justify-center">
+          <div data-depth="16" className="flex h-full items-end justify-center md:mr-[18%]">
+            <Image
+              src={site.heroCutout.src}
+              width={site.heroCutout.width}
+              height={site.heroCutout.height}
+              alt=""
+              aria-hidden
+              preload
+              quality={85}
+              sizes="(min-width: 768px) 40vw, 92vw"
+              className="hero-portrait enter-settle"
+              style={d(140)}
+            />
+          </div>
+        </div>
+
+        <div
+          className="absolute right-[5vw] bottom-14 z-20 hidden w-[290px] flex-col gap-3 lg:flex"
+          data-depth="-8"
+          data-tilt="3"
+        >
+          <div className="glass glass-blur enter rounded-[20px] p-5" style={d(560)}>
+            <span className="label flex justify-between">
+              <span>Málaga, Spain</span>
+              <MalagaClock />
+            </span>
+            <span className="mt-2.5 block text-[15px]">Remote, EU and Americas hours</span>
+            <span className="block text-sm text-muted-foreground">English and Spanish</span>
+          </div>
+          <p className="label enter-fade flex items-center gap-2.5 self-end" style={d(1000)}>
+            Scroll
+            <span aria-hidden className="block h-7 w-px bg-white/45" />
+          </p>
+        </div>
+      </section>
+
+      <div className="relative z-20 -mt-28 px-3 md:absolute md:bottom-14 md:left-[5vw] md:mt-0 md:w-[480px] md:px-0">
+        <div data-depth="9" data-tilt="2.5">
+          <div className="glass-2 glass-blur enter rounded-[28px] p-6 md:p-8" style={d(380)}>
+            <h1 className="flex items-center gap-2.5 text-sm font-medium text-muted-foreground">
+              <span className="dot bg-brand" />
+              {site.name} · AI engineer
+            </h1>
+            <p className="mt-4 text-[clamp(1.6rem,2.4vw,2.15rem)] leading-[1.14] font-medium tracking-[-0.03em]">
+              Hi, I&apos;m Juan Pablo. I build AI tools and look after the infrastructure
+              under them.
+            </p>
+            <p className="mt-4 text-[15px] leading-[1.7] text-muted-foreground">
+              Right now that means AI chat for WordPress membership sites at MemberDev,
+              a few apps of my own, and a lot of time with coding agents.
+            </p>
+
+            <nav aria-label="Quick links" className="mt-5 md:hidden">
+              {quickLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="group flex min-h-[52px] items-center justify-between border-t border-white/12 text-base font-medium active:opacity-70"
+                >
+                  {link.label}
+                  <span aria-hidden className="arrow text-brand transition-[translate] duration-300">
+                    →
+                  </span>
+                </Link>
+              ))}
+            </nav>
+
+            <div className="mt-6 flex flex-wrap gap-2.5 max-md:mt-2">
+              <Link href="/projects" className="btn btn-brand max-md:hidden">
+                See my projects <span aria-hidden className="arrow">→</span>
+              </Link>
+              <a
+                href={site.cv.href}
+                download={site.cv.filename}
+                className="btn btn-ghost max-md:w-full max-md:border-transparent max-md:bg-brand max-md:text-background"
+              >
+                Download CV
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </HeroDepth>
   );
 }

@@ -2,21 +2,21 @@
 title: GiseUGC
 ---
 
-I built this for Gisela Saldarriaga, a UGC creator. She needed the videos to look good on a slow connection.
+I built this site for Gisela Saldarriaga, a UGC creator. Her work is video, so the main job was making those videos look good even on a slow connection.
 
 ## What it does
 
-- Serves a video catalog with **HLS adaptive streaming** and an MP4 fallback, files on **Cloudflare R2** so we're not paying origin bandwidth
-- Spanish at `/`, English at `/en/`. Copy lives in a CMS, and the layout has to survive Spanish being about 35% longer
-- Landing pages for services, industries, and resources, generated from data
-- Some motion: GSAP, Lenis, a three.js background in the hero
+- Plays her video catalog with **HLS adaptive streaming**, falls back to MP4, and keeps the files on **Cloudflare R2** so there's no origin bandwidth bill
+- Serves Spanish at `/` and English at `/en/`. The copy lives in a CMS, and the layout has to cope with Spanish running about 35% longer than English
+- Builds the landing pages for services, industries and resources from data
+- Has some motion: GSAP, Lenis and a three.js background in the hero
 
 ## Build notes
 
-It's a static React + Vite build with one HTML file per route, so there's no server. A script rebuilds the video catalog from a manifest. New reel, edit the manifest, done.
+It's a static React and Vite build that outputs one HTML file per route, so there's no server to run. A script rebuilds the video catalog from a manifest, which means adding a new reel is just a manifest edit.
 
-Adaptive video on random phones was painful. So was keeping R2 cheap, and writing the Spanish and English copy so both languages fit the layout.
+The hard parts were getting adaptive video to behave on all kinds of phones, keeping R2 costs down, and writing Spanish and English copy that both fit the same layout.
 
 ## Status
 
-Live, and I still touch it. Lately: testimonials, some SEO, and playback fixes.
+It's live and I still work on it. The latest changes were testimonials, some SEO work and playback fixes.

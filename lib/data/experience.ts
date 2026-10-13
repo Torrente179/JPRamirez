@@ -60,12 +60,12 @@ export const roles: Role[] = [
     location: "Denver, CO, US · Remote · Freelance",
     current: true,
     companyBlurb:
-      "A small agency that builds custom WordPress membership sites for coaches, educators, and communities.",
-    tagline: "WordPress membership sites, and the AI on them",
+      "A small agency that builds custom WordPress membership sites for coaches, educators and communities.",
+    tagline: "Hosting, WordPress care and AI chat for membership sites",
     points: [
-      "I take care of WordPress membership sites. Features, hosting, plugins, DNS, security, the day-to-day so they stay up.",
-      "I build AI chat for those sites so it can read the content and explain it to members.",
-      "I also do the heavier jobs: migrations, moving media off the server, looking at logs when something is slow or broken.",
+      "I look after the agency's WordPress membership sites: new features, hosting, plugins, DNS, security, and the day-to-day work that keeps them online.",
+      "I build AI chat for these sites that reads their content and answers members' questions.",
+      "I take on the bigger jobs too, like migrations, moving media off the server, and digging through logs when something is slow or broken.",
     ],
     sites: memberdevSites,
   },
@@ -76,13 +76,13 @@ export const roles: Role[] = [
     period: "Jul 2022 — May 2023",
     location: "New York, US · Remote",
     companyBlurb:
-      "Cloud hosting for agencies and small businesses. Cloudways, acquired by DigitalOcean in 2022.",
-    tagline: "450+ hosting accounts, about $160K MRR",
+      "Managed cloud hosting for agencies and small businesses. I worked at Cloudways, which DigitalOcean bought in 2022.",
+    tagline: "450+ hosting accounts, about $160K a month in revenue",
     points: [
-      "I looked after 450+ web companies on managed cloud hosting, about $160K a month in recurring revenue.",
-      "I did account reviews covering WordPress hosting, DNS, SSL, migrations, backups, server setup, and performance.",
-      "I watched for churn, upsells, technical risk, and bad configs, then turned that into next steps or an escalation.",
-      "I worked with customers, Support, Product, and Engineering when a ticket wasn't enough.",
+      "I managed more than 450 web companies on managed cloud hosting, worth about $160K a month in recurring revenue.",
+      "I ran account reviews that covered WordPress hosting, DNS, SSL, migrations, backups, server setup and performance.",
+      "I watched for churn risk, upsell openings and badly configured servers, and turned what I found into a plan or an escalation.",
+      "When a ticket wasn't enough, I brought in Support, Product and Engineering and worked it through with the customer.",
     ],
   },
   {
@@ -91,13 +91,13 @@ export const roles: Role[] = [
     title: "Technical Success Specialist · Web Hosting",
     period: "Aug 2020 — Jul 2022",
     location: "Lithuania · Remote",
-    companyBlurb: "A large web hosting company with millions of customers.",
-    tagline: "4,800+ customers over live chat and email",
+    companyBlurb: "A big web hosting company with millions of customers.",
+    tagline: "4,800+ customers helped over chat and email",
     points: [
-      "I helped 4,800+ customers over live chat and email in a busy hosting queue.",
-      "I fixed hosting, domains, DNS, SSL, business email, WordPress, slow sites, backups, and migrations.",
-      "I used control panels, Chrome DevTools, some HTML/CSS/PHP, and DNS tools to find the problem.",
-      "I walked people through connecting a domain, turning on SSL, setting up email, and wrote down the issues that kept coming back.",
+      "I helped more than 4,800 customers over live chat and email in a busy hosting support queue.",
+      "I fixed problems with hosting, domains, DNS, SSL, business email, WordPress, slow sites, backups and migrations.",
+      "I tracked issues down with control panels, Chrome DevTools, a bit of HTML, CSS and PHP, and DNS tools.",
+      "I walked people through connecting domains, turning on SSL and setting up email, and I documented the problems that kept coming back.",
     ],
   },
 ];
@@ -111,3 +111,13 @@ export const education = [
   { title: "CS50 — Computer Science Foundations", org: "Harvard / edX", year: "" },
   { title: "Responsive Web Design", org: "freeCodeCamp", year: "" },
 ];
+
+/** Numbers that appear in the role points above, surfaced as metrics. */
+export const highlights = [
+  { value: String(memberdevSites.length), label: "Sites I maintain" },
+  { value: "450+", label: "Hosting accounts, ~$160K MRR" },
+  { value: "4,800+", label: "Customers helped" },
+];
+
+/** First remote role on the public history. */
+export const remoteSince = { year: "2020", label: "Remote since August" };

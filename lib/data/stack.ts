@@ -75,14 +75,14 @@ export const stackGroups: StackGroup[] = [
 export const aiPractice = [
   {
     title: "Agentic coding",
-    body: "Claude Code, Codex, and Cursor run the loop: inspect, plan, implement, test, review. Each repo has instructions so the agent follows the same architecture and commands I would.",
+    body: "I write most code with Claude Code, Codex and Cursor. They read the repo, plan the change, write it and test it, and then I review it. Every repo has written instructions, so the agent follows the same architecture and commands I would.",
   },
   {
     title: "AI in production",
-    body: "I put custom AI chat on WordPress membership sites. It has to fit the site they already have.",
+    body: "I've shipped custom AI chat on WordPress membership sites. It has to fit into the site the client already has, not the other way round.",
   },
   {
     title: "AI systems engineering",
-    body: "Structured outputs, retrieval with citations, evals, traces, cost, model routing. The goal is systems that still work after launch.",
+    body: "What I care about is how a system behaves after launch. That means structured outputs, retrieval with citations, evals, tracing, cost and choosing the right model for each job.",
   },
 ];

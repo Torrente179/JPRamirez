@@ -1,33 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
-import { JetBrains_Mono } from "next/font/google";
+import { ViewTransition } from "react";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 import { TabBar } from "@/components/tab-bar";
 import { Footer } from "@/components/footer";
-import { SmoothScroll } from "@/components/smooth-scroll";
 import { site } from "@/lib/data/site";
 
-const generalSans = localFont({
-  src: [
-    {
-      path: "./fonts/GeneralSans-Variable.woff2",
-      weight: "200 700",
-      style: "normal",
-    },
-    {
-      path: "./fonts/GeneralSans-VariableItalic.woff2",
-      weight: "200 700",
-      style: "italic",
-    },
-  ],
-  variable: "--font-general-sans",
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
@@ -54,7 +42,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0c",
+  themeColor: "#05070c",
+  viewportFit: "cover",
 };
 
 const personJsonLd = {
@@ -66,7 +55,7 @@ const personJsonLd = {
   description: site.headline,
   email: `mailto:${site.email}`,
   url: site.url,
-  image: `${site.url}/images/jp-about.jpg`,
+  image: `${site.url}${site.portrait}`,
   sameAs: [site.linkedin],
   address: {
     "@type": "PostalAddress",
@@ -92,18 +81,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${generalSans.variable} ${jetbrainsMono.variable}`}
-    >
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
       <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
-        <SmoothScroll />
         <Nav />
-        <main className="overflow-x-clip pt-14 pb-20 md:pb-0">{children}</main>
+        <ViewTransition default="page">
+          <main className="overflow-x-clip">{children}</main>
+        </ViewTransition>
         <Footer />
         <TabBar />
       </body>
