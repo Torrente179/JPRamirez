@@ -1,0 +1,113 @@
+<!doctype html>
+<!--
+  The link-preview image (Open Graph / Twitter), drawn like the Home hero:
+  the surname behind the cut-out portrait, light from the photo, one glass card.
+  Rendered to app/opengraph-image.jpg by scripts/og/render.mjs.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=block" rel="stylesheet">
+<style>
+  :root {
+    --bg: #05070c;
+    --fg: #e8ecf4;
+    --fg-2: #c3c9d6;
+    --fg-3: #aab3c5;
+    --brand: #a5b8ff;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Geist", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .light {
+    position: absolute;
+    inset: -12%;
+    background: url(../../public/images/ambient/hero.webp) center / cover;
+    opacity: 0.5;
+    -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent 96%);
+    mask-image: linear-gradient(to bottom, #000 30%, transparent 96%);
+  }
+  .name {
+    position: absolute;
+    top: 46px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 318px;
+    font-weight: 600;
+    line-height: 0.82;
+    letter-spacing: -0.065em;
+    color: rgba(232, 236, 244, 0.95);
+    white-space: nowrap;
+  }
+  .portrait {
+    position: absolute;
+    bottom: 0;
+    left: 640px;
+    height: 600px;
+    /* the photo frame cuts the left arm: fade that side out, below the shoulders only */
+    -webkit-mask-image: linear-gradient(to bottom, #000 38%, transparent 54%), linear-gradient(to right, transparent 4%, #000 34%);
+    mask-image: linear-gradient(to bottom, #000 38%, transparent 54%), linear-gradient(to right, transparent 4%, #000 34%);
+  }
+  .card {
+    position: absolute;
+    left: 56px;
+    bottom: 52px;
+    width: 500px;
+    padding: 30px 32px 28px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.085);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 40px 90px rgba(0, 0, 0, 0.55);
+    -webkit-backdrop-filter: blur(22px) saturate(1.4);
+    backdrop-filter: blur(22px) saturate(1.4);
+  }
+  .who {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--fg-2);
+  }
+  .dot { width: 9px; height: 9px; border-radius: 99px; background: var(--brand); }
+  .line {
+    margin-top: 16px;
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.14;
+    letter-spacing: -0.03em;
+  }
+  .foot {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-size: 17px;
+    color: var(--fg-3);
+  }
+  .foot b { font-weight: 500; color: var(--brand); }
+</style>
+</head>
+<body>
+  <div class="light"></div>
+  <p class="name" aria-hidden="true">Ramirez</p>
+  <img class="portrait" src="../../public/images/hero/jp-depth.webp" alt="">
+  <div class="card">
+    <p class="who"><span class="dot"></span>Juan Pablo Ramirez · AI engineer</p>
+    <p class="line">I build AI tools and look after the infrastructure under them.</p>
+    <p class="foot"><b>jpramirez.dev</b><span>Málaga, Spain</span></p>
+  </div>
+</body>
+</html>

@@ -85,7 +85,12 @@ CSS gradients. The only gradients are the mask fades on ambient light.
   Walkthrough notes live in `lib/data/qbank-shots.ts`. To add one,
   change `media` in `lib/data/projects.ts`.
 - About: six personal photos in `public/images/about/`.
-- `site.portrait` (the full seafront photo) is the Open Graph / Person schema image.
+- `site.portrait` (the full seafront photo) is the Person schema image.
+- Link preview: `app/opengraph-image.jpg` and `app/twitter-image.jpg` (1200x630)
+  are drawn like the Home hero (surname behind the cut-out, photo light, one
+  glass card) from `scripts/og/og.html`. Re-render with
+  `node scripts/og/render.mjs <path-to-playwright>` after changing the photo,
+  the line on the card, or the type.
 
 ## 6. Motion
 
