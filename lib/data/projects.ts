@@ -14,12 +14,6 @@ export type ProjectMedia =
       alt: string;
       /** short facts floated around the icon on the case study */
       callouts: { label: string; value: string }[];
-    }
-  | {
-      kind: "private";
-      /** the app's sections, shown instead of screenshots */
-      sections: { name: string; note?: string }[];
-      callouts: string[];
     };
 
 export type GalleryShot = {
@@ -49,6 +43,49 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "qbank",
+    name: "QBank",
+    tagline: "The question bank I built for Obesity Medicine Review",
+    summary:
+      "Doctors use it to study for the obesity medicine board exam. It replaced SpeedExam on 1 October 2026, and in the first two weeks members answered 163,000 questions over more than 6,000 hours of tests.",
+    stack: ["WordPress", "PHP", "MySQL", "JavaScript", "esbuild", "Playwright", "axe-core"],
+    status: "Production",
+    link: "https://obesitymedicinereview.com/online-qbank/",
+    linkLabel: "OMR's QBank page",
+    featured: true,
+    media: {
+      kind: "image",
+      src: "/images/projects/qbank-tutor.jpg",
+      alt: "QBank in Tutor mode: a pharmacotherapy question with the correct answer marked and the explanation below",
+      width: 1800,
+      height: 1125,
+    },
+    gallery: [
+      {
+        src: "/images/projects/qbank-create.jpg",
+        alt: "QBank Create test screen with ready-made sets, a question count and a summary of the test",
+        caption: "Create test · ready-made sets or your own",
+        width: 1800,
+        height: 1125,
+      },
+      {
+        src: "/images/projects/qbank-phone.jpg",
+        alt: "QBank on a phone: the Today screen, a question in Tutor mode, and Performance",
+        caption: "On a phone · Today, a question, Performance",
+        width: 1800,
+        height: 1125,
+      },
+    ],
+    ambient: "/images/ambient/qbank.webp",
+    glance: [
+      { label: "Status", value: "Live since 1 October 2026" },
+      { label: "First two weeks", value: "163,000 questions answered" },
+      { label: "Time in tests", value: "6,000+ hours" },
+      { label: "Migrated", value: "2,713 questions from SpeedExam" },
+      { label: "Built for", value: "Obesity Medicine Review, at MemberDev" },
+    ],
+  },
   {
     slug: "giseugc",
     name: "GiseUGC",
@@ -146,38 +183,6 @@ export const projects: Project[] = [
       { label: "Exports", value: "PDF, CSV, PNG" },
       { label: "Time", value: "Stored in UTC" },
       { label: "Server", value: "None needed to invoice" },
-    ],
-  },
-  {
-    slug: "trainer-cloud",
-    name: "Trainer Cloud",
-    tagline: "A private app for my training, food and groceries",
-    summary:
-      "It plans my training week, sets macros by type of day, logs meals, and scores groceries on price against protein at the stores I use in Spain.",
-    stack: ["Next.js 16", "React 19", "Supabase", "Zod", "Vitest"],
-    status: "Private beta",
-    featured: false,
-    media: {
-      kind: "private",
-      sections: [
-        { name: "Today" },
-        { name: "Plan", note: "The training week" },
-        { name: "Food", note: "Meals" },
-        { name: "Week", note: "Review" },
-      ],
-      callouts: [
-        "2-day or 3-day splits",
-        "Macro targets per day type",
-        "Mercadona and HiperDino, scored by price vs. protein",
-      ],
-    },
-    ambient: "/images/ambient/hilltop.webp",
-    glance: [
-      { label: "Status", value: "Private beta" },
-      { label: "Sections", value: "Today, Plan, Food, Week" },
-      { label: "Stores", value: "Mercadona, HiperDino" },
-      { label: "Auth", value: "Magic link, Supabase" },
-      { label: "Tests", value: "Domain layer, Vitest" },
     ],
   },
 ];

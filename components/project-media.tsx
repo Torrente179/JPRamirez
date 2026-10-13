@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { ViewTransition } from "react";
-import { Lock } from "lucide-react";
 import { Ambient } from "@/components/ambient";
 import type { Project } from "@/lib/data/projects";
 import { cn } from "@/lib/utils";
@@ -102,49 +101,6 @@ export function ProjectMedia({
                   variant === "frame" ? "size-32 md:size-36" : "size-20",
                 )}
               />
-            </div>
-          ))}
-
-        {media.kind === "private" &&
-          (hero ? (
-            <div className="flex h-full flex-col gap-5 p-5 md:p-10">
-              <div className="flex flex-wrap justify-between gap-3">
-                <span className="label">{media.sections.length} sections</span>
-                <span className="meta">Private beta</span>
-              </div>
-              <ul className="grid flex-1 grid-cols-2 gap-3 md:grid-cols-4">
-                {media.sections.map((s, i) => (
-                  <li
-                    key={s.name}
-                    className="glass flex min-h-32 flex-col justify-between rounded-[20px] p-5 md:min-h-52 md:p-6"
-                  >
-                    <span className="meta text-brand">0{i + 1}</span>
-                    <span>
-                      <span className="block text-2xl font-medium tracking-[-0.03em] md:text-3xl">
-                        {s.name}
-                      </span>
-                      {s.note && (
-                        <span className="mt-1 block text-sm text-subtle">{s.note}</span>
-                      )}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <ul className="flex flex-wrap gap-2">
-                {media.callouts.map((c) => (
-                  <li
-                    key={c}
-                    className="rounded-xl border border-white/12 bg-white/5 px-3.5 py-2.5 text-sm text-muted-foreground"
-                  >
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-subtle">
-              <Lock size={variant === "frame" ? 34 : 26} strokeWidth={1.5} aria-hidden />
-              <span className="meta">Private app</span>
             </div>
           ))}
       </div>

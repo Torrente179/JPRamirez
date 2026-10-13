@@ -78,7 +78,8 @@ CSS gradients. The only gradients are the mask fades on ambient light.
   large images.
 - Project media: real screenshots from the project repos in
   `public/images/projects/`. Budget & Expense has no screenshot yet (icon plus
-  callouts); Trainer Cloud is private (its four sections instead). To add one,
+  callouts). QBank's shots come from the plugin's browser fixture with sample
+  questions in place of the test data, never from member accounts. To add one,
   change `media` in `lib/data/projects.ts`.
 - About: six personal photos in `public/images/about/`.
 - `site.portrait` (the full seafront photo) is the Open Graph / Person schema image.

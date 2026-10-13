@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Four apps I built and still look after, GiseUGC, Budget & Expense, JPTracker and Trainer Cloud, plus client work from MemberDev.",
+    "Four apps I built and still look after, QBank, GiseUGC, Budget & Expense and JPTracker, plus client work from MemberDev.",
 };
 
 export default function ProjectsPage() {
@@ -28,9 +28,11 @@ export default function ProjectsPage() {
         <span className="chip">
           <span className="dot bg-ok" /> {live} live
         </span>
-        <span className="chip">
-          <span className="dot bg-brand" /> {beta} private beta
-        </span>
+        {beta > 0 && (
+          <span className="chip">
+            <span className="dot bg-brand" /> {beta} private beta
+          </span>
+        )}
       </PageHero>
 
       <section aria-label="My projects" className="mx-auto flex max-w-7xl flex-col gap-24 px-4 pt-6 sm:px-8 md:gap-32">

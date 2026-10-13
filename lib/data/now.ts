@@ -27,10 +27,10 @@ export const statusBoard: StatusCard[] = [
   {
     label: "Shipping",
     tone: "brand",
-    title: "My own apps",
-    body: "GiseUGC, Budget & Expense and JPTracker are live. Trainer Cloud is private and I use it to plan my training.",
-    href: "/projects",
-    meta: "3 live",
+    title: "QBank",
+    body: "The question bank I built for Obesity Medicine Review went live on 1 October. Members answered 163,000 questions in the first two weeks.",
+    href: "/projects/qbank",
+    meta: "live",
   },
 ];
 

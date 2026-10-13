@@ -60,8 +60,7 @@ export default function Home() {
             aside={
               <>
                 <p className="max-w-[340px] text-[15px] leading-[1.6] text-subtle">
-                  Three are live and one is private. Each has its own page with the
-                  details.
+                  All four are live. Each has its own page with the details.
                 </p>
                 <Link href="/projects" className="btn btn-ghost group">
                   All projects <span aria-hidden className="arrow">→</span>

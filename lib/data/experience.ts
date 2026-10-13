@@ -65,6 +65,7 @@ export const roles: Role[] = [
     points: [
       "I look after the agency's WordPress membership sites: new features, hosting, plugins, DNS, security, and the day-to-day work that keeps them online.",
       "I build AI chat for these sites that reads their content and answers members' questions.",
+      "I built QBank, the question bank Obesity Medicine Review's members use to study for their board exam. It replaced SpeedExam in October 2026.",
       "I take on the bigger jobs too, like migrations, moving media off the server, and digging through logs when something is slow or broken.",
     ],
     sites: memberdevSites,

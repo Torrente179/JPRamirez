@@ -1,0 +1,33 @@
+---
+title: QBank
+---
+
+Obesity Medicine Review (OMR) helps doctors prepare for the obesity medicine board exam, and its question bank used to run on SpeedExam, a third-party service. I built a replacement inside OMR's own WordPress site at MemberDev. It went live on 1 October 2026. In the first two weeks, members answered 163,000 questions and spent more than 6,000 hours in tests.
+
+## What it does
+
+- **Overview** opens on today's work: the exam date, a daily goal, a streak, and the test to pick up next
+- **Create test** offers ready-made sets (weakest topic, never seen, got wrong, flagged) or your own mix by topic or by the exam's 29 blueprint tasks
+- **Tutor mode** shows the answer and explanation after each question. **Test mode** is timed at 60 seconds a question and shows results at the end
+- During a test you can flag, highlight, cross out choices, take notes, use a calculator, and report a problem with a question
+- Tests can be paused and resumed, and **History** lets you redo only the questions you missed
+- **Performance** scores you against the exam blueprint, weighted by each task's share of the exam, and points to the tasks where more practice would help most
+- When a member reports a problem, the OMR team's reply shows up in the app
+- On a phone it has its own layout, with a bottom bar and a full-screen question view
+- The admin side covers questions, imports and exports, members, stats, feedback, and links from questions to OMR's course lessons
+
+## Moving off SpeedExam
+
+I migrated the whole bank: 2,713 questions, 11,702 answer choices, and 560 images used across 1,596 questions. Every question was read back after the import and checked against the SpeedExam export.
+
+## Build notes
+
+It's a WordPress plugin in PHP with its own MySQL tables, so it doesn't depend on any outside service. The member app is plain JavaScript modules bundled with esbuild into one script and one stylesheet.
+
+Answers save as you go. Each save carries a version number, so a test open in two tabs can't overwrite itself, and the stale tab is told to reload. The server keeps the time for timed tests, so reloading the page doesn't give anyone extra minutes.
+
+There's a Playwright suite that runs the built files against fixture data. It covers the main flows, widths from 320 to 1536 pixels, keyboard use, reduced motion, and axe-core accessibility checks. Releases go to staging first and then to live with a release script.
+
+## Status
+
+It's live for OMR's members, and I'm still adding to it. The screenshots here use sample questions instead of OMR's bank, and no member data.
