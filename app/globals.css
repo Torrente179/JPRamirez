@@ -69,6 +69,11 @@
   }
 }
 
+/* the screenshot viewer is modal: the page behind it doesn't scroll */
+html:has(.shot-viewer[open]) {
+  overflow: hidden;
+}
+
 @layer components {
   /* surfaces */
   .glass {
@@ -341,6 +346,9 @@
   .enter-fade {
     animation: fade 1.6s var(--ease) both;
     animation-delay: var(--d, 0ms);
+  }
+  .shot-viewer[open] {
+    animation: fade 0.3s var(--ease);
   }
 
   /* scroll-driven, compositor-only: no JS involved */

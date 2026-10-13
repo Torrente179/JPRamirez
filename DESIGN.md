@@ -16,7 +16,7 @@ Each page gets one memorable moment; everything else stays quiet:
 |---|---|
 | Home | Giant "Ramirez" behind the cut-out portrait; glass intro card floating over it; mouse depth on desktop |
 | Projects | Alternating rows; each screenshot sits in a glass frame turned toward the text |
-| Case study | The project picture morphs from the card into a tilted hero (view transition) |
+| Case study | The project picture morphs from the card into a tilted hero (view transition). Clicking it opens the screenshot viewer |
 | Experience | Timeline of glass role cards; MemberDev's 31 sites in a native disclosure |
 | Now | Seven-stop study map; equal stops, no progress state |
 | Stack | Group panels; the three "How I use AI" cards fan out in 3D |
@@ -78,8 +78,11 @@ CSS gradients. The only gradients are the mask fades on ambient light.
   large images.
 - Project media: real screenshots from the project repos in
   `public/images/projects/`. Budget & Expense has no screenshot yet (icon plus
-  callouts). QBank's shots come from the plugin's browser fixture with sample
-  questions in place of the test data, never from member accounts. To add one,
+  callouts). QBank's member screens come from the plugin's browser fixture with
+  sample questions in place of the test data, never from member accounts. Its
+  admin screens are from the live admin, with every student detail blurred into
+  the image before it is saved (never a CSS blur, which would ship the data).
+  Walkthrough notes live in `lib/data/qbank-shots.ts`. To add one,
   change `media` in `lib/data/projects.ts`.
 - About: six personal photos in `public/images/about/`.
 - `site.portrait` (the full seafront photo) is the Open Graph / Person schema image.
@@ -115,6 +118,8 @@ transitions are zeroed. Content is never hidden without motion enabled.
 | `PageHero` | Subpage header: big page name, lede, actions, optional metrics row, ambient light |
 | `Ambient` | Photo light, `fade="bottom"` for page tops, `"both"` for sections |
 | `ProjectMedia` | Card / frame / hero variants; carries the view-transition name |
+| `ShotGallery` | Case-study screenshots as `data-shot` buttons. Two shots keep the turned pair; shots with a `group` become a grid per group in a "Screens" section after the write-up |
+| `ShotViewer` | Client. Full-screen native `<dialog>` with every screenshot: scroll-snap swiping, arrows and ←/→, group jumps, and numbered note boxes in periwinkle (`notes` on each shot, boxes in % of the image). Renders nothing until opened |
 | `StatusLabel` | Dot + text; colour never carries meaning alone |
 | `SiteList` | Native `<details>` of maintained sites |
 | `StudyMap` | Now page, client component |
@@ -146,7 +151,7 @@ no hype.
 
 - Every route is static (SSG). Keep it that way.
 - App JavaScript is small: client components are the nav, tab bar, clock, hero
-  depth, study map and photo stack. Don't add animation libraries; CSS does the
+  depth, study map, photo stack and screenshot viewer. Don't add animation libraries; CSS does the
   motion.
 - One preloaded image per page at most (the hero portrait on Home, the project
   media on a case study).

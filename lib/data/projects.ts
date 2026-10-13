@@ -1,4 +1,15 @@
+import { qbankShots } from "@/lib/data/qbank-shots";
+
 export type ProjectStatus = "Production" | "In development" | "Private beta";
+
+/** A box on a screenshot, in percent of its width and height, and the note that explains it. */
+export type ShotNote = {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  text: string;
+};
 
 export type ProjectMedia =
   | {
@@ -7,6 +18,8 @@ export type ProjectMedia =
       alt: string;
       width: number;
       height: number;
+      /** title in the screenshot viewer, when the image isn't also in the gallery */
+      caption?: string;
     }
   | {
       kind: "icon";
@@ -22,6 +35,10 @@ export type GalleryShot = {
   caption: string;
   width: number;
   height: number;
+  /** heading the shot is listed under, e.g. "Admin" */
+  group?: string;
+  /** walkthrough notes shown in the viewer */
+  notes?: ShotNote[];
 };
 
 export type Project = {
@@ -56,27 +73,12 @@ export const projects: Project[] = [
     featured: true,
     media: {
       kind: "image",
-      src: "/images/projects/qbank-tutor.jpg",
-      alt: "QBank in Tutor mode: a pharmacotherapy question with the correct answer marked and the explanation below",
+      src: "/images/projects/qbank-create.jpg",
+      alt: "QBank Create test screen with ready-made sets, a question count, your own mix by topic, and a summary of the test",
       width: 1800,
       height: 1125,
     },
-    gallery: [
-      {
-        src: "/images/projects/qbank-create.jpg",
-        alt: "QBank Create test screen with ready-made sets, a question count and a summary of the test",
-        caption: "Create test · ready-made sets or your own",
-        width: 1800,
-        height: 1125,
-      },
-      {
-        src: "/images/projects/qbank-phone.jpg",
-        alt: "QBank on a phone: the Today screen, a question in Tutor mode, and Performance",
-        caption: "On a phone · Today, a question, Performance",
-        width: 1800,
-        height: 1125,
-      },
-    ],
+    gallery: qbankShots,
     ambient: "/images/ambient/qbank.webp",
     glance: [
       { label: "Status", value: "Live since 1 October 2026" },
@@ -157,6 +159,7 @@ export const projects: Project[] = [
       kind: "image",
       src: "/images/projects/jptracker-screen-time-dark.jpg",
       alt: "JPTracker week view: a calendar of client tasks, a running timer, and weekly totals",
+      caption: "Week view · tasks and timers",
       width: 1800,
       height: 1315,
     },

@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import type { ComponentProps, CSSProperties } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
 import { Ambient } from "@/components/ambient";
 import { ProjectMedia } from "@/components/project-media";
+import { ShotGallery } from "@/components/shot-gallery";
+import { ShotViewer } from "@/components/shot-viewer";
 import { StatusLabel } from "@/components/status-chip";
-import { projectHost, projects } from "@/lib/data/projects";
+import { projectHost, projects, type GalleryShot } from "@/lib/data/projects";
 import { getProject, getProjectBody } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -76,6 +77,19 @@ export default async function ProjectPage({
   const prev = projects[(index - 1 + projects.length) % projects.length];
   const next = projects[(index + 1) % projects.length];
 
+  // The viewer's list: the gallery, led by the hero picture when it isn't one of them.
+  const media = project.media;
+  const gallery = project.gallery ?? [];
+  const heroAt = media.kind === "image" ? gallery.findIndex((s) => s.src === media.src) : -1;
+  const leadShot: GalleryShot[] =
+    media.kind === "image" && heroAt === -1 && gallery.length
+      ? [{ ...media, caption: media.caption ?? project.name }]
+      : [];
+  const slides = [...leadShot, ...gallery];
+  const heroShot = !slides.length || media.kind !== "image" ? null : heroAt === -1 ? 0 : heroAt;
+  // a large grouped set gets its own section after the write-up
+  const grouped = gallery.some((s) => s.group);
+
   return (
     <>
       <section className="relative isolate overflow-clip pt-32 md:pt-40">
@@ -122,37 +136,25 @@ export default async function ProjectPage({
 
           <div className="mt-12 [perspective:2000px] md:mt-16">
             <div className="glass-2 rounded-[30px] p-2 md:p-3 md:[transform:rotateX(7deg)] md:origin-top">
-              <ProjectMedia project={project} variant="hero" preload />
+              {heroShot === null ? (
+                <ProjectMedia project={project} variant="hero" preload />
+              ) : (
+                <button
+                  type="button"
+                  data-shot={heroShot}
+                  aria-label={`Open all ${slides.length} screens with notes`}
+                  className="group relative block w-full cursor-zoom-in rounded-[20px] text-left"
+                >
+                  <ProjectMedia project={project} variant="hero" preload />
+                  <span className="chip pointer-events-none absolute right-3 bottom-3 min-h-9 bg-[rgba(5,7,12,0.82)] px-3.5 text-foreground transition-colors duration-300 group-hover:border-brand/60 md:right-5 md:bottom-5">
+                    See all {slides.length} screens
+                  </span>
+                </button>
+              )}
             </div>
           </div>
 
-          {project.gallery && (
-            <div className="mt-6 grid gap-5 md:grid-cols-2 [perspective:1800px]">
-              {project.gallery.map((shot, i) => (
-                <figure
-                  key={shot.src}
-                  data-reveal
-                  className={
-                    "glass rounded-[26px] p-2.5 " +
-                    (i === 0
-                      ? "md:[transform:rotateY(6deg)] md:origin-right"
-                      : "md:[transform:rotateY(-6deg)] md:origin-left")
-                  }
-                >
-                  <div className="relative overflow-hidden rounded-[18px]" style={{ aspectRatio: `${shot.width} / ${shot.height}` }}>
-                    <Image
-                      src={shot.src}
-                      alt={shot.alt}
-                      fill
-                      sizes="(min-width: 768px) 620px, 92vw"
-                      className="object-cover object-left-top"
-                    />
-                  </div>
-                  <figcaption className="px-2 pt-3 pb-1 meta">{shot.caption}</figcaption>
-                </figure>
-              ))}
-            </div>
-          )}
+          {gallery.length > 0 && !grouped && <ShotGallery shots={gallery} offset={leadShot.length} />}
         </div>
       </section>
 
@@ -189,6 +191,18 @@ export default async function ProjectPage({
         </article>
       </section>
 
+      {grouped && (
+        <section aria-labelledby="screens" className="mx-auto max-w-7xl px-4 pt-24 sm:px-8 md:pt-32">
+          <h2 id="screens" className="text-[clamp(2.25rem,5vw,3.5rem)] font-medium tracking-[-0.045em]">
+            Screens
+          </h2>
+          <p className="mt-3 max-w-[560px] text-[17px] leading-[1.7] text-muted-foreground">
+            Open any screen for a walkthrough. The numbered notes explain each part.
+          </p>
+          <ShotGallery shots={gallery} offset={leadShot.length} />
+        </section>
+      )}
+
       <nav
         aria-label="More projects"
         className="mx-auto grid max-w-7xl gap-4 px-4 pt-32 pb-28 sm:px-8 md:grid-cols-2 md:pb-36"
@@ -216,6 +230,8 @@ export default async function ProjectPage({
           <span className="text-[15px] text-muted-foreground">{next.tagline}.</span>
         </Link>
       </nav>
+
+      {slides.length > 0 && <ShotViewer shots={slides} title={project.name} />}
     </>
   );
 }
