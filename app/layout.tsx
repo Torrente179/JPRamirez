@@ -56,7 +56,7 @@ const personJsonLd = {
   email: `mailto:${site.email}`,
   url: site.url,
   image: `${site.url}${site.portrait}`,
-  sameAs: [site.linkedin],
+  sameAs: [site.linkedin, site.instagram.href],
   address: {
     "@type": "PostalAddress",
     addressLocality: "Málaga",

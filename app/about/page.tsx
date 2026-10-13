@@ -92,6 +92,19 @@ export default function AboutPage() {
                   </a>
                 </dd>
               </div>
+              <div className="flex justify-between gap-4 border-t border-white/9 py-3.5">
+                <dt className="label pt-0.5">Instagram</dt>
+                <dd className="text-right text-sm">
+                  <a
+                    href={site.instagram.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors duration-300 hover:text-brand"
+                  >
+                    {site.instagram.handle} ↗
+                  </a>
+                </dd>
+              </div>
             </dl>
           </div>
         </div>

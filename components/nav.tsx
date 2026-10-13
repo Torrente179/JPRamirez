@@ -62,8 +62,13 @@ export function Nav() {
               </Link>
             );
           })}
-          <a href={`mailto:${site.email}`} className="btn btn-light ml-1 min-h-10 px-4.5 text-sm">
-            Email me
+          <a
+            href={site.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-light ml-1 min-h-10 px-4.5 text-sm"
+          >
+            Contact me
           </a>
         </nav>
       </header>

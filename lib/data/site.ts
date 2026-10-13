@@ -6,6 +6,9 @@ export const site = {
     "I'm an AI engineer based in Málaga. I build AI chat and agent tools that work from a site's own content, and I keep the hosting and WordPress side of those sites running. I work in English and Spanish.",
   email: "pablopablo179@gmail.com",
   linkedin: "https://www.linkedin.com/in/juan-pablo-ramirez-romero",
+  /** the nav's Contact me button opens a WhatsApp chat */
+  whatsapp: "https://wa.me/34676568366",
+  instagram: { handle: "@soyjpramirez", href: "https://www.instagram.com/soyjpramirez/" },
   location: "Málaga, Spain",
   availability: "Remote · EU/Americas overlap",
   languages: ["English", "Spanish"],
