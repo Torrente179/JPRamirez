@@ -1,0 +1,22 @@
+---
+title: GiseUGC
+---
+
+Hice este sitio para Gisela Saldarriaga, una creadora de UGC. Su trabajo es el video, así que lo principal era que esos videos se vieran bien incluso con una conexión lenta.
+
+## Qué hace
+
+- Reproduce su catálogo de videos con **streaming adaptativo HLS**, usa MP4 como respaldo y guarda los archivos en **Cloudflare R2**, así que no hay factura por el ancho de banda del servidor de origen
+- Sirve el español en `/` y el inglés en `/en/`. Los textos viven en un CMS, y el diseño tiene que aguantar que el español ocupe cerca de un 35 % más que el inglés
+- Genera a partir de datos las páginas de servicios, industrias y recursos
+- Tiene algo de movimiento: GSAP, Lenis y un fondo hecho con three.js en la portada
+
+## Cómo está hecho
+
+Es un build estático de React y Vite que genera un archivo HTML por ruta, así que no hay ningún servidor que mantener. Un script reconstruye el catálogo de videos a partir de un manifiesto, de modo que agregar un reel nuevo es solo editar ese manifiesto.
+
+Lo difícil fue lograr que el video adaptativo se comportara bien en todo tipo de celulares, mantener bajos los costos de R2 y escribir textos en español y en inglés que cupieran en el mismo diseño.
+
+## Estado
+
+Está en producción y sigo trabajando en él. Los últimos cambios fueron testimonios, algo de SEO y correcciones en la reproducción.

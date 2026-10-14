@@ -90,11 +90,12 @@ CSS gradients. The only gradients are the mask fades on ambient light.
   change `media` in `lib/data/projects.ts`.
 - About: six personal photos in `public/images/about/`.
 - `site.portrait` (the full seafront photo) is the Person schema image.
-- Link preview: `app/opengraph-image.jpg` and `app/twitter-image.jpg` (1200x630)
-  are drawn like the Home hero (surname behind the cut-out, photo light, one
-  glass card) from `scripts/og/og.html`. Re-render with
-  `node scripts/og/render.mjs <path-to-playwright>` after changing the photo,
-  the line on the card, or the type.
+- Link preview: `public/og/en.jpg` and `public/og/es.jpg` (1200x630, set in
+  `site.og`) are drawn like the Home hero (surname behind the cut-out, photo
+  light, one glass card) from `scripts/og/og.html`. The Spanish line sits in
+  `data-es` and gets a slightly wider card so it stays at three lines. Re-render
+  both with `node scripts/og/render.mjs <path-to-playwright>` after changing the
+  photo, the line on the card, or the type.
 
 ## 6. Motion
 
@@ -119,7 +120,8 @@ transitions are zeroed. Content is never hidden without motion enabled.
 
 | Component | Contract |
 |---|---|
-| `Nav` | Desktop: centred glass pill, fixed. Phone: app bar with logo and Málaga clock |
+| `Nav` | Desktop: centred glass pill, fixed, with the language toggle before Contact. Phone: app bar with logo, language toggle and Málaga clock |
+| `LangToggle` | EN \| ES segmented pill (Geist Mono 12px, white/14 thumb). Two links to the same page in each language; the thumb slides on tap, the click writes the `lang` cookie, links aren't prefetched, and scroll position is kept |
 | `TabBar` | Phone only. Floating glass bar, 5 tabs (Home, Projects, Work, Now, About). Stack is reached from Home and the footer |
 | `Footer` | Glass contact panel + link row |
 | `Hero` | Home only. Name behind cut-out, intro card (sheet on phone), info card (desktop) |
@@ -134,6 +136,7 @@ transitions are zeroed. Content is never hidden without motion enabled.
 | `StudyMap` | Now page, client component |
 | `PhotoStack` | About page, client component |
 | `MalagaClock` | `useSyncExternalStore`, server renders `--:--` |
+| `NotFoundPage` | The 404 document for `app/global-not-found.tsx`. Prerendered in English; switches to Spanish after hydration when the address starts with `/es` |
 
 ## 8. Phone = app, not a shrunken desktop
 
@@ -167,11 +170,31 @@ no hype.
 - The About letter is JP's own text. Do not rewrite it unless he edits it.
   Recommendations are quotes; never edit them.
 
+### Spanish
+
+Latin American Spanish, written by hand from the English, never machine
+translated. The same rules apply (first person, plain sentences, no em dashes in
+body copy), plus:
+
+- Neutral Latin American vocabulary: celular, computadora, carros, video, reportes,
+  malecón. No vosotros and no Spain-only words (ordenador, móvil, coger, vale).
+- The reader is addressed as tú, matching the informal English.
+- Numbers follow the RAE: no separator in four digits, a non-breaking space from
+  five (4800, 163 000, 160 000 USD). Dates are "1 de octubre de 2026"; role
+  periods follow LinkedIn's Spanish style ("sept. 2023 — actualidad").
+- Product names, tech names and UI labels that appear in a screenshot stay as
+  they are (QBank's app is in English, and its notes name buttons like Review).
+- The About letter is translated in JP's voice; if he edits the English, the
+  Spanish needs the same edit. Recommendation quotes stay in English with
+  `lang="en"`; only the relationship line is translated.
+- Short labels that would wrap and strand a word use non-breaking spaces
+  ("ingeniero de IA", "Sistemas de IA").
+
 ## 10. Performance budget
 
-- Every route is static (SSG). Keep it that way.
-- App JavaScript is small: client components are the nav, tab bar, clock, hero
-  depth, study map, photo stack and screenshot viewer. Don't add animation libraries; CSS does the
+- Every route is static (SSG), in both languages. Keep it that way.
+- App JavaScript is small: client components are the nav, language toggle, tab
+  bar, clock, hero depth, study map, photo stack, screenshot viewer and the 404. Don't add animation libraries; CSS does the
   motion.
 - One preloaded image per page at most (the hero portrait on Home, the project
   media on a case study).
@@ -184,3 +207,30 @@ no hype.
 - Touch targets ≥ 44px; tab bar items 52px.
 - External links open in a new tab with `↗`.
 - Public work history starts at Hostinger (Aug 2020). Do not list 5CA / Epic Games.
+- `<html lang>` is `en` or `es-419`. English text inside a Spanish page (the
+  recommendation quotes) carries `lang="en"`; each toggle link carries its own
+  `lang` and an accessible name in that language.
+
+## 12. Languages
+
+English at the unprefixed URLs (`/projects`), Spanish under `/es` (`/es/projects`).
+Slugs are the same in both.
+
+- Routes live in `app/[lang]`; `next.config.ts` rewrites unprefixed paths to
+  `/en/...` and redirects `/en/...` back to the unprefixed URL.
+- A first visit to an unprefixed page from a browser whose first language is
+  Spanish is sent to `/es` (307), so it never reaches the browser's translate
+  prompt. Once someone uses the toggle, the `lang` cookie decides, and `lang=es`
+  keeps sending unprefixed links to Spanish. `/es/...` URLs are never redirected.
+- Every page sets `translate="no"`, the `notranslate` class and
+  `<meta name="google" content="notranslate">`: each version is written by hand,
+  so browsers shouldn't machine-translate either one.
+- Each page sets its canonical and `hreflang` links (`en`, `es`, `x-default`)
+  with `pageAlternates`; the sitemap lists both versions.
+- Copy: anything with words is a `{ en, es }` pair (`Text` in `lib/i18n.ts`).
+  Data types take a `<S>` parameter (`Project<Text>` in the data, `Project` once
+  `localize(data, lang)` has picked a language). UI strings sit next to the
+  component that shows them. Case study write-ups are `<slug>.mdx` and
+  `<slug>.es.mdx`.
+- The 404 is `app/global-not-found.tsx`, because the root layout sits under
+  `[lang]`.

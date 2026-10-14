@@ -3,23 +3,26 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Activity, Briefcase, House, LayoutGrid, User } from "lucide-react";
+import { type Locale, localePath, stripLocale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 const tabs = [
-  { href: "/", label: "Home", icon: House },
-  { href: "/projects", label: "Projects", icon: LayoutGrid },
-  { href: "/experience", label: "Work", icon: Briefcase },
-  { href: "/now", label: "Now", icon: Activity },
-  { href: "/about", label: "About", icon: User },
+  { href: "/", label: { en: "Home", es: "Inicio" }, icon: House },
+  { href: "/projects", label: { en: "Projects", es: "Proyectos" }, icon: LayoutGrid },
+  { href: "/experience", label: { en: "Work", es: "Trabajo" }, icon: Briefcase },
+  { href: "/now", label: { en: "Now", es: "Ahora" }, icon: Activity },
+  { href: "/about", label: { en: "About", es: "Sobre mí" }, icon: User },
 ];
 
+const primary = { en: "Primary", es: "Principal" };
+
 /** Phone only. A floating glass bar; Stack is reached from Home and the footer. */
-export function TabBar() {
-  const pathname = usePathname();
+export function TabBar({ lang }: { lang: Locale }) {
+  const path = stripLocale(usePathname());
 
   return (
     <nav
-      aria-label="Primary"
+      aria-label={primary[lang]}
       className="fixed inset-x-3 z-50 mx-auto max-w-[440px] md:hidden"
       style={{ bottom: "max(12px, env(safe-area-inset-bottom))" }}
     >
@@ -32,13 +35,13 @@ export function TabBar() {
         {tabs.map((tab) => {
           const active =
             tab.href === "/"
-              ? pathname === "/"
-              : pathname === tab.href || pathname.startsWith(tab.href + "/");
+              ? path === "/"
+              : path === tab.href || path.startsWith(tab.href + "/");
           const Icon = tab.icon;
           return (
             <Link
               key={tab.href}
-              href={tab.href}
+              href={localePath(lang, tab.href)}
               aria-current={active ? "page" : undefined}
               className={cn(
                 "flex min-h-[52px] flex-col items-center justify-center gap-[3px] rounded-[20px] text-[10px] font-medium transition-[background-color,color,transform] duration-300 active:scale-95 [@media(max-height:500px)]:min-h-11 [@media(max-height:500px)]:rounded-[18px]",
@@ -46,7 +49,7 @@ export function TabBar() {
               )}
             >
               <Icon size={20} strokeWidth={1.8} aria-hidden />
-              <span className="[@media(max-height:500px)]:sr-only">{tab.label}</span>
+              <span className="[@media(max-height:500px)]:sr-only">{tab.label[lang]}</span>
             </Link>
           );
         })}

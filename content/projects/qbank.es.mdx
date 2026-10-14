@@ -1,0 +1,33 @@
+---
+title: QBank
+---
+
+Obesity Medicine Review (OMR) ayuda a los médicos a prepararse para el examen de certificación en medicina de la obesidad, y su banco de preguntas funcionaba en SpeedExam, un servicio externo. En MemberDev desarrollé un reemplazo dentro del propio sitio de WordPress de OMR. Se lanzó el 1 de octubre de 2026. En las dos primeras semanas, los miembros respondieron 163 000 preguntas y pasaron más de 6000 horas haciendo exámenes.
+
+## Qué hace
+
+- **Resumen** abre con lo que toca hoy: la fecha del examen, una meta diaria, una racha y el examen que conviene retomar
+- **Crear examen** ofrece sets listos (tema más débil, nunca vistas, falladas, marcadas) o tu propia mezcla por tema o por las 29 tareas en las que se divide el examen
+- El **modo tutor** muestra la respuesta y la explicación después de cada pregunta. El **modo examen** da 60 segundos por pregunta y muestra los resultados al final
+- Durante un examen puedes marcar preguntas, resaltar, tachar opciones, tomar notas, usar una calculadora y reportar un problema con una pregunta
+- Los exámenes se pueden pausar y retomar, y en el **historial** puedes repetir solo las preguntas que fallaste
+- **Rendimiento** te compara con el temario del examen, ponderado por el peso de cada tarea, y señala las tareas donde más te ayudaría practicar
+- Cuando un miembro reporta un problema, la respuesta del equipo de OMR aparece en la app
+- En el celular tiene su propio diseño, con una barra inferior y la pregunta a pantalla completa
+- La parte de administración cubre preguntas, importación y exportación, miembros, estadísticas, comentarios y enlaces de las preguntas a las lecciones del curso de OMR
+
+## La migración desde SpeedExam
+
+Migré el banco completo: 2713 preguntas, 11 702 opciones de respuesta y 560 imágenes usadas en 1596 preguntas. Después de la importación, cada pregunta se volvió a leer y se comparó con la exportación de SpeedExam.
+
+## Cómo está hecho
+
+Es un plugin de WordPress en PHP con sus propias tablas de MySQL, así que no depende de ningún servicio externo. La app para miembros está hecha con módulos de JavaScript sin frameworks, que esbuild empaqueta en un solo script y una sola hoja de estilos.
+
+Las respuestas se guardan sobre la marcha. Cada guardado lleva un número de versión, así que un examen abierto en dos pestañas no puede sobrescribirse a sí mismo, y la pestaña desactualizada recibe un aviso para recargar. El servidor lleva el tiempo de los exámenes cronometrados, así que recargar la página no le da a nadie minutos de más.
+
+Hay una suite de Playwright que prueba los archivos compilados con datos de ejemplo. Cubre los flujos principales, anchos de 320 a 1536 píxeles, el uso con teclado, el movimiento reducido y revisiones de accesibilidad con axe-core. Cada versión pasa primero por staging y después llega a producción con un script de publicación.
+
+## Estado
+
+Está en producción para los miembros de OMR y le sigo agregando cosas. La app está en inglés, como el examen, así que las capturas muestran la interfaz en inglés. Las de la app para miembros usan preguntas de ejemplo en lugar del banco de OMR. Las de administración son del sitio en producción, con los nombres y correos de los estudiantes y el texto de las preguntas de OMR difuminados.

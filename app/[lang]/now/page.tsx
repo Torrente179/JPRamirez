@@ -4,29 +4,51 @@ import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { StatusLabel } from "@/components/status-chip";
 import { StudyMap } from "@/components/study-map";
-import { studyTopics } from "@/lib/data/now";
-import { projects } from "@/lib/data/projects";
+import { studyTopics as topicData } from "@/lib/data/now";
+import { projects as projectData } from "@/lib/data/projects";
+import { getLang, localePath, localize, pageAlternates } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Now",
-  description: "What I'm learning right now, and the apps I'm building alongside it.",
+const copy = {
+  title: { en: "Now", es: "Ahora" },
+  lede: {
+    en: "What I'm learning right now, and the apps I'm building alongside it.",
+    es: "Lo que estoy aprendiendo ahora mismo y las apps que voy construyendo a la par.",
+  },
+  studyMap: { en: "Study map", es: "Mapa de estudio" },
+  studyAside: { en: "Seven topics. Pick one to read more.", es: "Siete temas. Elige uno para leer más." },
+  building: { en: "Building", es: "Construyendo" },
+  allProjects: { en: "All projects", es: "Todos los proyectos" },
 };
 
-export default function NowPage() {
+export async function generateMetadata({ params }: PageProps<"/[lang]/now">): Promise<Metadata> {
+  const lang = await getLang(params);
+  return {
+    title: copy.title[lang],
+    description: copy.lede[lang],
+    alternates: pageAlternates(lang, "/now"),
+  };
+}
+
+export default async function NowPage({ params }: PageProps<"/[lang]/now">) {
+  const lang = await getLang(params);
+  const t = localize(copy, lang);
+  const studyTopics = localize(topicData, lang);
+  const projects = localize(projectData, lang);
+
   return (
     <>
       <PageHero
-        title="Now"
-        lede="What I'm learning right now, and the apps I'm building alongside it."
+        title={t.title}
+        lede={t.lede}
         ambient="/images/ambient/sunset.webp"
       />
 
       <section className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionHeading
-          title="Study map"
+          title={t.studyMap}
           size="md"
-          aside={<p className="meta">Seven topics. Pick one to read more.</p>}
+          aside={<p className="meta">{t.studyAside}</p>}
         />
         <div data-reveal>
           <StudyMap topics={studyTopics} />
@@ -52,11 +74,11 @@ export default function NowPage() {
 
       <section className="mx-auto max-w-7xl px-4 pt-28 pb-28 sm:px-8 md:pt-40 md:pb-40">
         <SectionHeading
-          title="Building"
+          title={t.building}
           size="md"
           aside={
-            <Link href="/projects" className="btn btn-ghost group">
-              All projects <span aria-hidden className="arrow">→</span>
+            <Link href={localePath(lang, "/projects")} className="btn btn-ghost group">
+              {t.allProjects} <span aria-hidden className="arrow">→</span>
             </Link>
           }
         />
@@ -64,7 +86,7 @@ export default function NowPage() {
           {projects.map((project, i) => (
             <li key={project.slug} className={cn(i > 0 && "border-t border-white/10")}>
               <Link
-                href={`/projects/${project.slug}`}
+                href={localePath(lang, `/projects/${project.slug}`)}
                 className="group flex flex-wrap items-center gap-x-7 gap-y-1.5 px-6 py-5 transition-colors duration-300 hover:bg-white/[0.04] md:px-8 md:py-6"
               >
                 <span className="meta w-7">0{i + 1}</span>
@@ -74,7 +96,7 @@ export default function NowPage() {
                 <span className="flex-[2_1_300px] text-[15px] text-muted-foreground max-md:pl-14">
                   {project.tagline}
                 </span>
-                <StatusLabel status={project.status} className="w-32 max-md:pl-14" />
+                <StatusLabel status={project.status} lang={lang} className="w-32 max-md:pl-14" />
                 <span aria-hidden className="arrow text-brand max-md:hidden">
                   →
                 </span>

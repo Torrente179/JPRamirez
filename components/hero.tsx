@@ -5,24 +5,46 @@ import { Ambient } from "@/components/ambient";
 import { HeroDepth } from "@/components/hero-depth";
 import { MalagaClock } from "@/components/malaga-clock";
 import { site } from "@/lib/data/site";
+import { type Locale, localePath, localize } from "@/lib/i18n";
 
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
-const quickLinks = [
-  { href: "/experience", label: "Experience" },
-  { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About me" },
-];
+const copy = {
+  intro: { en: "Introduction", es: "Presentación" },
+  hours: { en: "Remote, EU and Americas hours", es: "Remoto, en horario de Europa y América" },
+  scroll: { en: "Scroll", es: "Desliza" },
+  // kept on one line when the header wraps on a narrow phone
+  role: { en: "AI engineer", es: "ingeniero de IA" },
+  line: {
+    en: "Hi, I'm Juan Pablo. I build AI tools and look after the infrastructure under them.",
+    es: "Hola, soy Juan Pablo. Construyo herramientas de IA y cuido la infraestructura que las sostiene.",
+  },
+  now: {
+    en: "Right now that means AI chat for WordPress membership sites at MemberDev, a few apps of my own, and a lot of time with coding agents.",
+    es: "Ahora mismo eso significa chats de IA para los sitios de membresía en WordPress de MemberDev, algunas apps propias y muchas horas con agentes de programación.",
+  },
+  quickLinks: { en: "Quick links", es: "Accesos rápidos" },
+  projects: { en: "See my projects", es: "Ver mis proyectos" },
+  cv: { en: "Download CV", es: "Descargar CV" },
+  links: [
+    { href: "/experience", label: { en: "Experience", es: "Experiencia" } },
+    { href: "/projects", label: { en: "Projects", es: "Proyectos" } },
+    { href: "/about", label: { en: "About me", es: "Sobre mí" } },
+  ],
+};
 
 /**
  * Home hero. The surname sits behind the cut-out portrait; the intro card
  * floats over it on desktop and becomes a sheet under the cover on phones.
  */
-export function Hero() {
+export function Hero({ lang }: { lang: Locale }) {
+  const t = localize(copy, lang);
+  const s = localize(site, lang);
+
   return (
     <HeroDepth className="relative">
       <section
-        aria-label="Introduction"
+        aria-label={t.intro}
         className="hero h-[78svh] min-h-[560px] max-h-[760px] md:h-[100svh] md:max-h-[1100px] md:min-h-[760px]"
       >
         <div className="hero-scroll-light absolute inset-0 -z-10">
@@ -61,14 +83,14 @@ export function Hero() {
         >
           <div className="glass glass-blur enter rounded-[20px] p-5" style={d(560)}>
             <span className="label flex justify-between">
-              <span>Málaga, Spain</span>
+              <span>{s.location}</span>
               <MalagaClock />
             </span>
-            <span className="mt-2.5 block text-[15px]">Remote, EU and Americas hours</span>
-            <span className="block text-sm text-muted-foreground">English and Spanish</span>
+            <span className="mt-2.5 block text-[15px]">{t.hours}</span>
+            <span className="block text-sm text-muted-foreground">{s.languages}</span>
           </div>
           <p className="label enter-fade flex items-center gap-2.5 self-end" style={d(1000)}>
-            Scroll
+            {t.scroll}
             <span aria-hidden className="block h-7 w-px bg-white/45" />
           </p>
         </div>
@@ -79,22 +101,20 @@ export function Hero() {
           <div className="glass-2 glass-blur enter rounded-[28px] p-6 md:p-8" style={d(380)}>
             <h1 className="flex items-center gap-2.5 text-sm font-medium text-muted-foreground">
               <span className="dot bg-brand" />
-              {site.name} · AI engineer
+              {site.name} · {t.role}
             </h1>
             <p className="mt-4 text-[clamp(1.6rem,2.4vw,2.15rem)] leading-[1.14] font-medium tracking-[-0.03em]">
-              Hi, I&apos;m Juan Pablo. I build AI tools and look after the infrastructure
-              under them.
+              {t.line}
             </p>
             <p className="mt-4 text-[15px] leading-[1.7] text-muted-foreground">
-              Right now that means AI chat for WordPress membership sites at MemberDev,
-              a few apps of my own, and a lot of time with coding agents.
+              {t.now}
             </p>
 
-            <nav aria-label="Quick links" className="mt-5 md:hidden">
-              {quickLinks.map((link) => (
+            <nav aria-label={t.quickLinks} className="mt-5 md:hidden">
+              {t.links.map((link) => (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={localePath(lang, link.href)}
                   className="group flex min-h-[52px] items-center justify-between border-t border-white/12 text-base font-medium active:opacity-70"
                 >
                   {link.label}
@@ -106,15 +126,15 @@ export function Hero() {
             </nav>
 
             <div className="mt-6 flex flex-wrap gap-2.5 max-md:mt-2">
-              <Link href="/projects" className="btn btn-brand max-md:hidden">
-                See my projects <span aria-hidden className="arrow">→</span>
+              <Link href={localePath(lang, "/projects")} className="btn btn-brand max-md:hidden">
+                {t.projects} <span aria-hidden className="arrow">→</span>
               </Link>
               <a
                 href={site.cv.href}
                 download={site.cv.filename}
                 className="btn btn-ghost max-md:w-full max-md:border-transparent max-md:bg-brand max-md:text-background"
               >
-                Download CV
+                {t.cv}
               </a>
             </div>
           </div>

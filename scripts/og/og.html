@@ -2,7 +2,8 @@
 <!--
   The link-preview image (Open Graph / Twitter), drawn like the Home hero:
   the surname behind the cut-out portrait, light from the photo, one glass card.
-  Rendered to app/opengraph-image.jpg by scripts/og/render.mjs.
+  Rendered to public/og/en.jpg and, with ?lang=es, public/og/es.jpg by
+  scripts/og/render.mjs. The Spanish text sits in data-es.
 -->
 <html lang="en">
 <head>
@@ -98,6 +99,9 @@
     color: var(--fg-3);
   }
   .foot b { font-weight: 500; color: var(--brand); }
+  /* the Spanish line runs longer: a wider card keeps it to three lines */
+  html[lang^="es"] .card { width: 560px; }
+  html[lang^="es"] .line { font-size: 35px; }
 </style>
 </head>
 <body>
@@ -105,9 +109,15 @@
   <p class="name" aria-hidden="true">Ramirez</p>
   <img class="portrait" src="../../public/images/hero/jp-depth.webp" alt="">
   <div class="card">
-    <p class="who"><span class="dot"></span>Juan Pablo Ramirez · AI engineer</p>
-    <p class="line">I build AI tools and look after the infrastructure under them.</p>
-    <p class="foot"><b>jpramirez.dev</b><span>Málaga, Spain</span></p>
+    <p class="who"><span class="dot"></span><span data-es="Juan Pablo Ramirez · ingeniero de IA">Juan Pablo Ramirez · AI engineer</span></p>
+    <p class="line" data-es="Construyo herramientas de IA y cuido la infraestructura que las sostiene.">I build AI tools and look after the infrastructure under them.</p>
+    <p class="foot"><b>jpramirez.dev</b><span data-es="Málaga, España">Málaga, Spain</span></p>
   </div>
+  <script>
+    if (new URLSearchParams(location.search).get("lang") === "es") {
+      document.documentElement.lang = "es-419";
+      for (const el of document.querySelectorAll("[data-es]")) el.textContent = el.dataset.es;
+    }
+  </script>
 </body>
 </html>

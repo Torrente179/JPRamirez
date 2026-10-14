@@ -1,8 +1,14 @@
 import type { MaintainedSite } from "@/lib/data/experience";
 import { projectHost } from "@/lib/data/projects";
+import type { Locale } from "@/lib/i18n";
+
+const copy = {
+  title: { en: "Sites I maintain", es: "Sitios que mantengo" },
+  kind: { en: "Membership sites", es: "Sitios de membresía" },
+};
 
 /** Native disclosure: no JavaScript, keyboard and screen-reader friendly. */
-export function SiteList({ sites }: { sites: MaintainedSite[] }) {
+export function SiteList({ sites, lang }: { sites: MaintainedSite[]; lang: Locale }) {
   return (
     <details className="disclosure group mt-8 rounded-[22px] border border-white/10 bg-black/25">
       <summary className="flex min-h-14 items-center justify-between gap-4 px-5 py-4">
@@ -11,11 +17,11 @@ export function SiteList({ sites }: { sites: MaintainedSite[] }) {
             {sites.length}
           </span>
           <span className="font-medium transition-colors duration-300 group-hover:text-brand">
-            Sites I maintain
+            {copy.title[lang]}
           </span>
         </span>
         <span className="flex items-center gap-3 meta">
-          <span className="max-sm:hidden">Membership sites</span>
+          <span className="max-sm:hidden">{copy.kind[lang]}</span>
           <span
             aria-hidden
             className="disclosure-mark flex size-7 items-center justify-center rounded-full border border-white/15 text-sm text-foreground"

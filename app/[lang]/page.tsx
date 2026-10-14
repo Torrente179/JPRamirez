@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { Ambient } from "@/components/ambient";
@@ -5,31 +6,65 @@ import { Hero } from "@/components/hero";
 import { ProjectMedia } from "@/components/project-media";
 import { SectionHeading } from "@/components/section-heading";
 import { StatusLabel } from "@/components/status-chip";
-import { projects } from "@/lib/data/projects";
-import { highlights, roles } from "@/lib/data/experience";
-import { statusBoard } from "@/lib/data/now";
-import { stackGroups } from "@/lib/data/stack";
+import { projects as projectData } from "@/lib/data/projects";
+import { highlights as highlightData, roles as roleData } from "@/lib/data/experience";
+import { statusBoard as statusData } from "@/lib/data/now";
+import { stackGroups as stackData } from "@/lib/data/stack";
 import { site } from "@/lib/data/site";
+import { getLang, localePath, localize, pageAlternates } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 /** the row of four panels curves away from the centre */
 const turns = ["12deg", "4deg", "-4deg", "-12deg"];
 const origins = ["right center", "center", "center", "left center"];
 
-export default function Home() {
+const copy = {
+  status: { en: "What I'm doing now", es: "Lo que hago ahora" },
+  projects: { en: "Projects", es: "Proyectos" },
+  projectsAside: {
+    en: "All four are live. Each has its own page with the details.",
+    es: "Los cuatro están en producción. Cada uno tiene su propia página con los detalles.",
+  },
+  allProjects: { en: "All projects", es: "Todos los proyectos" },
+  experience: { en: "Experience", es: "Experiencia" },
+  experienceBody: {
+    en: "Since 2023 I've worked with MemberDev, where I look after WordPress membership sites and build the AI chat on them. Before that I was at Cloudways, part of DigitalOcean, and at Hostinger.",
+    es: "Desde 2023 trabajo con MemberDev, donde me encargo de sitios de membresía en WordPress y desarrollo su chat de IA. Antes estuve en Cloudways, que es parte de DigitalOcean, y en Hostinger.",
+  },
+  fullExperience: { en: "Full experience", es: "Experiencia completa" },
+  cv: { en: "Download CV", es: "Descargar CV" },
+  present: { en: "Present", es: "Actual" },
+  roles: { en: "Roles, most recent first", es: "Puestos, del más reciente al más antiguo" },
+  stack: { en: "Stack", es: "Stack" },
+  fullList: { en: "The full list", es: "La lista completa" },
+};
+
+export async function generateMetadata({ params }: PageProps<"/[lang]">): Promise<Metadata> {
+  const lang = await getLang(params);
+  return { alternates: pageAlternates(lang, "/") };
+}
+
+export default async function Home({ params }: PageProps<"/[lang]">) {
+  const lang = await getLang(params);
+  const t = localize(copy, lang);
+  const projects = localize(projectData, lang);
+  const roles = localize(roleData, lang);
+  const highlights = localize(highlightData, lang);
+  const statusBoard = localize(statusData, lang);
+  const stackGroups = localize(stackData, lang);
   const [current, ...earlier] = roles;
 
   return (
     <>
-      <Hero />
+      <Hero lang={lang} />
 
       {/* status */}
-      <section aria-label="What I'm doing now" className="mx-auto max-w-7xl px-4 pt-12 sm:px-8 md:pt-16">
+      <section aria-label={t.status} className="mx-auto max-w-7xl px-4 pt-12 sm:px-8 md:pt-16">
         <div className="-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:overflow-visible sm:px-0">
           {statusBoard.map((card) => (
             <Link
-              key={card.label}
-              href={card.href}
+              key={card.href}
+              href={localePath(lang, card.href)}
               data-reveal
               className="glass lift group flex w-[78vw] max-w-[320px] flex-none snap-start flex-col gap-2.5 rounded-[22px] p-5 sm:w-auto sm:max-w-none sm:p-6"
             >
@@ -56,14 +91,14 @@ export default function Home() {
         </div>
         <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <SectionHeading
-            title="Projects"
+            title={t.projects}
             aside={
               <>
                 <p className="max-w-[340px] text-[15px] leading-[1.6] text-subtle">
-                  All four are live. Each has its own page with the details.
+                  {t.projectsAside}
                 </p>
-                <Link href="/projects" className="btn btn-ghost group">
-                  All projects <span aria-hidden className="arrow">→</span>
+                <Link href={localePath(lang, "/projects")} className="btn btn-ghost group">
+                  {t.allProjects} <span aria-hidden className="arrow">→</span>
                 </Link>
               </>
             }
@@ -78,14 +113,14 @@ export default function Home() {
                 className="w-[82vw] max-w-[340px] flex-none snap-center lg:w-auto lg:max-w-none lg:flex-1"
               >
                 <Link
-                  href={`/projects/${project.slug}`}
+                  href={localePath(lang, `/projects/${project.slug}`)}
                   className="panel glass group flex h-full flex-col rounded-[26px] p-3 pb-6"
                   style={{ "--t": turns[i], "--origin": origins[i] } as CSSProperties}
                 >
                   <ProjectMedia project={project} variant="card" />
                   <span className="mx-3 mt-5 flex items-center justify-between meta">
                     <span>0{i + 1}</span>
-                    <StatusLabel status={project.status} />
+                    <StatusLabel status={project.status} lang={lang} />
                   </span>
                   <span className="mx-3 mt-3 text-[26px] leading-[1.05] font-medium tracking-[-0.03em]">
                     {project.name}
@@ -111,12 +146,10 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-16 gap-y-14 px-4 sm:px-8">
           <div className="min-w-0 flex-[1_1_420px]" data-reveal>
             <h2 className="text-[clamp(2.4rem,5vw,4.5rem)] leading-none font-medium tracking-[-0.045em]">
-              Experience
+              {t.experience}
             </h2>
             <p className="mt-6 max-w-[520px] text-[17px] leading-[1.75] text-muted-foreground">
-              Since 2023 I&apos;ve worked with MemberDev, where I look after WordPress
-              membership sites and build the AI chat on them. Before that I was at
-              Cloudways, part of DigitalOcean, and at Hostinger.
+              {t.experienceBody}
             </p>
             <dl className="mt-9 grid grid-cols-3 gap-4 sm:flex sm:flex-wrap sm:gap-x-10 sm:gap-y-6">
               {highlights.map((h) => (
@@ -129,11 +162,11 @@ export default function Home() {
               ))}
             </dl>
             <div className="mt-10 flex flex-wrap gap-2.5">
-              <Link href="/experience" className="btn btn-light group">
-                Full experience <span aria-hidden className="arrow">→</span>
+              <Link href={localePath(lang, "/experience")} className="btn btn-light group">
+                {t.fullExperience} <span aria-hidden className="arrow">→</span>
               </Link>
               <a href={site.cv.href} download={site.cv.filename} className="btn btn-ghost">
-                Download CV
+                {t.cv}
               </a>
             </div>
           </div>
@@ -149,7 +182,7 @@ export default function Home() {
                   <span>{role.period}</span>
                   {role.current && (
                     <span className="flex items-center gap-2">
-                      <span className="dot bg-ok" /> Present
+                      <span className="dot bg-ok" /> {t.present}
                     </span>
                   )}
                 </span>
@@ -160,7 +193,7 @@ export default function Home() {
           </ol>
 
           <div
-            aria-label="Roles, most recent first"
+            aria-label={t.roles}
             role="list"
             className="relative hidden h-[440px] min-w-0 flex-[1_1_440px] [perspective:1600px] md:block"
             data-reveal
@@ -194,7 +227,7 @@ export default function Home() {
               <span className="flex justify-between gap-3 meta text-muted-foreground">
                 <span>{current.period}</span>
                 <span className="flex items-center gap-2">
-                  <span className="dot bg-ok" /> Present
+                  <span className="dot bg-ok" /> {t.present}
                 </span>
               </span>
               <span className="mt-2.5 block text-3xl font-medium tracking-[-0.02em]">
@@ -209,10 +242,10 @@ export default function Home() {
       {/* stack */}
       <section className="mx-auto max-w-7xl px-4 pb-28 sm:px-8 md:pb-40">
         <SectionHeading
-          title="Stack"
+          title={t.stack}
           aside={
-            <Link href="/stack" className="btn btn-ghost group">
-              The full list <span aria-hidden className="arrow">→</span>
+            <Link href={localePath(lang, "/stack")} className="btn btn-ghost group">
+              {t.fullList} <span aria-hidden className="arrow">→</span>
             </Link>
           }
         />

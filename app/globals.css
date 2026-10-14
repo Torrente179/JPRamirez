@@ -409,20 +409,23 @@ html:has(.shot-viewer[open]) {
 ::view-transition-group(site-nav),
 ::view-transition-group(site-tabs),
 ::view-transition-group(site-appbar),
-::view-transition-group(site-clock) {
+::view-transition-group(site-clock),
+::view-transition-group(site-lang) {
   animation: none;
   z-index: 100;
 }
 ::view-transition-old(site-nav),
 ::view-transition-old(site-tabs),
 ::view-transition-old(site-appbar),
-::view-transition-old(site-clock) {
+::view-transition-old(site-clock),
+::view-transition-old(site-lang) {
   display: none;
 }
 ::view-transition-new(site-nav),
 ::view-transition-new(site-tabs),
 ::view-transition-new(site-appbar),
-::view-transition-new(site-clock) {
+::view-transition-new(site-clock),
+::view-transition-new(site-lang) {
   animation: none;
 }
 

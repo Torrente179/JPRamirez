@@ -1,0 +1,24 @@
+---
+title: JPTracker
+---
+
+Necesitaba registrar mis horas con cada cliente y convertirlas en facturas sin pagar otra herramienta, así que hice la mía. Es la que uso para mi trabajo freelance.
+
+## Qué hace
+
+- Un **calendario semanal** con las tareas guardadas en UTC, arrastrar y soltar, y temporizadores que se pueden pausar
+- **Facturas** que pasan de borrador a definitivas. Una factura solo recibe su número cuando se finaliza
+- **Exportación** a PDF, CSV y PNG
+- **Reportes mensuales**, con búsqueda de horas por cliente y paneles hechos con Recharts
+- Inicio de sesión con correo y contraseña, Google, Apple o una llave de acceso (WebAuthn)
+- Una importación única desde la versión anterior de la app, que lo guardaba todo en localStorage
+
+## Cómo está hecho
+
+El cliente es React 19 con Vite. Supabase se encarga de la autenticación y de Postgres, con seguridad a nivel de fila en los datos. Los PDF se generan en el navegador con jsPDF y html2canvas, así que hacer una factura no necesita un servidor.
+
+Las horas se guardan en UTC y se muestran en la zona horaria en la que estés, así que las cuentas siempre cuadran.
+
+## Estado
+
+Está en producción en [jptimetracker.vercel.app](https://jptimetracker.vercel.app) y la uso para mi propio trabajo.

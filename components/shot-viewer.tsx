@@ -4,7 +4,19 @@ import Image from "next/image";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { GalleryShot } from "@/lib/data/projects";
+import { fill, type Locale, type Localized, localize } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+
+const copy = {
+  dialog: { en: "{title} screenshots", es: "Capturas de {title}" },
+  slide: { en: "slide", es: "diapositiva" },
+  position: { en: "{n} of {total}: {caption}", es: "{n} de {total}: {caption}" },
+  close: { en: "Close", es: "Cerrar" },
+  sections: { en: "Sections", es: "Secciones" },
+  previous: { en: "Previous screen", es: "Pantalla anterior" },
+  next: { en: "Next screen", es: "Pantalla siguiente" },
+};
+type Copy = Localized<typeof copy>;
 
 /**
  * Full-screen viewer for a project's screenshots, with the walkthrough notes.
@@ -13,7 +25,16 @@ import { cn } from "@/lib/utils";
  * native scroll-snap handles swiping; arrows and the keyboard move too.
  * Nothing (images included) renders until it opens.
  */
-export function ShotViewer({ shots, title }: { shots: GalleryShot[]; title: string }) {
+export function ShotViewer({
+  shots,
+  title,
+  lang,
+}: {
+  shots: GalleryShot[];
+  title: string;
+  lang: Locale;
+}) {
+  const t = localize(copy, lang);
   const dialog = useRef<HTMLDialogElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const start = useRef(0);
@@ -91,7 +112,7 @@ export function ShotViewer({ shots, title }: { shots: GalleryShot[]; title: stri
       ref={dialog}
       onClose={() => setOpen(false)}
       onKeyDown={onKey}
-      aria-label={`${title} screenshots`}
+      aria-label={fill(t.dialog, { title })}
       className="shot-viewer fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none border-0 bg-background p-0 text-foreground backdrop:bg-transparent"
     >
       {open && shot && (
@@ -103,13 +124,13 @@ export function ShotViewer({ shots, title }: { shots: GalleryShot[]; title: stri
             </p>
             <div className="flex shrink-0 gap-2">
               <div className="hidden gap-2 [@media(max-height:500px)]:flex">
-                <StepButtons index={index} last={shots.length - 1} onStep={(d) => go(aim.current + d)} />
+                <StepButtons t={t} index={index} last={shots.length - 1} onStep={(d) => go(aim.current + d)} />
               </div>
               <button
                 type="button"
                 autoFocus
                 onClick={() => dialog.current?.close()}
-                aria-label="Close"
+                aria-label={t.close}
                 className="btn btn-ghost size-11 shrink-0 p-0"
               >
                 <X size={18} strokeWidth={1.75} aria-hidden />
@@ -126,8 +147,8 @@ export function ShotViewer({ shots, title }: { shots: GalleryShot[]; title: stri
               <div
                 key={s.src}
                 role="group"
-                aria-roledescription="slide"
-                aria-label={`${i + 1} of ${shots.length}: ${s.caption}`}
+                aria-roledescription={t.slide}
+                aria-label={fill(t.position, { n: i + 1, total: shots.length, caption: s.caption })}
                 inert={i !== index}
                 className="flex w-full shrink-0 snap-center snap-always overflow-y-auto overscroll-y-contain px-4 py-3 sm:px-8 lg:items-center"
               >
@@ -206,7 +227,7 @@ export function ShotViewer({ shots, title }: { shots: GalleryShot[]; title: stri
 
           <footer className="flex items-center justify-between gap-3 px-4 pt-2 pb-[max(14px,env(safe-area-inset-bottom))] sm:px-8 [@media(max-height:500px)]:hidden">
             {groups.length > 1 ? (
-              <nav aria-label="Sections" className="flex min-w-0 gap-1.5 overflow-x-auto [scrollbar-width:none]">
+              <nav aria-label={t.sections} className="flex min-w-0 gap-1.5 overflow-x-auto [scrollbar-width:none]">
                 {groups.map((g) => {
                   const here = index >= g.first && index < g.first + g.count;
                   return (
@@ -229,7 +250,7 @@ export function ShotViewer({ shots, title }: { shots: GalleryShot[]; title: stri
               <span />
             )}
             <div className="flex shrink-0 gap-2">
-              <StepButtons index={index} last={shots.length - 1} onStep={(d) => go(aim.current + d)} />
+              <StepButtons t={t} index={index} last={shots.length - 1} onStep={(d) => go(aim.current + d)} />
             </div>
           </footer>
         </div>
@@ -239,10 +260,12 @@ export function ShotViewer({ shots, title }: { shots: GalleryShot[]; title: stri
 }
 
 function StepButtons({
+  t,
   index,
   last,
   onStep,
 }: {
+  t: Copy;
   index: number;
   last: number;
   onStep: (direction: number) => void;
@@ -253,7 +276,7 @@ function StepButtons({
         type="button"
         onClick={() => onStep(-1)}
         disabled={index === 0}
-        aria-label="Previous screen"
+        aria-label={t.previous}
         className="btn btn-ghost size-11 p-0 disabled:pointer-events-none disabled:opacity-30"
       >
         <ChevronLeft size={18} strokeWidth={1.75} aria-hidden />
@@ -262,7 +285,7 @@ function StepButtons({
         type="button"
         onClick={() => onStep(1)}
         disabled={index === last}
-        aria-label="Next screen"
+        aria-label={t.next}
         className="btn btn-ghost size-11 p-0 disabled:pointer-events-none disabled:opacity-30"
       >
         <ChevronRight size={18} strokeWidth={1.75} aria-hidden />

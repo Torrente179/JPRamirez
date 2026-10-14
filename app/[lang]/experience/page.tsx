@@ -1,24 +1,53 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { SiteList } from "@/components/site-list";
-import { highlights, remoteSince, roles } from "@/lib/data/experience";
+import {
+  highlights as highlightData,
+  remoteSince,
+  roles as roleData,
+} from "@/lib/data/experience";
 import { site } from "@/lib/data/site";
+import { getLang, localize, pageAlternates } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Experience",
-  description:
-    "Remote since 2020: hosting support at Hostinger, account management at Cloudways by DigitalOcean, and WordPress operations and AI work at MemberDev.",
+const copy = {
+  title: { en: "Experience", es: "Experiencia" },
+  description: {
+    en: "Remote since 2020: hosting support at Hostinger, account management at Cloudways by DigitalOcean, and WordPress operations and AI work at MemberDev.",
+    es: "En remoto desde 2020: soporte de hosting en Hostinger, gestión de cuentas en Cloudways by DigitalOcean, y operaciones de WordPress e IA en MemberDev.",
+  },
+  lede: {
+    en: "I've worked remotely since 2020, first in hosting support and account management, and now on WordPress operations and AI.",
+    es: "Trabajo de forma remota desde 2020, primero en soporte de hosting y gestión de cuentas, y ahora en operaciones de WordPress e IA.",
+  },
+  cv: { en: "Download CV", es: "Descargar CV" },
+  roles: { en: "Roles", es: "Puestos" },
+  present: { en: "Present", es: "Actual" },
 };
 
-export default function ExperiencePage() {
-  const metrics = [{ value: remoteSince.year, label: remoteSince.label }, ...highlights];
+export async function generateMetadata({ params }: PageProps<"/[lang]/experience">): Promise<Metadata> {
+  const lang = await getLang(params);
+  return {
+    title: copy.title[lang],
+    description: copy.description[lang],
+    alternates: pageAlternates(lang, "/experience"),
+  };
+}
+
+export default async function ExperiencePage({ params }: PageProps<"/[lang]/experience">) {
+  const lang = await getLang(params);
+  const t = localize(copy, lang);
+  const roles = localize(roleData, lang);
+  const metrics = [
+    { value: remoteSince.year, label: remoteSince.label[lang] },
+    ...localize(highlightData, lang),
+  ];
 
   return (
     <>
       <PageHero
-        title="Experience"
-        lede="I've worked remotely since 2020, first in hosting support and account management, and now on WordPress operations and AI."
+        title={t.title}
+        lede={t.lede}
         ambient="/images/ambient/motorcycle.webp"
         below={
           <dl className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -37,11 +66,11 @@ export default function ExperiencePage() {
         }
       >
         <a href={site.cv.href} download={site.cv.filename} className="btn btn-brand">
-          Download CV ↓
+          {t.cv} ↓
         </a>
       </PageHero>
 
-      <section aria-label="Roles" className="mx-auto max-w-7xl px-4 pb-28 sm:px-8 md:pb-40">
+      <section aria-label={t.roles} className="mx-auto max-w-7xl px-4 pb-28 sm:px-8 md:pb-40">
         <div className="relative">
         <span aria-hidden className="absolute top-8 bottom-8 left-[7px] hidden w-px bg-white/14 md:block" />
         <ol className="flex flex-col gap-4 md:gap-7 md:pl-10">
@@ -69,7 +98,7 @@ export default function ExperiencePage() {
                   <p className="mt-2 meta leading-[1.6]">{role.location}</p>
                   {role.current && (
                     <p className="chip mt-4 border-ok/25 bg-ok/10 text-[#a7f3d0]">
-                      <span className="dot bg-ok" /> Present
+                      <span className="dot bg-ok" /> {t.present}
                     </p>
                   )}
                 </div>
@@ -98,7 +127,7 @@ export default function ExperiencePage() {
                       </li>
                     ))}
                   </ul>
-                  {role.sites && <SiteList sites={role.sites} />}
+                  {role.sites && <SiteList sites={role.sites} lang={lang} />}
                 </div>
               </article>
             </li>

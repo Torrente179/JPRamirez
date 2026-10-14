@@ -4,8 +4,15 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { AboutPhoto } from "@/lib/data/about";
+import type { Locale } from "@/lib/i18n";
 
 const HOLD_MS = 3400;
+
+const copy = {
+  carousel: { en: "carousel", es: "carrusel" },
+  previous: { en: "Previous photo", es: "Foto anterior" },
+  next: { en: "Next photo", es: "Foto siguiente" },
+};
 
 /** Where each card sits, by its distance from the front. */
 function place(slot: number, total: number) {
@@ -23,7 +30,7 @@ function place(slot: number, total: number) {
  * next one comes forward. Transform and opacity only. Advances on its own,
  * and pauses on hover, focus, hidden tabs and reduced motion.
  */
-export function PhotoStack({ photos }: { photos: AboutPhoto[] }) {
+export function PhotoStack({ photos, lang }: { photos: AboutPhoto[]; lang: Locale }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const n = photos.length;
@@ -60,7 +67,7 @@ export function PhotoStack({ photos }: { photos: AboutPhoto[] }) {
         if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setPaused(false);
       }}
     >
-      <div className="relative h-[440px] [perspective:1400px] md:h-[540px]" aria-roledescription="carousel">
+      <div className="relative h-[440px] [perspective:1400px] md:h-[540px]" aria-roledescription={copy.carousel[lang]}>
         {photos.map((photo, i) => {
           const slot = (i - index + n) % n;
           const { transform, opacity } = place(slot, n);
@@ -93,7 +100,7 @@ export function PhotoStack({ photos }: { photos: AboutPhoto[] }) {
         <div className="flex gap-2">
           <button
             type="button"
-            aria-label="Previous photo"
+            aria-label={copy.previous[lang]}
             onClick={() => go(-1)}
             className="flex size-11 items-center justify-center rounded-full border border-white/18 bg-white/6 transition-colors duration-300 hover:bg-white/12 active:scale-95"
           >
@@ -101,7 +108,7 @@ export function PhotoStack({ photos }: { photos: AboutPhoto[] }) {
           </button>
           <button
             type="button"
-            aria-label="Next photo"
+            aria-label={copy.next[lang]}
             onClick={() => go(1)}
             className="flex size-11 items-center justify-center rounded-full border border-white/18 bg-white/6 transition-colors duration-300 hover:bg-white/12 active:scale-95"
           >

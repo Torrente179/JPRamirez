@@ -5,37 +5,71 @@ import { PageHero } from "@/components/page-hero";
 import { ProjectMedia } from "@/components/project-media";
 import { SectionHeading } from "@/components/section-heading";
 import { StatusLabel } from "@/components/status-chip";
-import { clientWork, projectHost, projects } from "@/lib/data/projects";
+import {
+  clientWork as clientWorkData,
+  projectHost,
+  projects as projectData,
+} from "@/lib/data/projects";
+import { fill, getLang, localePath, localize, pageAlternates } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Projects",
-  description:
-    "Four apps I built and still look after, QBank, GiseUGC, Budget & Expense and JPTracker, plus client work from MemberDev.",
+const copy = {
+  title: { en: "Projects", es: "Proyectos" },
+  description: {
+    en: "Four apps I built and still look after, QBank, GiseUGC, Budget & Expense and JPTracker, plus client work from MemberDev.",
+    es: "Cuatro apps que desarrollé y sigo manteniendo (QBank, GiseUGC, Budget & Expense y JPTracker), además de trabajos para clientes de MemberDev.",
+  },
+  lede: {
+    en: "Four apps I built and still look after, and some of my client work at MemberDev.",
+    es: "Cuatro apps que desarrollé y sigo manteniendo, y parte de mi trabajo para clientes en MemberDev.",
+  },
+  live: { en: "{n} live", es: "{n} en producción" },
+  beta: { en: "{n} private beta", es: "{n} en beta privada" },
+  list: { en: "My projects", es: "Mis proyectos" },
+  caseStudyOf: { en: "{name} case study", es: "Caso de estudio de {name}" },
+  caseStudy: { en: "Case study", es: "Caso de estudio" },
+  clientWork: { en: "Client work", es: "Trabajo para clientes" },
+  clientWorkAside: {
+    en: "Jobs I've done for MemberDev clients.",
+    es: "Trabajos que hice para clientes de MemberDev.",
+  },
 };
 
-export default function ProjectsPage() {
+export async function generateMetadata({ params }: PageProps<"/[lang]/projects">): Promise<Metadata> {
+  const lang = await getLang(params);
+  return {
+    title: copy.title[lang],
+    description: copy.description[lang],
+    alternates: pageAlternates(lang, "/projects"),
+  };
+}
+
+export default async function ProjectsPage({ params }: PageProps<"/[lang]/projects">) {
+  const lang = await getLang(params);
+  const t = localize(copy, lang);
+  const projects = localize(projectData, lang);
+  const clientWork = localize(clientWorkData, lang);
   const live = projects.filter((p) => p.status === "Production").length;
   const beta = projects.length - live;
 
   return (
     <>
       <PageHero
-        title="Projects"
-        lede="Four apps I built and still look after, and some of my client work at MemberDev."
+        title={t.title}
+        lede={t.lede}
         ambient="/images/ambient/clouds.webp"
       >
         <span className="chip">
-          <span className="dot bg-ok" /> {live} live
+          <span className="dot bg-ok" /> {fill(t.live, { n: live })}
         </span>
         {beta > 0 && (
           <span className="chip">
-            <span className="dot bg-brand" /> {beta} private beta
+            <span className="dot bg-brand" /> {fill(t.beta, { n: beta })}
           </span>
         )}
       </PageHero>
 
-      <section aria-label="My projects" className="mx-auto flex max-w-7xl flex-col gap-24 px-4 pt-6 sm:px-8 md:gap-32">
+      <section aria-label={t.list} className="mx-auto flex max-w-7xl flex-col gap-24 px-4 pt-6 sm:px-8 md:gap-32">
         {projects.map((project, i) => (
           <article
             key={project.slug}
@@ -45,8 +79,8 @@ export default function ProjectsPage() {
             )}
           >
             <Link
-              href={`/projects/${project.slug}`}
-              aria-label={`${project.name} case study`}
+              href={localePath(lang, `/projects/${project.slug}`)}
+              aria-label={fill(t.caseStudyOf, { name: project.name })}
               data-reveal
               className={cn(
                 "glass-2 block min-w-0 flex-[1_1_560px] rounded-[26px] p-2.5 transition-transform duration-700 ease-[var(--ease)] lg:hover:[transform:rotateY(0deg)]",
@@ -61,7 +95,7 @@ export default function ProjectsPage() {
             <div data-reveal className="min-w-0 flex-[1_1_380px]">
               <p className="flex items-center gap-4 meta">
                 <span>0{i + 1}</span>
-                <StatusLabel status={project.status} />
+                <StatusLabel status={project.status} lang={lang} />
               </p>
               <h2 className="mt-4 text-[clamp(2.4rem,4vw,3.5rem)] leading-none font-medium tracking-[-0.04em]">
                 {project.name}
@@ -76,8 +110,11 @@ export default function ProjectsPage() {
                 ))}
               </ul>
               <div className="mt-7 flex flex-wrap gap-2.5">
-                <Link href={`/projects/${project.slug}`} className="btn btn-brand group">
-                  Case study <span aria-hidden className="arrow">→</span>
+                <Link
+                  href={localePath(lang, `/projects/${project.slug}`)}
+                  className="btn btn-brand group"
+                >
+                  {t.caseStudy} <span aria-hidden className="arrow">→</span>
                 </Link>
                 {project.link && (
                   <a
@@ -101,11 +138,11 @@ export default function ProjectsPage() {
         </div>
         <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <SectionHeading
-            title="Client work"
+            title={t.clientWork}
             size="md"
             aside={
               <p className="max-w-[420px] text-base leading-[1.7] text-muted-foreground">
-                Jobs I&apos;ve done for MemberDev clients.
+                {t.clientWorkAside}
               </p>
             }
           />

@@ -23,7 +23,10 @@ export function PageHero({
         <Ambient src={ambient} opacity={0.55} fade="bottom" className="enter-fade" />
       </div>
       <div className="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-x-10 gap-y-6 px-5 sm:px-8">
-        <h1 className="display enter text-[clamp(4rem,11vw,10.5rem)]">{title}</h1>
+        {/* Spanish titles run longer: "Experiencia" needs a size step on a 320px phone */}
+        <h1 className="display enter text-[clamp(4rem,11vw,10.5rem)] max-[359px]:[&:lang(es)]:text-[3.5rem]">
+          {title}
+        </h1>
         {(lede || children) && (
           <div
             className="enter max-w-[420px] pb-2 md:pb-4"

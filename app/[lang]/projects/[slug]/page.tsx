@@ -8,22 +8,44 @@ import { ProjectMedia } from "@/components/project-media";
 import { ShotGallery } from "@/components/shot-gallery";
 import { ShotViewer } from "@/components/shot-viewer";
 import { StatusLabel } from "@/components/status-chip";
-import { projectHost, projects, type GalleryShot } from "@/lib/data/projects";
+import { projectHost, projects as projectData, type GalleryShot } from "@/lib/data/projects";
 import { getProject, getProjectBody } from "@/lib/content";
+import { fill, getLang, localePath, localize, pageAlternates } from "@/lib/i18n";
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return projectData.map((p) => ({ slug: p.slug }));
 }
+
+const copy = {
+  projects: { en: "Projects", es: "Proyectos" },
+  openAll: { en: "Open all {n} screens with notes", es: "Abrir las {n} pantallas con notas" },
+  seeAll: { en: "See all {n} screens", es: "Ver las {n} pantallas" },
+  glance: { en: "At a glance", es: "De un vistazo" },
+  stack: { en: "Stack", es: "Stack" },
+  screens: { en: "Screens", es: "Pantallas" },
+  screensLede: {
+    en: "Open any screen for a walkthrough. The numbered notes explain each part.",
+    es: "Abre cualquier pantalla para ver el recorrido. Las notas numeradas explican cada parte.",
+  },
+  more: { en: "More projects", es: "Más proyectos" },
+  previous: { en: "Previous", es: "Anterior" },
+  next: { en: "Next", es: "Siguiente" },
+};
 
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+}: PageProps<"/[lang]/projects/[slug]">): Promise<Metadata> {
+  const lang = await getLang(params);
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  return { title: project.name, description: project.summary };
+  return {
+    title: project.name,
+    description: project.summary[lang],
+    alternates: pageAlternates(lang, `/projects/${slug}`),
+  };
 }
 
 /** MDX elements, styled for the case study body. */
@@ -63,15 +85,15 @@ const mdx = {
   ),
 };
 
-export default async function ProjectPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function ProjectPage({ params }: PageProps<"/[lang]/projects/[slug]">) {
+  const lang = await getLang(params);
   const { slug } = await params;
-  const project = getProject(slug);
-  const body = getProjectBody(slug);
-  if (!project || !body) notFound();
+  const source = getProject(slug);
+  const body = getProjectBody(slug, lang);
+  if (!source || !body) notFound();
+  const t = localize(copy, lang);
+  const project = localize(source, lang);
+  const projects = localize(projectData, lang);
 
   const index = projects.findIndex((p) => p.slug === slug);
   const prev = projects[(index - 1 + projects.length) % projects.length];
@@ -98,8 +120,11 @@ export default async function ProjectPage({
         </div>
         <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <p className="enter flex items-center gap-2.5 meta">
-            <Link href="/projects" className="transition-colors duration-300 hover:text-foreground">
-              Projects
+            <Link
+              href={localePath(lang, "/projects")}
+              className="transition-colors duration-300 hover:text-foreground"
+            >
+              {t.projects}
             </Link>
             <span aria-hidden>/</span>
             <span>0{index + 1}</span>
@@ -119,7 +144,7 @@ export default async function ProjectPage({
               style={{ "--d": "160ms" } as CSSProperties}
             >
               <span className="chip min-h-11 px-4">
-                <StatusLabel status={project.status} className="text-muted-foreground" />
+                <StatusLabel status={project.status} lang={lang} className="text-muted-foreground" />
               </span>
               {project.link && (
                 <a
@@ -142,29 +167,31 @@ export default async function ProjectPage({
                 <button
                   type="button"
                   data-shot={heroShot}
-                  aria-label={`Open all ${slides.length} screens with notes`}
+                  aria-label={fill(t.openAll, { n: slides.length })}
                   className="group relative block w-full cursor-zoom-in rounded-[20px] text-left"
                 >
                   <ProjectMedia project={project} variant="hero" preload />
                   <span className="chip pointer-events-none absolute right-3 bottom-3 min-h-9 bg-[rgba(5,7,12,0.82)] px-3.5 text-foreground transition-colors duration-300 group-hover:border-brand/60 md:right-5 md:bottom-5">
-                    See all {slides.length} screens
+                    {fill(t.seeAll, { n: slides.length })}
                   </span>
                 </button>
               )}
             </div>
           </div>
 
-          {gallery.length > 0 && !grouped && <ShotGallery shots={gallery} offset={leadShot.length} />}
+          {gallery.length > 0 && !grouped && (
+            <ShotGallery shots={gallery} offset={leadShot.length} lang={lang} />
+          )}
         </div>
       </section>
 
       <section className="mx-auto flex max-w-7xl flex-wrap items-start gap-x-18 gap-y-12 px-4 pt-24 sm:px-8 md:pt-32">
         <aside
-          aria-label="At a glance"
+          aria-label={t.glance}
           data-reveal
           className="glass min-w-0 flex-[1_1_320px] rounded-[26px] p-7 lg:sticky lg:top-28 lg:max-w-[400px]"
         >
-          <h2 className="label">At a glance</h2>
+          <h2 className="label">{t.glance}</h2>
           <dl className="mt-4">
             {project.glance.map((row) => (
               <div
@@ -176,7 +203,7 @@ export default async function ProjectPage({
               </div>
             ))}
           </dl>
-          <p className="label mt-5 mb-3">Stack</p>
+          <p className="label mt-5 mb-3">{t.stack}</p>
           <ul className="flex flex-wrap gap-1.5">
             {project.stack.map((tech) => (
               <li key={tech} className="chip">
@@ -194,36 +221,36 @@ export default async function ProjectPage({
       {grouped && (
         <section aria-labelledby="screens" className="mx-auto max-w-7xl px-4 pt-24 sm:px-8 md:pt-32">
           <h2 id="screens" className="text-[clamp(2.25rem,5vw,3.5rem)] font-medium tracking-[-0.045em]">
-            Screens
+            {t.screens}
           </h2>
           <p className="mt-3 max-w-[560px] text-[17px] leading-[1.7] text-muted-foreground">
-            Open any screen for a walkthrough. The numbered notes explain each part.
+            {t.screensLede}
           </p>
-          <ShotGallery shots={gallery} offset={leadShot.length} />
+          <ShotGallery shots={gallery} offset={leadShot.length} lang={lang} />
         </section>
       )}
 
       <nav
-        aria-label="More projects"
+        aria-label={t.more}
         className="mx-auto grid max-w-7xl gap-4 px-4 pt-32 pb-28 sm:px-8 md:grid-cols-2 md:pb-36"
       >
         <Link
-          href={`/projects/${prev.slug}`}
+          href={localePath(lang, `/projects/${prev.slug}`)}
           data-reveal
           className="glass lift group flex flex-col gap-2.5 rounded-[26px] p-7"
         >
-          <span className="meta">← Previous · 0{projects.indexOf(prev) + 1}</span>
+          <span className="meta">← {t.previous} · 0{projects.indexOf(prev) + 1}</span>
           <span className="text-3xl font-medium tracking-[-0.03em] transition-colors duration-300 group-hover:text-brand">
             {prev.name}
           </span>
           <span className="text-[15px] text-muted-foreground">{prev.tagline}.</span>
         </Link>
         <Link
-          href={`/projects/${next.slug}`}
+          href={localePath(lang, `/projects/${next.slug}`)}
           data-reveal
           className="glass lift group flex flex-col items-end gap-2.5 rounded-[26px] p-7 text-right"
         >
-          <span className="meta">Next · 0{projects.indexOf(next) + 1} →</span>
+          <span className="meta">{t.next} · 0{projects.indexOf(next) + 1} →</span>
           <span className="text-3xl font-medium tracking-[-0.03em] transition-colors duration-300 group-hover:text-brand">
             {next.name}
           </span>
@@ -231,7 +258,7 @@ export default async function ProjectPage({
         </Link>
       </nav>
 
-      {slides.length > 0 && <ShotViewer shots={slides} title={project.name} />}
+      {slides.length > 0 && <ShotViewer shots={slides} title={project.name} lang={lang} />}
     </>
   );
 }

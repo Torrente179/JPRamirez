@@ -1,0 +1,23 @@
+---
+title: Budget & Expense
+---
+
+Hice la app de finanzas que quería para mí. Funciona en inglés y en español, y cubre presupuestos por sobres, inversiones, donaciones y varias monedas.
+
+## Qué hace
+
+- Un **panel** con mi saldo, el gasto del mes y cómo han cambiado los dos
+- **Presupuesto por sobres**, con una barra de progreso para cada fondo
+- **Movimientos**, con el historial completo y un calendario en el que puedes entrar a cada día
+- **Inversiones y patrimonio neto**, junto al gasto del día a día
+- **Importación** de CSV dentro de la app, además de los estados de cuenta de Santander
+- **Varias monedas**: 20 en total, convertidas con el EUR como base
+- Gráficos de gasto por categoría, hechos con Recharts
+
+## Cómo está hecho
+
+Funciona con Next.js 16 y React Server Components, Supabase para la autenticación y Postgres con seguridad a nivel de fila, Tailwind CSS v4 y Base UI. El diseño usa neutros suaves y `tabular-nums` en todos los números, con verde cuando una cifra sube y rosa cuando baja. En el celular hay una barra de navegación inferior, y en escritorio una barra lateral.
+
+## Estado
+
+Está en producción y le sigo agregando cosas. Lo más reciente fue el calendario, las transferencias, el patrimonio neto y la importación de CSV.
